@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Service;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -13,16 +14,36 @@ class ServiceSeeder extends Seeder
     public function run(): void
     {
         $servicesData = [
-            ['nome' => 'Wi-Fi gratuito'],
-            ['nome' => 'Aria condizionata'],
-            ['nome' => 'Parcheggio privato'],
-            ['nome' => 'Piscina'],
-            ['nome' => 'Palestra'],
-            ['nome' => 'TV satellitare'],
-            ['nome' => 'Cucina attrezzata'],
-            ['nome' => 'Animali ammessi'],
-            ['nome' => 'Lavatrice'],
-            ['nome' => 'Balcone o terrazza'],
+                'WiFi gratuito',
+                'Colazione inclusa',
+                'Aria condizionata',
+                'Parcheggio gratuito',
+                'Servizio in camera',
+                'Animali ammessi',
+                'Piscina',
+                'Palestra',
+                'Spa e centro benessere',
+                'TV satellitare',
+                'Minibar',
+                'Cassaforte in camera',
+                'Accesso per disabili',
+                'Deposito bagagli',
+                'Servizio navetta',
+                'Noleggio biciclette',
+                'Area giochi per bambini',
+                'Sala conferenze',
+                'Bar',
+                'Ristorante',
+                'Servizio lavanderia',
+                'Asciugacapelli',
+                'Ferro da stiro',
+                'Reception 24 ore su 24'
         ];
+
+        foreach ($servicesData as $service) {
+            $newService = New Service();
+            $newService -> nome = $service;
+            $newService -> save();
+        }
     }
 }
