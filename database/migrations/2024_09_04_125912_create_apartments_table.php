@@ -16,7 +16,7 @@ return new class extends Migration
             $table->tinyInteger("Stanze");
             $table->tinyInteger("Letti");
             $table->tinyInteger("Bagni");
-            $table->smallInteger("Metri quadrati");
+            $table->smallInteger("Metri_quadrati");
             $table->text("Indirizzo");
             $table->decimal("Latitudine");
             $table->decimal("Longitudine");

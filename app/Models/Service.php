@@ -12,4 +12,8 @@ class Service extends Model
     public function apartments(){
         return $this->belongsToMany(Apartment::class);
     }
+
+    protected $fillable = [
+        'nome'
+    ];
 }
