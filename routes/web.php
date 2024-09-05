@@ -1,7 +1,10 @@
 <?php
 
 use App\Http\Controllers\Admin\HomeController as AdminHomeController;
+use App\Http\Controllers\api\ApartmentController;
 use App\Http\Controllers\HomeController as GuestHomeController;
+use App\Models\Apartment;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -28,3 +31,6 @@ Route::middleware('auth')->name('admin.')->prefix('admin')->group(
         Route::get('/secret-home', [AdminHomeController::class, 'index'])->name('home');
     }
 );
+
+
+Route::resource('/apartment', ApartmentController::class);
