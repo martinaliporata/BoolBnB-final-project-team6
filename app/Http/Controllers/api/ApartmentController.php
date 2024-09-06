@@ -22,20 +22,14 @@ class ApartmentController extends Controller
 
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
 
     /**
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
     {
-        //
+        $apartment = Apartment::create($request->all());
+        return response()->json($apartment, 201);
     }
 
     /**
@@ -52,20 +46,19 @@ class ApartmentController extends Controller
         ]);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
 
     /**
      * Update the specified resource in storage.
      */
     public function update(Request $request, string $id)
     {
-        //
+        $apartment = Apartment::findOrFail($id);
+        if ($apartment) {
+            $apartment->update($request->all());
+            return response()->json($apartment);
+        } else {
+            return response()->json(['message' => 'Apartment not found'], 404);
+        }
     }
 
     /**
