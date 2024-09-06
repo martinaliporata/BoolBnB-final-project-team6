@@ -66,6 +66,12 @@ class ApartmentController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $apartment = Apartment::find($id);
+        if ($apartment) {
+            $apartment->delete();
+            return response()->json(['message' => 'Apartment deleted']);
+        } else {
+            return response()->json(['message' => 'Apartment not found'], 404);
+        }
     }
 }
