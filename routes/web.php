@@ -33,4 +33,4 @@ Route::middleware('auth')->name('admin.')->prefix('admin')->group(
 );
 
 
-Route::resource('/apartment', ApartmentController::class);
+

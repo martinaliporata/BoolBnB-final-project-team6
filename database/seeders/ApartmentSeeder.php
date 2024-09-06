@@ -3,12 +3,16 @@
 namespace Database\Seeders;
 
 use App\Models\Apartment;
+use App\Models\Consumer;
+use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+
 class ApartmentSeeder extends Seeder
 {
     public function run()
     {
+
         $apartmentsData=[
             [
                 'Stanze' => 3,
@@ -122,8 +126,11 @@ class ApartmentSeeder extends Seeder
             ],
         ];
 
+        $consumers= Consumer::all()->pluck('id');
+
         foreach($apartmentsData as $apartment) {
             $newApartment = New Apartment();
+            $newApartment -> consumer_id = fake()->randomElement($consumers);
             $newApartment -> stanze = $apartment['Stanze'];
             $newApartment -> letti = $apartment['Letti'];
             $newApartment -> bagni = $apartment['Bagni'];

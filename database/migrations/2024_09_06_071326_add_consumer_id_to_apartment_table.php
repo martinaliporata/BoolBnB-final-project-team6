@@ -12,8 +12,10 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('apartments', function (Blueprint $table) {
-            $table->unsignedBigInteger('user_id')->after('id')->nullable();
-            $table->foreign('user_id')->references('id')->on('users')->cascadeOnUpdate()->nullOnDelete();
+
+            $table->unsignedBigInteger('consumer_id')->after('id')->nullable();
+
+            $table->foreign('consumer_id')->references('id')->on('consumers')->cascadeOnUpdate()->nullOnDelete();
         });
     }
 
@@ -23,8 +25,10 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('apartments', function (Blueprint $table) {
-            $table->dropForeign('apartments_user_id_foreign');
-            $table->dropColumn('user_id');
+
+            $table->dropForeign('apartments_consumer_id_foreign');
+
+            $table->dropColumn('consumer_id');
         });
     }
 };

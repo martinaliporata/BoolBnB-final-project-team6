@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Apartment;
 use App\Models\Message;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -56,8 +57,11 @@ class MessageSeeder extends Seeder
             ]
         ];
 
+        $apartments= Apartment::all()->pluck('id');
+
         foreach($messagesData as $message) {
             $newMessage = New Message();
+            $newMessage -> apartment_id = fake()->randomElement($apartments);
             $newMessage -> mail = $message['Mail'];
             $newMessage -> testo = $message['Testo'];
             $newMessage -> save();

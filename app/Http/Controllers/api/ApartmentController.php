@@ -43,7 +43,13 @@ class ApartmentController extends Controller
      */
     public function show(string $id)
     {
-        //
+
+        $apartment = Apartment::with( "views", "sponsorships", "services","messages" )->findOrFail($id);
+
+        return response()->json([
+            'success' => true,
+            'results' => $apartment
+        ]);
     }
 
     /**

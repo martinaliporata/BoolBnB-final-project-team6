@@ -9,8 +9,8 @@ class Apartment extends Model
 {
     use HasFactory;
 
-    public function user(){
-        return $this->belongsTo(User::class);
+    public function consumer(){
+        return $this->belongsTo(Consumer::class);
     }
 
     public function views(){

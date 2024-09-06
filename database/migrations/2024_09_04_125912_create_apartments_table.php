@@ -18,8 +18,8 @@ return new class extends Migration
             $table->tinyInteger("Bagni");
             $table->smallInteger("Metri_quadrati");
             $table->text("Indirizzo");
-            $table->decimal("Latitudine");
-            $table->decimal("Longitudine");
+            $table->decimal("Latitudine", 10,6);
+            $table->decimal("Longitudine", 10,6);
             $table->text("Img");
             $table->boolean("Visibilità");
             $table->timestamps();
