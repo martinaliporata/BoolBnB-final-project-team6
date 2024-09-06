@@ -4,6 +4,8 @@ namespace App\Http\Controllers\api;
 
 use App\Http\Controllers\Controller;
 use App\Models\Apartment;
+use App\Models\Sponsorship;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class ApartmentController extends Controller
@@ -113,6 +115,46 @@ class ApartmentController extends Controller
         return response()->json($results);
     }
 
+    public function updateSponsorship(Request $request, $apartmentId)
+    {
+        // Validazione della richiesta
+        $request->validate([
+            'sponsorship_id' => 'required|exists:sponsorships,id', // sponsorship_id deve esistere
+        ]);
+
+        // Recuperare l'appartamento
+        $apartment = Apartment::findOrFail($apartmentId);
+
+        // Recuperare la sponsorship scelta
+        $sponsorshipId = $request->input('sponsorship_id');
+        $sponsorship = Sponsorship::findOrFail($sponsorshipId);
+
+        // Calcolare la durata in base all'ID della sponsorship
+        $durationInHours = match($sponsorshipId) {
+            1 => 24,  // ID 1: 24 ore
+            2 => 72,  // ID 2: 72 ore
+            3 => 144, // ID 3: 144 ore
+            default => throw new \Exception("Sponsorship non valida") // In caso di altri ID non previsti
+        };
+
+        // Impostare la data di inizio e fine
+        $startDate = Carbon::now(); // Data e ora corrente
+        $endDate = $startDate->copy()->addHours($durationInHours); // Aggiungere le ore in base alla sponsorship
+
+        // Aggiornare la sponsorship dell'appartamento
+        $apartment->sponsorships()->updateExistingPivot($sponsorship->id, [
+            'start_date' => $startDate,
+            'end_date' => $endDate
+        ]);
+
+        // Restituire una risposta di successo
+        return response()->json([
+            'message' => 'Sponsorship aggiornata con successo!',
+            'sponsorship_id' => $sponsorshipId,
+            'start_date' => $startDate,
+            'end_date' => $endDate
+        ]);
+    }
 
     /**
      * Remove the specified resource from storage.
@@ -127,4 +169,12 @@ class ApartmentController extends Controller
             return response()->json(['message' => 'Apartment not found'], 404);
         }
     }
+
 }
+
+
+
+
+
+
+
