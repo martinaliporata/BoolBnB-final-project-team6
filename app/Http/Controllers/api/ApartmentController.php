@@ -22,7 +22,6 @@ class ApartmentController extends Controller
 
     }
 
-
     /**
      * Store a newly created resource in storage.
      */
@@ -60,6 +59,60 @@ class ApartmentController extends Controller
             return response()->json(['message' => 'Apartment not found'], 404);
         }
     }
+    public function search(Request $request)
+    {
+        // Prendere i parametri di ricerca dalla richiesta
+        $stanze = $request->input('stanze');
+        $letti = $request->input('letti');
+        $bagni = $request->input('bagni');
+        $metriQuadrati = $request->input('metri_quadrati');
+        $indirizzo = $request->input('indirizzo');
+        $latitudine = $request->input('latitudine');
+        $longitudine = $request->input('longitudine');
+        $services = $request->input('services'); // array di servizi
+
+        // Costruire la query dinamicamente in base ai parametri di ricerca forniti
+        $query = Apartment::query();
+
+        if ($stanze) {
+            $query->where('Stanze', $stanze);
+        }
+
+        if ($letti) {
+            $query->where('Letti', $letti);
+        }
+
+        if ($bagni) {
+            $query->where('Bagni', $bagni);
+        }
+
+        if ($metriQuadrati) {
+            $query->where('Metri_quadrati', '>=', $metriQuadrati);
+        }
+
+        if ($indirizzo) {
+            $query->where('Indirizzo', 'LIKE', "%{$indirizzo}%");
+        }
+
+        if ($latitudine && $longitudine) {
+            $query->where('Latitudine', $latitudine)
+                  ->where('Longitudine', $longitudine);
+        }
+
+        // Filtrare per servizi se forniti
+        if ($services && is_array($services)) {
+            $query->whereHas('services', function($q) use ($services) {
+                $q->whereIn('nome', $services);
+            });
+        }
+
+        // Ottenere i risultati della ricerca
+        $results = $query->with(['services', 'sponsorships'])->get();
+
+        // Restituire i risultati in formato JSON
+        return response()->json($results);
+    }
+
 
     /**
      * Remove the specified resource from storage.
