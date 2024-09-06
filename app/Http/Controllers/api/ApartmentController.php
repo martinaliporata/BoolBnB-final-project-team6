@@ -137,9 +137,27 @@ class ApartmentController extends Controller
             default => throw new \Exception("Sponsorship non valida") // In caso di altri ID non previsti
         };
 
-        // Impostare la data di inizio e fine
-        $startDate = Carbon::now(); // Data e ora corrente
-        $endDate = $startDate->copy()->addHours($durationInHours); // Aggiungere le ore in base alla sponsorship
+        // Controllare se l'appartamento ha già una sponsorizzazione attiva
+        $currentSponsorship = $apartment->sponsorships()
+        // si sta cercando una sponsorizzazione dove la data di fine (end_date) è maggiore dell'ora corrente (Carbon::now()), cioè dove la sponsorizzazione non è ancora scaduta - questa linea filtra le sponsorizzazioni dell'appartamento per trovare quelle ancora attive
+        ->wherePivot('end_date', '>', Carbon::now())
+        // Questo significa che verrà selezionata l'ultima sponsorizzazione attiva in base alla data di scadenza.
+        ->latest('pivot_end_date')
+        //  In questo caso, seleziona la sponsorizzazione più recente (cioè quella che scade più tardi) tra quelle attive.
+        ->first();
+        // $currentSponsorship conterrà quindi la sponsorizzazione attiva (se esiste), altrimenti sarà null se nessuna sponsorizzazione è attiva.
+
+        if ($currentSponsorship) {
+            // Sponsorizzazione attiva trovata, quindi estendere la durata
+            $startDate = Carbon::now(); // Data corrente
+
+            // La nuova data di fine è aggiunta alla fine della sponsorizzazione corrente
+            $endDate = Carbon::parse($currentSponsorship->pivot->end_date)->addHours($durationInHours);
+        } else {
+            // Nessuna sponsorizzazione attiva, quindi creiamo una nuova
+            $startDate = Carbon::now(); // Data corrente
+            $endDate = $startDate->copy()->addHours($durationInHours); // Aggiungere le ore
+        }
 
         // Aggiornare la sponsorship dell'appartamento
         $apartment->sponsorships()->updateExistingPivot($sponsorship->id, [
@@ -147,13 +165,21 @@ class ApartmentController extends Controller
             'end_date' => $endDate
         ]);
 
+        // Aggiornare o aggiungere la sponsorizzazione dell'appartamento
+        $apartment->sponsorships()->syncWithoutDetaching([
+            $sponsorship->id => [
+                'start_date' => $startDate,
+                'end_date' => $endDate
+            ]
+        ]);
+
         // Restituire una risposta di successo
         return response()->json([
-            'message' => 'Sponsorship aggiornata con successo!',
-            'sponsorship_id' => $sponsorshipId,
-            'start_date' => $startDate,
-            'end_date' => $endDate
-        ]);
+        'message' => 'Sponsorship aggiornata con successo!',
+        'sponsorship_id' => $sponsorshipId,
+        'start_date' => $startDate,
+        'end_date' => $endDate
+    ]);
     }
 
     /**
