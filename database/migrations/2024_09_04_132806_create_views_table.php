@@ -13,9 +13,11 @@ return new class extends Migration
     {
         Schema::create('views', function (Blueprint $table) {
             $table->id();
-            $table->text("Indirizzo IP");
-            $table->dateTime("Data");
-            $table->timestamps();
+            $table->string('ip_address');  // Usa string per l'IP
+            $table->unsignedBigInteger('apartment_id'); // Relazione con l'appartamento
+            $table->foreign('apartment_id')->references('id')->on('apartments')->onDelete('cascade');
+            $table->timestamps();  // Includi le colonne created_at e updated_at
+            $table->unique(['ip_address', 'apartment_id']);  // IP unico per appartamento
             $table->softDeletes();
         });
     }
@@ -25,6 +27,7 @@ return new class extends Migration
      */
     public function down(): void
     {
+
         Schema::dropIfExists('views');
     }
 };

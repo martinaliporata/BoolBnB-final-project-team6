@@ -3,6 +3,7 @@
 use App\Http\Controllers\api\ApartmentController;
 use App\Http\Controllers\api\ApartmentSponsorshipController;
 use App\Http\Controllers\api\ConsumerController;
+use App\Http\Controllers\api\ViewController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -31,5 +32,8 @@ Route::post('/apartments/{apartmentId}/update-sponsorship', [ApartmentController
 Route::post('/apartment-sponsorship', [ApartmentSponsorshipController::class, 'store']);
 
 Route::post('/register', [ConsumerController::class, 'register']);
+
+Route::post('/apartments/{apartmentId}/view', [ViewController::class, 'storeView']);
+
 
 
