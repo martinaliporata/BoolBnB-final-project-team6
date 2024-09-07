@@ -61,6 +61,7 @@ class ApartmentController extends Controller
             return response()->json(['message' => 'Apartment not found'], 404);
         }
     }
+
     public function search(Request $request)
     {
         // Prendere i parametri di ricerca dalla richiesta
@@ -114,6 +115,7 @@ class ApartmentController extends Controller
         // Restituire i risultati in formato JSON
         return response()->json($results);
     }
+
 
     public function updateSponsorship(Request $request, $apartmentId)
     {

@@ -19,8 +19,8 @@ return new class extends Migration
             $table->foreign('sponsorship_id')->references('id')->on('sponsorships');
 
             $table->primary(['apartment_id', 'sponsorship_id']);
-            $table->dateTime("Data di inizio");
-            $table->dateTime("Data di fine");
+            $table->dateTime("start_date");
+            $table->dateTime("end_date");
         });
     }
 
