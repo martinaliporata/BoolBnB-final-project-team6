@@ -60,4 +60,20 @@ class ApartmentSponsorshipController extends Controller
         return redirect()->route('apartments.show', $apartment->id)
             ->with('success', 'Sponsorship associata con successo all\'appartamento.');
     }
+
+    public function create()
+    {
+        // Ottieni l'utente autenticato
+        $user = auth()->user();
+
+        // Ottieni gli appartamenti che appartengono all'utente autenticato
+        $apartments = Apartment::where('user_id', $user->id)->get();
+
+        // Ottieni tutte le sponsorship disponibili
+        $sponsorships = Sponsorship::all();
+
+        // Restituisci la vista 'sponsorships.create' passando gli appartamenti e le sponsorships
+        return view('admin.sponsorship.store_Sponsorship', compact('apartments', 'sponsorships'));
+    }
+
 }
