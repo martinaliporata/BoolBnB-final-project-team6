@@ -1,5 +1,6 @@
 <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
     <div class="container">
+        <img class="p-2" src="{{ Vite::asset('resources/images/favicon.svg') }}" alt="logo_BoolBnB" width="40px">
         <a class="navbar-brand" href="{{ url('/') }}">
             {{ config('app.name', 'Laravel') }}
         </a>
