@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\ApartmentController;
+use App\Http\Controllers\admin\ApartmentSponsorshipController;
 use App\Http\Controllers\Admin\HomeController as AdminHomeController;
 use App\Http\Controllers\HomeController as GuestHomeController;
 use App\Models\Apartment;
@@ -18,11 +19,17 @@ use Illuminate\Support\Facades\Route;
 |
 */
 Auth::routes();
+<<<<<<< HEAD
 
 Route::get('/', function(){
     return view('layouts.app');
 })->name('Index');
 
+=======
+Route::get('/', function(){
+    return view('layouts.app');
+})->name('Index');
+>>>>>>> a5a3135f50f5bb8d49000f1e061e22c9f2d4be25
 Route::get('/home', [GuestHomeController::class, 'index'])->name('home');
 
 
@@ -34,3 +41,11 @@ Route::middleware('auth')->name('admin.')->prefix('admin')->group(
 );
 
 Route::resource('/apartments', ApartmentController::class);
+
+// Rotta per mostrare il form di creazione di una sponsorship
+Route::get('/apartments/sponsorships/create', [ApartmentSponsorshipController::class, 'create'])
+    ->name('apartment.sponsorships.create');
+
+// Rotta per gestire l'invio del form e salvare la sponsorship
+Route::post('/apartments/sponsorships', [ApartmentSponsorshipController::class, 'store'])
+    ->name('apartment.sponsorships.store');
