@@ -31,8 +31,6 @@ Route::post('/apartments/{apartmentId}/update-sponsorship', [ApartmentController
 
 Route::post('/apartment-sponsorship', [ApartmentSponsorshipController::class, 'store']);
 
-Route::post('/register', [ConsumerController::class, 'register']);
-
 Route::post('/apartments/{apartmentId}/view', [ViewController::class, 'storeView']);
 
 

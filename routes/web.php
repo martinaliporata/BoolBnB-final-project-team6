@@ -1,7 +1,7 @@
 <?php
 
+use App\Http\Controllers\admin\ApartmentSponsorshipController;
 use App\Http\Controllers\Admin\HomeController as AdminHomeController;
-use App\Http\Controllers\api\ApartmentController;
 use App\Http\Controllers\HomeController as GuestHomeController;
 use App\Models\Apartment;
 use Illuminate\Support\Facades\Auth;
@@ -34,3 +34,4 @@ Route::middleware('auth')->name('admin.')->prefix('admin')->group(
 
 
 
+Route::post('/apartment-sponsorship', [ApartmentSponsorshipController::class, 'store']);
