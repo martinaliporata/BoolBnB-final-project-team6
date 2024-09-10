@@ -32,8 +32,6 @@ class ViewController extends Controller
             ]);
         }
 
-        // Elimina le visualizzazioni più vecchie di 24 ore
-        View::where('created_at', '<', Carbon::now()->subDay())->delete();
 
         // Conta tutte le visualizzazioni uniche per l'appartamento nelle ultime 24 ore
         $viewCount = View::where('apartment_id', $apartmentId)

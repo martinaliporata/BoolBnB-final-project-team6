@@ -7,6 +7,7 @@ use App\Models\Apartment;
 use App\Models\Sponsorship;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
 
 class ApartmentController extends Controller
 {
@@ -29,10 +30,57 @@ class ApartmentController extends Controller
      */
     public function store(Request $request)
     {
-        $apartment = Apartment::create($request->all());
-        return response()->json($apartment, 201);
-    }
+        // Validazione dell'indirizzo
+        $request->validate([
+            'Indirizzo' => 'required|string',
+            'Stanze' => 'required|integer',
+            'Letti' => 'required|integer',
+            'Bagni' => 'required|integer',
+            'Metri_quadrati' => 'required|integer',
+            'Img' => 'required|string',
+            'Visibilità' => 'required|boolean',
+        ]);
 
+        // Ottieni l'indirizzo dal form
+        $indirizzo = $request->input('Indirizzo');
+
+        // Effettua una richiesta all'API di TomTom per ottenere latitudine e longitudine
+        $response = Http::withOptions(['verify' => false])
+        ->get('https://api.tomtom.com/search/2/geocode/'.urlencode($indirizzo).'.json', [
+            'key' => env('TOMTOM_API_KEY'),
+            'limit' => 1
+        ]);
+
+        if ($response->successful()) {
+            $data = $response->json();
+
+            // Verifica se ci sono risultati per la latitudine e longitudine
+            if (!empty($data['results'])) {
+                $latitudine = $data['results'][0]['position']['lat'];
+                $longitudine = $data['results'][0]['position']['lon'];
+
+                // Crea un nuovo appartamento con i dati inclusi latitudine e longitudine
+                $apartment = Apartment::create([
+                    'Stanze' => $request->input('Stanze'),
+                    'Letti' => $request->input('Letti'),
+                    'Bagni' => $request->input('Bagni'),
+                    'Metri_quadrati' => $request->input('Metri_quadrati'),
+                    'Indirizzo' => $indirizzo,
+                    'Latitudine' => $latitudine,
+                    'Longitudine' => $longitudine,
+                    'Img' => $request->input('Img'),
+                    'Visibilità' => $request->input('Visibilità'),
+                ]);
+
+                // Ritorna una risposta JSON con i dettagli dell'appartamento
+                return response()->json($apartment, 201);
+            } else {
+                return response()->json(['message' => 'Impossibile trovare la latitudine e longitudine per questo indirizzo.'], 400);
+            }
+        } else {
+            return response()->json(['message' => 'Errore nella richiesta all\'API di TomTom.'], 500);
+        }
+    }
     /**
      * Display the specified resource.
      */
