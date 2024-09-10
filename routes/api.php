@@ -23,8 +23,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 
-Route::resource('/apartment', ApartmentController::class);
-
 Route::get('/apartments/search', [ApartmentController::class, 'search']);
 
 Route::post('/apartments/{apartmentId}/update-sponsorship', [ApartmentController::class, 'updateSponsorship']);
