@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\ApartmentController;
 use App\Http\Controllers\Admin\HomeController as AdminHomeController;
 use App\Http\Controllers\HomeController as GuestHomeController;
 use App\Models\Apartment;
@@ -26,5 +27,4 @@ Route::middleware('auth')->name('admin.')->prefix('admin')->group(
     }
 );
 
-
-
+Route::resource('/apartments', ApartmentController::class);
