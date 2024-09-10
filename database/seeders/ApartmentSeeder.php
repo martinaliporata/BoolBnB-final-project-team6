@@ -126,11 +126,11 @@ class ApartmentSeeder extends Seeder
             ],
         ];
 
-        $consumers= Consumer::all()->pluck('id');
+        $users= User::all()->pluck('id');
 
         foreach($apartmentsData as $apartment) {
             $newApartment = New Apartment();
-            $newApartment -> consumer_id = fake()->randomElement($consumers);
+            $newApartment -> user_id = fake()->randomElement($users);
             $newApartment -> stanze = $apartment['Stanze'];
             $newApartment -> letti = $apartment['Letti'];
             $newApartment -> bagni = $apartment['Bagni'];
