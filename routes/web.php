@@ -19,17 +19,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 Auth::routes();
-<<<<<<< HEAD
 
 Route::get('/', function(){
     return view('layouts.app');
 })->name('Index');
 
-=======
-Route::get('/', function(){
-    return view('layouts.app');
-})->name('Index');
->>>>>>> a5a3135f50f5bb8d49000f1e061e22c9f2d4be25
+
 Route::get('/home', [GuestHomeController::class, 'index'])->name('home');
 
 
