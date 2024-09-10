@@ -18,8 +18,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 Auth::routes();
-Route::get('/', [GuestHomeController::class, 'index'])->name('home');
+
+Route::get('/', function(){
+    return view('layouts.app');
+})->name('Index');
+
 Route::get('/home', [GuestHomeController::class, 'index'])->name('home');
+
+
 
 Route::middleware('auth')->name('admin.')->prefix('admin')->group(
     function(){

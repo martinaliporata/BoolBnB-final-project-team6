@@ -16,7 +16,7 @@
                     @foreach ($apartments as $apartment)
                         <article class="col-4 text-center">
                             <div class="card shadow" style="w-100">
-                                <img class="card-img-top" src="{{$apartment->img}}" alt="">
+                                <img class="card-img-top" src="{{$apartment->Img}}" alt="">
                                 <div class="card-body">
                                     <h5 class="card-title">
                                         {{$apartment->id}}
@@ -30,13 +30,13 @@
                                         <br> Latitudine: {{$apartment->Latitudine}}
                                         <br> Longitudine: {{$apartment->Longitudine}}
                                     </p>
-                                    <a href="{{route('admin.apartments.show', $apartment)}}" class="btn btn-primary">Details</a>
-                                    <a href="{{route('admin.apartments.edit', $apartment)}}" class="btn btn-success">Edit</a>
+                                    <a href="{{route('apartments.show', $apartment)}}" class="btn btn-primary">Details</a>
+                                    {{-- <a href="{{route('admin.apartments.edit', $apartment)}}" class="btn btn-success">Edit</a>
                                     <form action="{{'admin.apartments.destroy'}}" method="POST" class="d-inline-block apartment-destroyer">
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit" class="btn btn-warning">Delete</button>
-                                    </form>
+                                    </form> --}}
                                 </div>
                             </div>
                         </article>
