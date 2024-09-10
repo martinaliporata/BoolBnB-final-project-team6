@@ -3,7 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Apartment;
-use App\Models\Consumer;
+
 use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -14,14 +14,14 @@ class ApartmentSeeder extends Seeder
     {
 
         $apartmentsData=[
-            [
+
                 [
                     'Nome' => 'Appartamento Milano',
                     'Stanze' => 3,
                     'Letti' => 2,
                     'Bagni' => 1,
                     'Metri_quadrati' => 75,
-                    'Prezzo' => '100€/notte',
+                    'Prezzo' => 100,
                     'Indirizzo' => 'Via Roma, 10, Milano',
                     'Latitudine' => 45.464211,
                     'Longitudine' => 9.191383,
@@ -34,7 +34,7 @@ class ApartmentSeeder extends Seeder
                     'Letti' => 3,
                     'Bagni' => 2,
                     'Metri_quadrati' => 100,
-                    'Prezzo' => '120€/notte',
+                    'Prezzo' => 120,
                     'Indirizzo' => 'Corso Venezia, 15, Napoli',
                     'Latitudine' => 40.851798,
                     'Longitudine' => 14.26812,
@@ -47,7 +47,7 @@ class ApartmentSeeder extends Seeder
                     'Letti' => 1,
                     'Bagni' => 1,
                     'Metri_quadrati' => 60,
-                    'Prezzo' => '90€/notte',
+                    'Prezzo' => 90,
                     'Indirizzo' => 'Via Dante, 23, Firenze',
                     'Latitudine' => 43.769871,
                     'Longitudine' => 11.255576,
@@ -60,7 +60,7 @@ class ApartmentSeeder extends Seeder
                     'Letti' => 4,
                     'Bagni' => 3,
                     'Metri_quadrati' => 150,
-                    'Prezzo' => '150€/notte',
+                    'Prezzo' => 150,
                     'Indirizzo' => 'Via Garibaldi, 12, Torino',
                     'Latitudine' => 45.070339,
                     'Longitudine' => 7.686864,
@@ -73,7 +73,7 @@ class ApartmentSeeder extends Seeder
                     'Letti' => 2,
                     'Bagni' => 2,
                     'Metri_quadrati' => 85,
-                    'Prezzo' => '110€/notte',
+                    'Prezzo' => 110,
                     'Indirizzo' => 'Via delle Magnolie, 5, Roma',
                     'Latitudine' => 41.902784,
                     'Longitudine' => 12.496366,
@@ -86,7 +86,7 @@ class ApartmentSeeder extends Seeder
                     'Letti' => 1,
                     'Bagni' => 1,
                     'Metri_quadrati' => 55,
-                    'Prezzo' => '85€/notte',
+                    'Prezzo' => 85,
                     'Indirizzo' => 'Via Mazzini, 20, Genova',
                     'Latitudine' => 44.407062,
                     'Longitudine' => 8.93399,
@@ -99,7 +99,7 @@ class ApartmentSeeder extends Seeder
                     'Letti' => 3,
                     'Bagni' => 2,
                     'Metri_quadrati' => 120,
-                    'Prezzo' => '200€/notte',
+                    'Prezzo' => 200,
                     'Indirizzo' => 'Piazza San Marco, 1, Venezia',
                     'Latitudine' => 45.434046,
                     'Longitudine' => 12.338166,
@@ -112,7 +112,7 @@ class ApartmentSeeder extends Seeder
                     'Letti' => 1,
                     'Bagni' => 1,
                     'Metri_quadrati' => 70,
-                    'Prezzo' => '80€/notte',
+                    'Prezzo' => 80,
                     'Indirizzo' => 'Via Verdi, 30, Palermo',
                     'Latitudine' => 38.115697,
                     'Longitudine' => 13.361267,
@@ -125,7 +125,7 @@ class ApartmentSeeder extends Seeder
                     'Letti' => 2,
                     'Bagni' => 2,
                     'Metri_quadrati' => 95,
-                    'Prezzo' => '95€/notte',
+                    'Prezzo' => 95,
                     'Indirizzo' => 'Via Nizza, 45, Bari',
                     'Latitudine' => 41.125594,
                     'Longitudine' => 16.866067,
@@ -138,14 +138,14 @@ class ApartmentSeeder extends Seeder
                     'Letti' => 4,
                     'Bagni' => 3,
                     'Metri_quadrati' => 160,
-                    'Prezzo' => '180€/notte',
+                    'Prezzo' => 180,
                     'Indirizzo' => 'Via Boccaccio, 12, Verona',
                     'Latitudine' => 45.438759,
                     'Longitudine' => 10.99162,
                     'Img' => "https://www.grazia.it/content/uploads/2017/10/cover-piante-appartamento-mobile-800x600.jpg",
                     'Visibilità' => true,
                 ],
-            ]
+
         ];
 
         $users= User::all()->pluck('id');
