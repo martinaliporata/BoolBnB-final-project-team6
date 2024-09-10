@@ -21,8 +21,8 @@ class Apartment extends Model
         "Visibilità",
     ];
 
-    public function consumer(){
-        return $this->belongsTo(Consumer::class);
+    public function user(){
+        return $this->belongsTo(User::class);
     }
 
     public function views(){

@@ -13,9 +13,9 @@ return new class extends Migration
     {
         Schema::table('apartments', function (Blueprint $table) {
 
-            $table->unsignedBigInteger('consumer_id')->after('id')->nullable();
+            $table->unsignedBigInteger('user_id')->after('id')->nullable();
 
-            $table->foreign('consumer_id')->references('id')->on('consumers')->cascadeOnUpdate()->nullOnDelete();
+            $table->foreign('user_id')->references('id')->on('users')->cascadeOnUpdate()->nullOnDelete();
         });
     }
 
@@ -26,9 +26,9 @@ return new class extends Migration
     {
         Schema::table('apartments', function (Blueprint $table) {
 
-            $table->dropForeign('apartments_consumer_id_foreign');
+            $table->dropForeign('apartments_user_id_foreign');
 
-            $table->dropColumn('consumer_id');
+            $table->dropColumn('user_id');
         });
     }
 };

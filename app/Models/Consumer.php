@@ -14,7 +14,5 @@ class Consumer extends Model
     // Nascondi il campo password quando restituisci i dati dell'utente
     protected $hidden = ['password', 'remember_token'];
 
-    public function apartments(){
-        return $this->hasMany(Apartment::class);
-    }
+
 }
