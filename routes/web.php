@@ -22,7 +22,7 @@ use Illuminate\Support\Facades\Route;
 Auth::routes();
 
 Route::get('/', function(){
-    return view('layouts.app');
+    return view('homepage');
 })->name('Index');
 
 

@@ -19,6 +19,7 @@
     <!--CDN Chart.js-->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css">
 
+
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 </head>
@@ -27,6 +28,7 @@
         @include('partials.header')
         <main class="py-4">
             @yield('content')
+
         </main>
     </div>
 </body>
