@@ -127,6 +127,7 @@ class ApartmentController extends Controller
     public function delete(string $id)
     {
         $apartments = Apartment::onlyTrashed()->findOrFail($id);
+        $apartments->services()->detach();
         $apartments->forceDelete();
         return redirect()->route('apartments.deleteindex')->with('message_delete', $apartments->Nome . " The trash has been emptied!!");
     }
