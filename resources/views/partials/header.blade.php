@@ -13,7 +13,12 @@
             <ul class="navbar-nav me-auto">
                 <li>
                     <a class="nav-link" href="{{route('apartments.index')}}"  aria-current="page">
-                        Apartment List
+                        Lista appartamenti
+                    </a>
+                </li>
+                <li>
+                    <a class="nav-link" href="{{route('apartments.create')}}"  aria-current="page">
+                        Aggiungi appartamento
                     </a>
                 </li>
             </ul>
@@ -43,8 +48,8 @@
                                 Homepage
                             </a>
                             <a class="dropdown-item" href="{{ route('logout') }}"
-                               onclick="event.preventDefault();
-                                             document.getElementById('logout-form').submit();">
+                                onclick="event.preventDefault();
+                                            document.getElementById('logout-form').submit();">
                                 {{ __('Logout') }}
                             </a>
 

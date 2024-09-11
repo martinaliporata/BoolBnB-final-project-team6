@@ -5,6 +5,7 @@ use App\Http\Controllers\admin\ApartmentSponsorshipController;
 use App\Http\Controllers\Admin\HomeController as AdminHomeController;
 use App\Http\Controllers\HomeController as GuestHomeController;
 use App\Models\Apartment;
+use GuzzleHttp\Middleware;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -29,8 +30,12 @@ Route::get('/home', [GuestHomeController::class, 'index'])->name('home');
 
 
 
+
 Route::middleware('auth')->name('admin.')->prefix('admin')->group(
     function(){
+        Route::get('/apartments/create', function(){
+            return view('admin.apartments.create');
+        })->name('apartments-create');
         Route::get('/secret-home', [AdminHomeController::class, 'index'])->name('home');
     }
 );
