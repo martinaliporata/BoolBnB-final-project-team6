@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreApartmentRequest;
+use App\Http\Requests\UpdateApartmentRequest;
 use App\Models\Apartment;
 use App\Models\Message;
 use App\Models\Service;
@@ -26,7 +27,7 @@ class ApartmentController extends Controller
     public function __construct()
     {
         // Applica il middleware auth a tutte le azioni del controller
-        $this->middleware('auth')->only('create');
+        $this->middleware('auth')->only('create', 'edit');
     }
 
     /**
@@ -70,15 +71,24 @@ class ApartmentController extends Controller
      */
     public function edit(Apartment $apartment)
     {
-        //
+        $users = User::all();
+        $views = View::all();
+        $messages = Message::all();
+        $services = Service::all();
+        $sponsorships = Sponsorship::all();
+        return view('admin.apartments.edit', compact('apartment','users', 'views', 'messages', 'services', 'sponsorships'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Apartment $apartment)
+    public function update(UpdateApartmentRequest $request, Apartment $apartment)
     {
-        //
+        //       $data = $request->except('_token');
+        $data = $request->validated();
+        $apartment->update($data);
+
+        return redirect()->route('admin.apartments.show', $apartment)->with('update_apartment_message', $apartment->nome . " It has been successfully updated!!");
     }
 
     /**

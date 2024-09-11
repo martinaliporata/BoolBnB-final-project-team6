@@ -26,7 +26,8 @@
                                         <br> Latitudine: {{$apartment->Latitudine}}
                                         <br> Longitudine: {{$apartment->Longitudine}}
                                     </p>
-                                    <a href="{{route('apartments.show', $apartment)}}" class="btn btn-primary">Details</a>
+                                    <a href="{{route('apartments.show', $apartment)}}" class="btn btn-primary">Show</a>
+                                    <a href="{{ route('apartments.edit', $apartment )}}" class="btn btn-warning">Edit</a>
                                     {{-- <a href="{{route('admin.apartments.edit', $apartment)}}" class="btn btn-success">Edit</a>
                                     <form action="{{'admin.apartments.destroy'}}" method="POST" class="d-inline-block apartment-destroyer">
                                         @csrf

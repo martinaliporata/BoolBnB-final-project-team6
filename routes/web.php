@@ -37,6 +37,9 @@ Route::middleware('auth')->name('admin.')->prefix('admin')->group(
         Route::get('/apartments/create', function(){
             return view('admin.apartments.create');
         })->name('apartments-create');
+        Route::get('/apartments/edit', function(){
+            return view('admin.apartments.edit');
+        })->name('apartments-edit');
         Route::get('/secret-home', [AdminHomeController::class, 'index'])->name('home');
     }
 );
