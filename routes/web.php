@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\ApartmentController;
 use App\Http\Controllers\admin\ApartmentSponsorshipController;
 use App\Http\Controllers\Admin\HomeController as AdminHomeController;
+use App\Http\Controllers\admin\ViewController;
 use App\Http\Controllers\HomeController as GuestHomeController;
 use App\Models\Apartment;
 use GuzzleHttp\Middleware;
@@ -49,3 +50,6 @@ Route::get('/apartments/sponsorships/create', [ApartmentSponsorshipController::c
 // Rotta per gestire l'invio del form e salvare la sponsorship
 Route::post('/apartments/sponsorships', [ApartmentSponsorshipController::class, 'store'])
     ->name('apartment.sponsorships.store');
+
+//Rotta per mostrare grafico visualizzazioni
+Route::get('/apartment/{id}/views', [ViewController::class, 'getViewData']);

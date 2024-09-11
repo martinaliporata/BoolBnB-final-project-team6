@@ -16,6 +16,9 @@
     <!-- Favicon -->
     <link rel="shortcut icon" href="{{ Vite::asset('resources/images/favicon.svg') }}" type="image/x-icon">
 
+    <!--CDN Chart.js-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css">
+
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 </head>
