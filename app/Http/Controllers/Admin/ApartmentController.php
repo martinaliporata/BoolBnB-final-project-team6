@@ -96,6 +96,38 @@ class ApartmentController extends Controller
      */
     public function destroy(Apartment $apartment)
     {
-        //
+
+        $apartment->delete();
+
+        return redirect()->route('apartments.index')->with('message_delete', $apartment->Nome . " it has been successfully deleted!!");
+    }
+
+    /**
+     * Trash
+     * */
+
+    public function deletedIndex()
+    {
+        $apartments = Apartment::onlyTrashed()->get();
+
+        return view('admin.apartments.delete', compact('apartments'));
+    }
+
+    // restore items from the recycle bin
+
+    public function restore(string $id)
+    {
+        $apartments = Apartment::onlyTrashed()->findOrFail($id);
+        $apartments->restore();
+
+        return redirect()->route('apartments.index')->with('message_restore', $apartments->Nome . " it has been successfully restored!!");
+    }
+
+    // Empty the trash
+    public function delete(string $id)
+    {
+        $apartments = Apartment::onlyTrashed()->findOrFail($id);
+        $apartments->forceDelete();
+        return redirect()->route('apartments.deleteindex')->with('message_delete', $apartments->Nome . " The trash has been emptied!!");
     }
 }

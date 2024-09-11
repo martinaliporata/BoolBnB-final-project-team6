@@ -20,9 +20,10 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+
 Auth::routes();
 
-Route::get('/', function(){
+Route::get('/', function () {
     return view('layouts.app');
 })->name('Index');
 
@@ -33,11 +34,15 @@ Route::get('/home', [GuestHomeController::class, 'index'])->name('home');
 
 
 Route::middleware('auth')->name('admin.')->prefix('admin')->group(
-    function(){
-        Route::get('/apartments/create', function(){
+    function () {
+        Route::get('apartments/delete', [ApartmentController::class, 'deletedIndex'])->name('apartments.deleteindex');
+        Route::patch('apartments/{apartment}/restore', [ApartmentController::class, 'restore'])->name('apartments.restore');
+        Route::delete('apartments/{apartment}/delete', [ApartmentController::class, 'delete'])->name('apartments.permanent_delete');
+
+        Route::get('/apartments/create', function () {
             return view('admin.apartments.create');
         })->name('apartments-create');
-        Route::get('/apartments/edit', function(){
+        Route::get('/apartments/edit', function () {
             return view('admin.apartments.edit');
         })->name('apartments-edit');
         Route::get('/secret-home', [AdminHomeController::class, 'index'])->name('home');

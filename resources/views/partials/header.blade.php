@@ -4,7 +4,8 @@
         <a class="navbar-brand" href="{{ url('/') }}">
             {{ config('app.name', 'Laravel') }}
         </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
             <span class="navbar-toggler-icon"></span>
         </button>
 
@@ -12,13 +13,19 @@
             <!-- Left Side Of Navbar -->
             <ul class="navbar-nav me-auto">
                 <li>
-                    <a class="nav-link" href="{{route('apartments.index')}}"  aria-current="page">
+                    <a class="nav-link" href="{{ route('apartments.index') }}" aria-current="page">
                         Lista appartamenti
                     </a>
                 </li>
                 <li>
-                    <a class="nav-link" href="{{route('apartments.create')}}"  aria-current="page">
+                    <a class="nav-link" href="{{ route('apartments.create') }}" aria-current="page">
                         Aggiungi appartamento
+                    </a>
+                </li>
+                <li>
+                    <a class="nav-link active mx-2" href="{{ route('admin.apartments.deleteindex') }}"
+                        aria-current="page">
+                        <i class="fa-solid fa-trash-can"></i>Cestino
                     </a>
                 </li>
             </ul>
@@ -40,7 +47,8 @@
                     @endif
                 @else
                     <li class="nav-item dropdown">
-                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
+                            data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                             {{ Auth::user()->name }}
                         </a>
                         <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
