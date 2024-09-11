@@ -6,7 +6,7 @@
         <div class="row">
             <div class="col-12 text-center">
                 <h1>
-                    Apartments' index
+                    Appartamenti
                 </h1>
                 <div class="row">
                     @foreach ($apartments as $apartment)

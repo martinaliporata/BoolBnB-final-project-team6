@@ -4,7 +4,7 @@
 <div class="container">
     <div class="row justify-content-center">
         <h1 class="mb-3 text-center">
-            Creating a new apartment
+            Compila il Form
         </h1>
     </div>
     {{-- @if ($errors->any())
@@ -68,8 +68,8 @@
 
                 <div class="col-12 d-flex justify-content-center mb-3">
                     <div class="input">
-                        <input class="btn btn-success" type="submit" value="Create new apartment">
-                        <input class="btn btn-secondary" type="reset" value="Reset">
+                        <input class="btn btn-success" type="submit" value="Crea">
+                        <input class="btn btn-secondary" type="reset" value="Cancella dati">
                     </div>
                 </div>
             </form>
