@@ -1,7 +1,5 @@
 @extends('layouts.app')
 
-@yield('page-title', 'Create a new apartment')
-
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
