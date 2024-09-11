@@ -54,7 +54,7 @@ class ApartmentController extends Controller
         $newApartment = new Apartment($data);
         $newApartment->save();
 
-        return redirect()->route('admin.apartments.show', $newApartment)->with('new_apartment_message', $newApartment->name . " It was created successfully!!");
+        return redirect()->route('admin.apartments.show', $newApartment)->with('new_apartment_message', $newApartment->name . "È stato creato con successo!!");
     }
 
 
@@ -88,7 +88,7 @@ class ApartmentController extends Controller
         $data = $request->validated();
         $apartment->update($data);
 
-        return redirect()->route('admin.apartments.show', $apartment)->with('update_apartment_message', $apartment->nome . " It has been successfully updated!!");
+        return redirect()->route('admin.apartments.show', $apartment)->with('update_apartment_message', $apartment->nome . "È stato aggiornato con successo!!");
     }
 
     /**
