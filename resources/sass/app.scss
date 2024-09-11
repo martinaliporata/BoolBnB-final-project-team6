@@ -6,3 +6,68 @@
 
 // Bootstrap
 @import 'bootstrap/scss/bootstrap';
+
+
+/* Per il div che contiene l'immagine di sfondo */
+.home-background {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    height: 30rem;
+    width: auto;
+    background-image: url(https://www.visitscotland.com/binaries/content/gallery/visitscotland/cms-images/2022/12/01/exclusiveuse.jpg);
+    background-color: rgba(0, 0, 0, 0.7); /* Colore nero con opacità al 70% */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    position: relative;
+}
+
+
+
+/* Per il contenitore che isola la search bar */
+.container-searchsection {
+    width: 80%;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+}
+
+/* Posizionamento della search bar */
+.navbar-custom {
+    position: absolute;
+    top: 100%; /* Posiziona la barra tra il div con background e i filtri */
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%; /* Mantieni la larghezza al 80% */
+    z-index: 3;
+    background-color: rgba(255, 255, 255, 0.9); /* Sfondo della barra */
+    border-radius: 2rem;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2); /* Ombra della barra di ricerca */
+}
+
+/* Impostazioni per la barra di ricerca */
+.searchbar {
+    width: 100%; /* Occupa il 100% della larghezza */
+    border-radius: 2rem;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.15); /* Ombra leggera */
+}
+
+
+.mt-3 {
+    margin-top: 5rem;
+    padding-top: 2rem;
+}
+
+.w-100 {
+    width: 100%;
+}
+
+.dropdown-menu {
+    max-width: 100%;
+}
+
+.input-group .form-control {
+    width: 50%;
+}
