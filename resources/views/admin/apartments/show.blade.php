@@ -44,14 +44,14 @@
                     </ul>
                     <div class="card-footer">
                         <a href="{{ route('apartments.index') }}" class="btn btn-primary">Torna alla lista appartamenti</a>
-                        <a href="{{ route('apartments.edit', $apartment) }}" class="btn btn-success">Edit apartment</a>
+                        <a href="{{ route('apartments.edit', $apartment) }}" class="btn btn-success">Modifica appartamento</a>
                     </div>
                     <form action="{{ route('apartments.destroy', $apartment) }}" method="POST"
                         class="d-inline-block delete-form my-2 col-12 d-flex justify-content-center"
                         data_apartment_id="{{ $apartment->id }}" data_apartment_name="{{ $apartment->Nome }}">
                         @method('DELETE')
                         @csrf
-                        <button type="submit" class="btn btn-danger  col-5">Delete</button>
+                        <button type="submit" class="btn btn-danger  col-5">Sposta nel cestino</button>
                     </form>
                 </div>
         </div>

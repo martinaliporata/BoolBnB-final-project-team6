@@ -33,14 +33,14 @@
                                 data_apartment_nome="{{ $apartment->Nome }}">
                                 @method('PATCH')
                                 @csrf
-                                <button type="submit" class="btn btn-success">Restore</button>
+                                <button type="submit" class="btn btn-success">Ripristina</button>
                             </form>
                             <form action="{{ route('admin.apartments.permanent_delete', $apartment) }}" method="POST"
                                 class="d-inline-block delete-form" data_apartment_id="{{ $apartment->id }}"
                                 data_apartment_nome="{{ $apartment->Nome }}">
                                 @method('DELETE')
                                 @csrf
-                                <button type="submit" class="btn btn-danger">Empty the trash</button>
+                                <button type="submit" class="btn btn-danger">Elimina definitivamente</button>
                             </form>
                         </div>
                     </div>
