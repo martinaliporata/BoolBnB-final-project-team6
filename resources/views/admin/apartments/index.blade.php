@@ -1,11 +1,7 @@
 @extends('layouts.app')
 
-@yield('page-title', 'homepage')
 
 @section('content')
-    <div>
-        Welcome in the homepage, please click on apartments to see them
-    </div>
     <div class="container">
         <div class="row">
             <div class="col-12 text-center">

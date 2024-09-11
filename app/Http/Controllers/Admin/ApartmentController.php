@@ -23,6 +23,12 @@ class ApartmentController extends Controller
         return view('admin.apartments.index', compact('apartments'));
     }
 
+    public function __construct()
+    {
+        // Applica il middleware auth a tutte le azioni del controller
+        $this->middleware('auth')->only('create');
+    }
+
     /**
      * Show the form for creating a new resource.
      */
@@ -31,22 +37,23 @@ class ApartmentController extends Controller
         $users = User::all();
         $views = View::all();
         $messages = Message::all();
-        $services = Service::all();                                           $sponsorships = Sponsorship::all();
-        return view('admin.apartments.create', compact('users','views', 'messages','services ', 'sponsorships'));
+        $services = Service::all();
+        $sponsorships = Sponsorship::all();
+        return view('admin.apartments.create', compact('users', 'views', 'messages', 'services', 'sponsorships'));
     }
 
     /**
      * Store a newly created resource in storage.
      */
 
-        public function store(StoreApartmentRequest $request)
+    public function store(StoreApartmentRequest $request)
     {
         $data = $request->except('_token');
         $data = $request->validated();
         $newApartment = new Apartment($data);
         $newApartment->save();
 
-        return redirect()->route('admin.apartmentS.show', $newApartment)->with('new_apartment_message', $newApartment->name . " It was created successfully!!");
+        return redirect()->route('admin.apartments.show', $newApartment)->with('new_apartment_message', $newApartment->name . " It was created successfully!!");
     }
 
 

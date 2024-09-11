@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@yield('page-title', 'Apartment\'s details')
+{{-- @yield('page-title', 'Apartment\'s details') --}}
 
 @section('content')
 <div class="container">
