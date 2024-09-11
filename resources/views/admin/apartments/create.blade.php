@@ -1,12 +1,10 @@
 @extends('layouts.app')
 
-@yield('page-title', 'Create a new apartment')
-
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
         <h1 class="mb-3 text-center">
-            Creating a new apartment
+            Compila il Form
         </h1>
     </div>
     {{-- @if ($errors->any())
@@ -20,38 +18,64 @@
             </ul>
         </div>
     @endif --}}
-    <div class="row justify-content-center">
-        <div class="col-6">
-            <form action="{{route('apartments.store')}}" method="POST" id="creation-form">
+
+
+        @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
+        <div class="col-12">
+            <form action="{{ route('apartments.store') }}" method="POST" id="creation_form">
+                @method("POST")
                 @csrf
-                <label for="name">Name</label>
-                <input class="form-control form-control-sm" type="text" placeholder="Animal name" aria-label="Animal name" id="name" name="name" value="{{old('name')}}">
-                <label for="image">Image_url</label>
-                <input class="form-control form-control-sm" type="text" placeholder="Animal image" aria-label="image" id="image" name="image" value="{{old('image_url')}}">
-                <label for="species">Species</label>
-                <input class="form-control form-control-sm" type="text" placeholder="species" aria-label="species" id="species" name="species" value="{{old('species')}}">
-                <label for="weight">Weight</label>
-                <input class="form-control form-control-sm" type="number" placeholder="weight" aria-label="weight" id="weight" name="weight" value="{{old('weight')}}">
-                <label for="alimentation">Alimentation</label>
-                <input class="form-control form-control-sm" type="text" placeholder="alimentation" aria-label="alimentation" id="alimentation" name="alimentation" value="{{old('alimentation')}}">
-                <label for="extintion">Extintion</label>
-                <input class="form-control form-control-sm" type="text" placeholder="extintion" aria-label="extintion" id="extintion" name="extintion" value="{{old('extintion')}}">
-                <label for="colour">Colour</label>
-                <input class="form-control form-control-sm" type="text" placeholder="colour" aria-label="colour" id="colour" name="colour" value="{{old('colour')}}">
-                <label for="habitat">Habitat</label>
-                <input class="form-control form-control-sm" type="text" placeholder="habitat" aria-label="habitat" id="habitat" name="habitat" value="{{old('habitat')}}">
-                <label for="life duration">Life duration</label>
-                <input class="form-control form-control-sm" type="text" placeholder="life duration" aria-label="life duration" id="life duration" name="life duration" value="{{old('life_duration')}}">
-                <div class="d-flex justify-content-between">
-                    <input type="submit" value="Create a new animal" class="btn btn-primary">
-                    <input type="reset" value="Reset fields" class="btn btn-warning">
+
+                <div class="input-group-m container mb-5 w-50">
+                    <label for="nome"><strong>Nome</strong></label>
+                    <input type="text" class="form-control mb-2" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" placeholder="nome" id="nome" name="nome" value="{{ old('Nome') }}">
+
+                    <label for="stanze"><strong>Stanze</strong></label>
+                    <input type="number" class="form-control mb-2" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" placeholder="stanze" id="stanze" name="Stanze" value="{{ old('Stanze') }}">
+
+                    <label for="letti"><strong>Letti</strong></label>
+                    <input type="number" class="form-control mb-2" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" placeholder="letti" id="letti" name="Letti" value="{{ old('Letti') }}">
+
+                    <label for="bagni"><strong>Bagni</strong></label>
+                    <input type="number" class="form-control mb-2" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" placeholder="bagni" id="bagni" name="Bagni" value="{{ old('Bagni') }}">
+            <label for="Metri_quadrati"><strong>Metri quadrati</strong></label>
+                    <input type="number" class="form-control mb-2" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" placeholder="Metri quadrati" id="Metri_quadrati" name="Metri_quadrati" value="{{ old('Metri_quadrati') }}">
+
+                    <label for="Indirizzo"><strong>Indirizzo</strong></label>
+                    <input type="text" class="form-control mb-2" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" placeholder="Indirizzo" id="Indirizzo" name="Indirizzo" value="{{ old('Indirizzo') }}">
+
+                    <label for="Img"><strong>Img</strong></label>
+                    <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" placeholder="Img" id="Img" name="Img" value="{{ old('Img') }}">
+
+                    <label for="service_id"><strong>Servizi</strong></label>
+                    <div class="btn-group flex-wrap" role="group" aria-label="Basic checkbox toggle button group">
+                        @foreach ($services as $service)
+                        <input name="services[]" type="checkbox" class="btn-check" id="service-check-{{$service->id}}" autocomplete="off" value="{{$service->id}}">
+                        <label class="btn btn-outline-primary m-1 btn-sm rounded mb-2" for="service-check-{{$service->id}}">
+                            {{$service->Nome}}
+                        </label>
+                        @endforeach
+                    </div>
+                </div>
+
+                <div class="col-12 d-flex justify-content-center mb-3">
+                    <div class="input">
+                        <input class="btn btn-success" type="submit" value="Crea">
+                        <input class="btn btn-secondary" type="reset" value="Cancella dati">
+                    </div>
                 </div>
             </form>
+
         </div>
+
     </div>
 </div>
-@endsection
-
-@section('custom-scripts')
-    @vite('resources/js/creation-confirm.js')
 @endsection

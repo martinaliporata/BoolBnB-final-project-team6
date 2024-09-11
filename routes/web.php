@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\HomeController as AdminHomeController;
 use App\Http\Controllers\admin\ViewController;
 use App\Http\Controllers\HomeController as GuestHomeController;
 use App\Models\Apartment;
+use GuzzleHttp\Middleware;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -19,6 +20,7 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+
 Auth::routes();
 
 Route::get('/', function(){
@@ -30,8 +32,20 @@ Route::get('/home', [GuestHomeController::class, 'index'])->name('home');
 
 
 
+
 Route::middleware('auth')->name('admin.')->prefix('admin')->group(
-    function(){
+    function () {
+        Route::get('apartments/delete', [ApartmentController::class, 'deletedIndex'])->name('apartments.deleteindex');
+        Route::patch('apartments/{apartment}/restore', [ApartmentController::class, 'restore'])->name('apartments.restore');
+        Route::delete('apartments/{apartment}/delete', [ApartmentController::class, 'delete'])->name('apartments.permanent_delete');
+
+
+        Route::get('/apartments/create', function () {
+            return view('admin.apartments.create');
+        })->name('apartments-create');
+        Route::get('/apartments/edit', function () {
+            return view('admin.apartments.edit');
+        })->name('apartments-edit');
         Route::get('/secret-home', [AdminHomeController::class, 'index'])->name('home');
     }
 );
