@@ -11,6 +11,7 @@ use App\Models\Sponsorship;
 use App\Models\User;
 use App\Models\View;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
 
 class ApartmentController extends Controller
 {
@@ -46,15 +47,69 @@ class ApartmentController extends Controller
      * Store a newly created resource in storage.
      */
 
-    public function store(StoreApartmentRequest $request)
-    {
-        $data = $request->except('_token');
-        $data = $request->validated();
-        $newApartment = new Apartment($data);
-        $newApartment->save();
+     public function store(Request $request)
+{
+    // Validazione dell'indirizzo
+    $request->validate([
+        'Nome' => 'required|string',
+        'Indirizzo' => 'required|string',
+        'Stanze' => 'required|integer',
+        'Letti' => 'required|integer',
+        'Bagni' => 'required|integer',
+        'Metri_quadrati' => 'required|integer',
+        'Prezzo' => 'required|integer',
+        'Img' => 'required|string',
+    ]);
 
-        return redirect()->route('admin.apartments.show', $newApartment)->with('new_apartment_message', $newApartment->name . "È stato creato con successo!!");
+    // Ottieni l'indirizzo dal form
+    $indirizzo = $request->input('Indirizzo');
+
+    // Effettua una richiesta all'API di TomTom per ottenere latitudine e longitudine
+    $response = Http::withOptions(['verify' => false])
+        ->get('https://api.tomtom.com/search/2/geocode/' . urlencode($indirizzo) . '.json', [
+            'key' => env('TOMTOM_API_KEY'),
+            'limit' => 1
+        ]);
+
+    if ($response->successful()) {
+        $data = $response->json();
+
+        // Verifica se ci sono risultati per la latitudine e longitudine
+        if (!empty($data['results'])) {
+            $latitudine = $data['results'][0]['position']['lat'];
+            $longitudine = $data['results'][0]['position']['lon'];
+
+            // Crea un nuovo appartamento con i dati inclusi latitudine e longitudine
+            $apartment = Apartment::create([
+                'Nome' => $request->input('Nome'),
+                'Stanze' => $request->input('Stanze'),
+                'Letti' => $request->input('Letti'),
+                'Bagni' => $request->input('Bagni'),
+                'Metri_quadrati' => $request->input('Prezzo'),
+                'Prezzo' => $request->input('Bagni'),
+                'Indirizzo' => $indirizzo,
+                'Latitudine' => $latitudine,
+                'Longitudine' => $longitudine,
+                'Img' => $request->input('Img'),
+                'Visibilità' => $request->input('Visibilità'),
+            ]);
+
+            // Reindirizza alla pagina di dettaglio dell'appartamento con un messaggio di successo
+            return redirect()->route('apartments.show', $apartment->id)
+                ->with('success', 'Appartamento creato con successo.');
+        } else {
+            // Reindirizza alla pagina precedente con un errore
+            return redirect()->back()
+                ->withErrors(['Indirizzo' => 'Impossibile trovare la latitudine e longitudine per questo indirizzo.'])
+                ->withInput();
+        }
+    } else {
+        // Reindirizza alla pagina precedente con un errore per la richiesta API
+        return redirect()->back()
+            ->withErrors(['API' => 'Errore nella richiesta all\'API di TomTom.'])
+            ->withInput();
     }
+}
 
 
     /**

@@ -23,7 +23,7 @@ return new class extends Migration
             $table->decimal("Latitudine", 10,6);
             $table->decimal("Longitudine", 10,6);
             $table->text("Img");
-            $table->boolean("Visibilità");
+            $table->boolean("Visibilità")->nullable();
             $table->timestamps();
             $table->softDeletes();
         });
