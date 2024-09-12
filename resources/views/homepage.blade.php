@@ -30,9 +30,9 @@
                 </button>
                 <div class="btn-group flex-wrap" role="group" aria-label="Basic checkbox toggle button group">
                     @foreach ($servizi as $servizio)
-                    <input name="services[]" type="checkbox" class="btn-check" id="service-check-{{$servizio->id}}" autocomplete="off" value="{{$servizio->id}}">
+                    <input name="servizi[]" type="checkbox" class="btn-check" id="service-check-{{$servizio->id}}" autocomplete="off" value="{{$servizio->id}}">
                     <label class="btn btn-outline-primary m-1 btn-sm rounded mb-2" for="service-check-{{$servizio->id}}">
-                        {{$servizi->Nome}}
+                        {{$servizio->Nome}}
                     </label>
                     @endforeach
                 </div>

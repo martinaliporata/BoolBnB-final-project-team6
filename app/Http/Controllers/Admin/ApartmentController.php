@@ -134,6 +134,8 @@ class ApartmentController extends Controller
 
     public function search(Request $request)
     {
+
+        $servizi = Service::all();
         // Prendere i parametri di ricerca dalla richiesta
         $stanze = $request->input('numStanze');
         $letti = $request->input('numLetti');
@@ -176,7 +178,7 @@ class ApartmentController extends Controller
         // Ottenere i risultati della ricerca
         $apartments = $query->with(['services', 'sponsorships'])->get();
 
-        $servizi= Service::all();
+
         // Restituire la vista con i risultati
         return view('admin.apartments.results', compact('apartments', 'servizi'));
     }
