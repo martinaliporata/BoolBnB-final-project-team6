@@ -131,4 +131,52 @@ class ApartmentController extends Controller
         $apartments->forceDelete();
         return redirect()->route('apartments.deleteindex')->with('message_delete', $apartments->Nome . " The trash has been emptied!!");
     }
+
+    public function search(Request $request)
+    {
+        // Prendere i parametri di ricerca dalla richiesta
+        $stanze = $request->input('numStanze');
+        $letti = $request->input('numLetti');
+        $persone = $request->input('numPersone');
+        $priceMin = $request->input('priceMin');
+        $priceMax = $request->input('priceMax');
+        $indirizzo = $request->input('city');
+        $services = $request->input('services'); // array di servizi
+
+        // Costruire la query dinamicamente in base ai parametri di ricerca forniti
+        $query = Apartment::query();
+
+        if ($stanze) {
+            $query->where('Stanze', '>=', $stanze);
+        }
+
+        if ($letti) {
+            $query->where('Letti', '>=', $letti);
+        }
+
+        if ($persone) {
+            $query->where('num_people', '>=', $persone);
+        }
+
+        if ($priceMin && $priceMax) {
+            $query->whereBetween('price', [$priceMin, $priceMax]);
+        }
+
+        if ($indirizzo) {
+            $query->where('Indirizzo', 'LIKE', "%{$indirizzo}%");
+        }
+
+        // Filtrare per servizi se forniti
+        if ($services && is_array($services)) {
+            $query->whereHas('services', function($q) use ($services) {
+                $q->whereIn('id', $services);
+            });
+        }
+
+        // Ottenere i risultati della ricerca
+        $apartments = $query->with(['services', 'sponsorships'])->get();
+
+        // Restituire la vista con i risultati
+        return view('admin.apartments.results', compact('apartments'));
+    }
 }
