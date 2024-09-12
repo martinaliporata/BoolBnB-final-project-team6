@@ -14,7 +14,8 @@
                 <nav class="navbar navbar-custom bg-body-tertiary bg-primary border-radius" data-bs-theme="dark">
                     <div class="container-fluid">
                         <div class="d-flex w-100">
-                            <input class="form-control me-2 searchbar border-radius" name="city" type="search" placeholder="Inserisci un indirizzo o città" aria-label="Search">
+                            {{-- Changed --}}
+                            <input class="form-control me-2 searchbar border-radius" id="autocomplete" name="city" type="search" placeholder="Inserisci un indirizzo o città" aria-label="Search">
                         </div>
                     </div>
                 </nav>
@@ -91,4 +92,5 @@
        </div>
    </form>
 </main>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAjVG5FX-7QoyPaSV1uLYIu4B7AiaL69Zw&libraries=places" async defer></script>
 @endsection
