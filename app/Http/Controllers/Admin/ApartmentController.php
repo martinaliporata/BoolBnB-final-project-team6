@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
-
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreApartmentRequest;
 use App\Http\Requests\UpdateApartmentRequest;
@@ -99,7 +98,7 @@ class ApartmentController extends Controller
 
         $apartment->delete();
 
-        return redirect()->route('apartments.index')->with('message_delete', $apartment->Nome . " it has been successfully deleted!!");
+        return redirect()->route('apartments.index');
     }
 
     /**
@@ -120,7 +119,7 @@ class ApartmentController extends Controller
         $apartments = Apartment::onlyTrashed()->findOrFail($id);
         $apartments->restore();
 
-        return redirect()->route('apartments.index')->with('message_restore', $apartments->Nome . " it has been successfully restored!!");
+        return redirect()->route('apartments.index');
     }
 
     // Empty the trash
@@ -129,7 +128,7 @@ class ApartmentController extends Controller
         $apartments = Apartment::onlyTrashed()->findOrFail($id);
         $apartments->services()->detach();
         $apartments->forceDelete();
-        return redirect()->route('apartments.deleteindex')->with('message_delete', $apartments->Nome . " The trash has been emptied!!");
+        return redirect()->route('apartments.index');
     }
 
     public function search(Request $request)
@@ -161,7 +160,7 @@ class ApartmentController extends Controller
         }
 
         if ($priceMin && $priceMax) {
-            $query->whereBetween('price', [$priceMin, $priceMax]);
+            $query->whereBetween('prezzo', [$priceMin, $priceMax]);
         }
 
         if ($indirizzo) {
