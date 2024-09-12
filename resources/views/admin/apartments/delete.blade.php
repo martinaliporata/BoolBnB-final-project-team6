@@ -1,5 +1,4 @@
 @extends('layouts.app')
-
 @section('content')
     <section class="container">
         <div class="row justify-content-center">
@@ -25,7 +24,6 @@
                             <h5 class="card-text text-center">
                                 {{ $apartment->Indirizzo }}
                             </h5>
-
                         </div>
                         <div class="card-footer card-link d-flex justify-content-center ">
                             <form action="{{ route('admin.apartments.restore', $apartment) }}" method="POST"
@@ -49,7 +47,6 @@
         </div>
     </section>
 @endsection
-
 @section('custom_script')
     @vite('resources/js/apartment/delete-confirmation.js')
 @endsection
