@@ -62,3 +62,6 @@ Route::post('/apartments/sponsorships', [ApartmentSponsorshipController::class, 
 
 //Rotta per mostrare grafico visualizzazioni
 Route::get('/apartment/{id}/views', [ViewController::class, 'getViewData']);
+
+//Rotta per la search
+Route::get('/search', [ApartmentController::class, 'search'])->name('search');
