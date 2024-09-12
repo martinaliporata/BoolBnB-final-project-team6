@@ -11,11 +11,11 @@
                         </h5>
                     </div>
                     <ul class="list-unstyled">
-                        <li>Prezzo: {{ $apartment->Prezzo }}</li>
+                        <li>Prezzo: &euro;{{ $apartment->Prezzo }}</li>
                         <li>Stanze: {{ $apartment->Stanze }}</li>
                         <li>Letti: {{ $apartment->Letti }}</li>
                         <li>Bagni: {{ $apartment->Bagni }}</li>
-                        <li>Metri quadrati: {{ $apartment->Metri_quadrati }}</li>
+                        <li>Metri quadrati: {{ $apartment->Metri_quadrati }} mq</li>
                         <li>Indirizzo: {{ $apartment->Indirizzo }}</li>
                         <li>Latitudine: {{ $apartment->Latitudine }}</li>
                         <li>Longitudine: {{ $apartment->Longitudine }}</li>

@@ -85,8 +85,8 @@ class ApartmentController extends Controller
                 'Stanze' => $request->input('Stanze'),
                 'Letti' => $request->input('Letti'),
                 'Bagni' => $request->input('Bagni'),
-                'Metri_quadrati' => $request->input('Prezzo'),
-                'Prezzo' => $request->input('Bagni'),
+                'Metri_quadrati' => $request->input('Metri_quadrati'),
+                'Prezzo' => $request->input('Prezzo'),
                 'Indirizzo' => $indirizzo,
                 'Latitudine' => $latitudine,
                 'Longitudine' => $longitudine,
@@ -138,7 +138,7 @@ class ApartmentController extends Controller
      */
     public function update(UpdateApartmentRequest $request, Apartment $apartment)
     {
-        $data = $request->except('_token');
+        // $data = $request->except('_token');
         $data = $request->validated();
         $apartment->update($data);
 

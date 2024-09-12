@@ -19,7 +19,8 @@
                                         <br> Stanze: {{ $apartment->Stanze }}
                                         <br> Letti: {{ $apartment->Letti }}
                                         <br> Bagni: {{ $apartment->Bagni }}
-                                        <br> Metri quadrati: {{ $apartment->Metri_quadrati }}
+                                        <br> Prezzo: &euro;{{ $apartment->Prezzo }}
+                                        <br> Metri quadrati: {{ $apartment->Metri_quadrati }} mq
                                         <br> Indirizzo: {{ $apartment->Indirizzo }}
 
                                     </p>

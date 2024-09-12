@@ -24,7 +24,7 @@
                 @csrf
                 <div class="input-group-m container mb-5 w-50">
                     <label for="nome"><strong>Nome</strong></label>
-                    <input type="text" class="form-control mb-2" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" placeholder="nome" id="nome" name="nome" value="{{ old('Nome', $apartment->Nome) }}">
+                    <input type="text" class="form-control mb-2" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" placeholder="nome" id="nome" name="Nome" value="{{ old('Nome', $apartment->Nome) }}">
                     <label for="stanze"><strong>Stanze</strong></label>
                     <input min="1" type="number" class="form-control mb-2" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" placeholder="stanze" id="stanze" name="Stanze" value="{{ old('Stanze', $apartment->Stanze) }}">
                     <label for="letti"><strong>Letti</strong></label>
@@ -35,6 +35,8 @@
                     <input min="10" type="number" class="form-control mb-2" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" placeholder="Metri quadrati" id="Metri_quadrati" name="Metri_quadrati" value="{{ old('Metri_quadrati', $apartment->Metri_quadrati) }}">
                     <label for="Indirizzo"><strong>Indirizzo</strong></label>
                     <input type="text" class="form-control mb-2" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" placeholder="Indirizzo" id="Indirizzo" name="Indirizzo" value="{{ old('Indirizzo', $apartment->Indirizzo) }}">
+                    <label for="Prezzo"><strong>Prezzo</strong></label>
+                    <input min="10" type="number" class="form-control mb-2" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" placeholder="Prezzo" id="Prezzo" name="Prezzo" value="{{ old('Prezzo', $apartment->Prezzo) }}">
                     <label for="Img"><strong>Img</strong></label>
                     <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" placeholder="Img" id="Img" name="Img" value="{{ old('Img', $apartment->Img) }}">
                     <label for="service_id"><strong>Servizi</strong></label>
