@@ -28,12 +28,39 @@
                 <button class="btn btn-secondary dropdown-toggle w-100 bg-dark" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
                     Seleziona Servizi
                 </button>
-                <ul class="dropdown-menu w-100" aria-labelledby="dropdownMenuButton">
-                    <li><a class="dropdown-item" href="#"><input type="checkbox" name="services[]" value="wifi"> WiFi</a></li>
-                    <li><a class="dropdown-item" href="#"><input type="checkbox" name="services[]" value="parking"> Parcheggio</a></li>
-                    <li><a class="dropdown-item" href="#"><input type="checkbox" name="services[]" value="pool"> Piscina</a></li>
-                    <li><a class="dropdown-item" href="#"><input type="checkbox" name="services[]" value="air_conditioning"> Aria Condizionata</a></li>
-                    <li><a class="dropdown-item" href="#"><input type="checkbox" name="services[]" value="pets"> Animali ammessi</a></li>
+                <div class="btn-group flex-wrap" role="group" aria-label="Basic checkbox toggle button group">
+                    @foreach ($servizi as $servizio)
+                    <input name="services[]" type="checkbox" class="btn-check" id="service-check-{{$servizio->id}}" autocomplete="off" value="{{$servizio->id}}">
+                    <label class="btn btn-outline-primary m-1 btn-sm rounded mb-2" for="service-check-{{$servizio->id}}">
+                        {{$servizi->Nome}}
+                    </label>
+                    @endforeach
+                </div>
+
+                <!--'WiFi gratuito',
+                'Colazione inclusa',
+                'Aria condizionata',
+                'Parcheggio gratuito',
+                'Servizio in camera',
+                'Animali ammessi',
+                'Piscina',
+                'Palestra',
+                'Spa e centro benessere',
+                'TV satellitare',
+                'Minibar',
+                'Cassaforte in camera',
+                'Accesso per disabili',
+                'Deposito bagagli',
+                'Servizio navetta',
+                'Noleggio biciclette',
+                'Area giochi per bambini',
+                'Sala conferenze',
+                'Bar',
+                'Ristorante',
+                'Servizio lavanderia',
+                'Asciugacapelli',
+                'Ferro da stiro',
+                'Reception 24 ore su 24'-->
                 </ul>
             </div>
 

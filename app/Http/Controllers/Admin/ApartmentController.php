@@ -176,7 +176,8 @@ class ApartmentController extends Controller
         // Ottenere i risultati della ricerca
         $apartments = $query->with(['services', 'sponsorships'])->get();
 
+        $servizi= Service::all();
         // Restituire la vista con i risultati
-        return view('admin.apartments.results', compact('apartments'));
+        return view('admin.apartments.results', compact('apartments', 'servizi'));
     }
 }
