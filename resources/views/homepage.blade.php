@@ -24,43 +24,36 @@
        <!-- Sezione Filtri sotto la barra di ricerca -->
        <div class="container mt-3">
             <!-- Dropdown Menu per i servizi -->
+           <!-- Dropdown Menu per i servizi -->
             <div class="dropdown">
                 <button class="btn btn-secondary dropdown-toggle w-100 bg-dark" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
                     Seleziona Servizi
                 </button>
-                <div class="btn-group flex-wrap" role="group" aria-label="Basic checkbox toggle button group">
-                    @foreach ($servizi as $servizio)
-                    <input name="servizi[]" type="checkbox" class="btn-check" id="service-check-{{$servizio->id}}" autocomplete="off" value="{{$servizio->id}}">
-                    <label class="btn btn-outline-primary m-1 btn-sm rounded mb-2" for="service-check-{{$servizio->id}}">
-                        {{$servizio->Nome}}
-                    </label>
-                    @endforeach
-                </div>
-
-                <!--'WiFi gratuito',
-                'Colazione inclusa',
-                'Aria condizionata',
-                'Parcheggio gratuito',
-                'Servizio in camera',
-                'Animali ammessi',
-                'Piscina',
-                'Palestra',
-                'Spa e centro benessere',
-                'TV satellitare',
-                'Minibar',
-                'Cassaforte in camera',
-                'Accesso per disabili',
-                'Deposito bagagli',
-                'Servizio navetta',
-                'Noleggio biciclette',
-                'Area giochi per bambini',
-                'Sala conferenze',
-                'Bar',
-                'Ristorante',
-                'Servizio lavanderia',
-                'Asciugacapelli',
-                'Ferro da stiro',
-                'Reception 24 ore su 24'-->
+                <ul class="dropdown-menu w-100" aria-labelledby="dropdownMenuButton">
+                    <li><label class="dropdown-item"><input type="checkbox" name="services[]" value="1"> WiFi gratuito</label></li>
+                    <li><label class="dropdown-item"><input type="checkbox" name="services[]" value="2"> Colazione inclusa</label></li>
+                    <li><label class="dropdown-item"><input type="checkbox" name="services[]" value="3"> Aria condizionata</label></li>
+                    <li><label class="dropdown-item"><input type="checkbox" name="services[]" value="4"> Parcheggio gratuito</label></li>
+                    <li><label class="dropdown-item"><input type="checkbox" name="services[]" value="5"> Servizio in camera</label></li>
+                    <li><label class="dropdown-item"><input type="checkbox" name="services[]" value="6"> Animali ammessi</label></li>
+                    <li><label class="dropdown-item"><input type="checkbox" name="services[]" value="7"> Piscina</label></li>
+                    <li><label class="dropdown-item"><input type="checkbox" name="services[]" value="8"> Palestra</label></li>
+                    <li><label class="dropdown-item"><input type="checkbox" name="services[]" value="9"> Spa e centro benessere</label></li>
+                    <li><label class="dropdown-item"><input type="checkbox" name="services[]" value="10"> TV satellitare</label></li>
+                    <li><label class="dropdown-item"><input type="checkbox" name="services[]" value="11"> Minibar</label></li>
+                    <li><label class="dropdown-item"><input type="checkbox" name="services[]" value="12"> Cassaforte in camera</label></li>
+                    <li><label class="dropdown-item"><input type="checkbox" name="services[]" value="13"> Accesso per disabili</label></li>
+                    <li><label class="dropdown-item"><input type="checkbox" name="services[]" value="14"> Deposito bagagli</label></li>
+                    <li><label class="dropdown-item"><input type="checkbox" name="services[]" value="15"> Servizio navetta</label></li>
+                    <li><label class="dropdown-item"><input type="checkbox" name="services[]" value="16"> Noleggio biciclette</label></li>
+                    <li><label class="dropdown-item"><input type="checkbox" name="services[]" value="17"> Area giochi per bambini</label></li>
+                    <li><label class="dropdown-item"><input type="checkbox" name="services[]" value="18"> Sala conferenze</label></li>
+                    <li><label class="dropdown-item"><input type="checkbox" name="services[]" value="19"> Bar</label></li>
+                    <li><label class="dropdown-item"><input type="checkbox" name="services[]" value="20"> Ristorante</label></li>
+                    <li><label class="dropdown-item"><input type="checkbox" name="services[]" value="21"> Servizio lavanderia</label></li>
+                    <li><label class="dropdown-item"><input type="checkbox" name="services[]" value="22"> Asciugacapelli</label></li>
+                    <li><label class="dropdown-item"><input type="checkbox" name="services[]" value="23"> Ferro da stiro</label></li>
+                    <li><label class="dropdown-item"><input type="checkbox" name="services[]" value="24"> Reception 24 ore su 24</label></li>
                 </ul>
             </div>
 
