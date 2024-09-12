@@ -138,11 +138,11 @@ class ApartmentController extends Controller
      */
     public function update(UpdateApartmentRequest $request, Apartment $apartment)
     {
-        //       $data = $request->except('_token');
+        $data = $request->except('_token');
         $data = $request->validated();
         $apartment->update($data);
 
-        return redirect()->route('admin.apartments.show', $apartment)->with('update_apartment_message', $apartment->nome . "È stato aggiornato con successo!!");
+        return redirect()->route('apartments.show', $apartment)->with('update_apartment_message', $apartment->nome . "È stato aggiornato con successo!!");
     }
 
     /**

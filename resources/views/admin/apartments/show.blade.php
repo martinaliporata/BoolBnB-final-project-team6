@@ -3,7 +3,7 @@
     <div class="container">
         <div class="row justify-content-center">
             <article class="col-12 p-3 text-center">
-                <div class="card" style="w-100">
+                <div class="card p-3" style="w-100">
                     <img class="card-img-top w-100" src="{{ $apartment->Img }}" alt="">
                     <div class="card-body">
                         <h5 class="card-title">
@@ -32,9 +32,8 @@
                         <button type="submit" class="btn btn-danger  col-5">Sposta nel cestino</button>
                     </form>
                 </div>
+            </article>
         </div>
-        </article>
-    </div>
     </div>
 @endsection
 {{--

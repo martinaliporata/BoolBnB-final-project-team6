@@ -50,6 +50,9 @@ Route::middleware('auth')->name('admin.')->prefix('admin')->group(
     }
 );
 
+Route::put('/apartments/{apartment}', [ApartmentController::class, 'update'])->name('apartments.update');
+
+
 Route::resource('/apartments', ApartmentController::class);
 
 // Rotta per mostrare il form di creazione di una sponsorship
