@@ -14,16 +14,16 @@
                     <img class="card-img-top" src="{{ $apartment->Img }}" alt="">
                     <div class="card-body">
                         <h5 class="card-title">
-                            {{ $apartment->id }}
+                            {{ $apartment->Nome }}
                         </h5>
                         <p class="card-text">
                             <br> Stanze: {{ $apartment->Stanze }}
                             <br> Letti: {{ $apartment->Letti }}
                             <br> Bagni: {{ $apartment->Bagni }}
-                            <br> Metri quadrati: {{ $apartment->Metri_quadrati }}
+                            <br> Prezzo: &euro;{{ $apartment->Prezzo }}
+                            <br> Metri quadrati: {{ $apartment->Metri_quadrati }} mq
                             <br> Indirizzo: {{ $apartment->Indirizzo }}
-                            <br> Latitudine: {{ $apartment->Latitudine }}
-                            <br> Longitudine: {{ $apartment->Longitudine }}
+
                         </p>
                         <a href="{{ route('apartments.show', $apartment) }}" class="btn btn-primary">Mostra dettagli</a>
                         <a href="{{ route('apartments.edit', $apartment) }}" class="btn btn-warning">Modifica</a>
