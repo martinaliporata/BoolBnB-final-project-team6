@@ -19,6 +19,15 @@
                         <li>Indirizzo: {{ $apartment->Indirizzo }}</li>
                         <li>Latitudine: {{ $apartment->Latitudine }}</li>
                         <li>Longitudine: {{ $apartment->Longitudine }}</li>
+                        <li>
+
+                            @forelse ($apartment->services as $service)
+                            <span class="badge text bg-primary">{{ $service->Nome}}</span>
+                            @empty
+                            Non ci sono servizi
+                            @endforelse
+
+                        </li>
                     </ul>
                     <div class="card-footer">
                         <a href="{{ route('apartments.index') }}" class="btn btn-primary">Torna alla lista appartamenti</a>
