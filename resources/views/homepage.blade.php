@@ -73,10 +73,9 @@
                     <input type="number" class="form-control" name="numBagni" id="numBagni" placeholder="Inserisci il numero di bagni ">
                 </div>
                 <div class="col-md-3">
-                    <label for="priceRange" class="form-label">Prezzo (Min-Max)</label>
+                    <label for="priceRange" class="form-label">Prezzo (Max)</label>
                     <div class="input-group">
-                        <input type="number" class="form-control" name="priceMin" id="priceMin" placeholder="Min €">
-                        <input type="number" class="form-control" name="priceMax" id="priceMax" placeholder="Max €">
+                        <input type="number" class="form-control" name="Prezzo" id="Prezzo" placeholder="Max €">
                     </div>
                 </div>
             </div>
