@@ -12,6 +12,7 @@ class Apartment extends Model
     use SoftDeletes;
 
     protected $fillable =[
+        "User_id",
         "Nome",
         "Stanze",
         "Letti",
