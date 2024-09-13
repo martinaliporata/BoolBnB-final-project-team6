@@ -190,13 +190,12 @@ class ApartmentController extends Controller
     public function search(Request $request)
     {
 
-        $servizi = Service::all();
         // Prendere i parametri di ricerca dalla richiesta
         $stanze = $request->input('Stanze');
         $letti = $request->input('Letti');
         $persone = $request->input('Persone');
         $price = $request->input('Prezzo');
-        $indirizzo = $request->input('Indirizzo');
+        $citta = $request->input('citta');
         $services = $request->input('services'); // array di servizi
 
         // Costruire la query dinamicamente in base ai parametri di ricerca forniti
@@ -218,9 +217,10 @@ class ApartmentController extends Controller
             $query->where('Prezzo', '<=', $price);
         }
 
-        if ($indirizzo) {
-            $query->where('Indirizzo', 'LIKE', "%{$indirizzo}%");
+        if ($citta) {
+            $query->whereRaw('LOWER(citta) LIKE ?', [strtolower($citta) . '%']);
         }
+
 
         // Filtrare per servizi se forniti
         if ($services && is_array($services)) {
@@ -234,6 +234,6 @@ class ApartmentController extends Controller
 
 
         // Restituire la vista con i risultati
-        return view('admin.apartments.results', compact('apartments', 'servizi'));
+        return view('admin.apartments.results', compact('apartments'));
     }
 }
