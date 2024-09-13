@@ -28,8 +28,7 @@ Route::get('/', function(){
 })->name('Index');
 
 
-Route::get('/home', [GuestHomeController::class, 'index'])->name('home');
-
+Route::get('/home', [GuestHomeController::class, 'index'], [])->name('home');
 
 
 
