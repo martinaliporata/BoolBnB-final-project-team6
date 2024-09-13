@@ -17,8 +17,16 @@
                         <li>Bagni: {{ $apartment->Bagni }}</li>
                         <li>Metri quadrati: {{ $apartment->Metri_quadrati }} mq</li>
                         <li>Indirizzo: {{ $apartment->Indirizzo }}</li>
-                        <li>Latitudine: {{ $apartment->Latitudine }}</li>
-                        <li>Longitudine: {{ $apartment->Longitudine }}</li>
+                        <li>Città: {{ $apartment->citta }}</li>
+                        <li>
+
+                            @forelse ($apartment->services as $service)
+                            <span class="badge text bg-primary">{{ $service->Nome}}</span>
+                            @empty
+                            Non ci sono servizi
+                            @endforelse
+
+                        </li>
                     </ul>
                     <div class="card-footer">
                         <a href="{{ route('apartments.index') }}" class="btn btn-primary">Torna alla lista appartamenti</a>

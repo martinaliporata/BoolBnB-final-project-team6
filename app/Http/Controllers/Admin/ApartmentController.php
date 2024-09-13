@@ -117,7 +117,8 @@ class ApartmentController extends Controller
      */
     public function show(Apartment $apartment)
     {
-        return view('admin.apartments.show', compact('apartment'));
+        $service=Service::all();
+        return view('admin.apartments.show', compact('apartment','service'));
     }
 
     /**
@@ -189,14 +190,12 @@ class ApartmentController extends Controller
     public function search(Request $request)
     {
 
-        $servizi = Service::all();
         // Prendere i parametri di ricerca dalla richiesta
-        $stanze = $request->input('numStanze');
-        $letti = $request->input('numLetti');
-        $persone = $request->input('numPersone');
-        $priceMin = $request->input('priceMin');
-        $priceMax = $request->input('priceMax');
-        $indirizzo = $request->input('city');
+        $stanze = $request->input('Stanze');
+        $letti = $request->input('Letti');
+        $persone = $request->input('Persone');
+        $price = $request->input('Prezzo');
+        $citta = $request->input('citta');
         $services = $request->input('services'); // array di servizi
 
         // Costruire la query dinamicamente in base ai parametri di ricerca forniti
@@ -214,13 +213,14 @@ class ApartmentController extends Controller
             $query->where('num_people', '>=', $persone);
         }
 
-        if ($priceMin && $priceMax) {
-            $query->whereBetween('prezzo', [$priceMin, $priceMax]);
+        if ($price) {
+            $query->where('Prezzo', '<=', $price);
         }
 
-        if ($indirizzo) {
-            $query->where('Indirizzo', 'LIKE', "%{$indirizzo}%");
+        if ($citta) {
+            $query->whereRaw('LOWER(citta) LIKE ?', [strtolower($citta) . '%']);
         }
+
 
         // Filtrare per servizi se forniti
         if ($services && is_array($services)) {
@@ -234,6 +234,6 @@ class ApartmentController extends Controller
 
 
         // Restituire la vista con i risultati
-        return view('admin.apartments.results', compact('apartments', 'servizi'));
+        return view('admin.apartments.results', compact('apartments'));
     }
 }

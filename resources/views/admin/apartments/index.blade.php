@@ -22,6 +22,7 @@
                                         <br> Prezzo: &euro;{{ $apartment->Prezzo }}
                                         <br> Metri quadrati: {{ $apartment->Metri_quadrati }} mq
                                         <br> Indirizzo: {{ $apartment->Indirizzo }}
+                                        <br> Città: {{ $apartment->citta }}
 
                                     </p>
                                     <a href="{{ route('apartments.show', $apartment) }}" class="btn btn-primary">Mostra dettagli</a>

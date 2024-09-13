@@ -14,7 +14,7 @@
                 <nav class="navbar navbar-custom bg-body-tertiary bg-primary border-radius" data-bs-theme="dark">
                     <div class="container-fluid">
                         <div class="d-flex w-100">
-                            <input class="form-control me-2 searchbar border-radius" id="autocomplete" name="city" type="search" placeholder="Inserisci un indirizzo o città" aria-label="Search">
+                            <input class="form-control me-2 searchbar border-radius" id="autocomplete" name="citta" type="search" placeholder="Inserisci un indirizzo o città" aria-label="Search">
                         </div>
                     </div>
                 </nav>
@@ -62,21 +62,20 @@
             <div class="row mt-3">
                 <div class="col-md-3">
                     <label for="numStanze" class="form-label">Numero di Stanze</label>
-                    <input type="number" class="form-control" name="numStanze" id="numStanze" placeholder="Inserisci il numero di stanze">
+                    <input type="number" class="form-control" name="Stanze" id="Stanze" placeholder="Inserisci il numero di stanze">
                 </div>
                 <div class="col-md-3">
                     <label for="numLetti" class="form-label">Posti letto</label>
-                    <input type="number" class="form-control" name="numLetti" id="numLetti" placeholder="Inserisci il numero di letti">
+                    <input type="number" class="form-control" name="Letti" id="Letti" placeholder="Inserisci il numero di letti">
                 </div>
                 <div class="col-md-3">
                     <label for="numBagni" class="form-label">Bagni</label>
-                    <input type="number" class="form-control" name="numBagni" id="numBagni" placeholder="Inserisci il numero di bagni ">
+                    <input type="number" class="form-control" name="Bagni" id="Bagni" placeholder="Inserisci il numero di bagni ">
                 </div>
                 <div class="col-md-3">
-                    <label for="priceRange" class="form-label">Prezzo (Min-Max)</label>
+                    <label for="priceRange" class="form-label">Prezzo (Max)</label>
                     <div class="input-group">
-                        <input type="number" class="form-control" name="priceMin" id="priceMin" placeholder="Min €">
-                        <input type="number" class="form-control" name="priceMax" id="priceMax" placeholder="Max €">
+                        <input type="number" class="form-control" name="Prezzo" id="Prezzo" placeholder="Max €">
                     </div>
                 </div>
             </div>
