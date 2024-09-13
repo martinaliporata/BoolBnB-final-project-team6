@@ -36,10 +36,12 @@
                     <input min="10" type="number" class="form-control mb-2" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" placeholder="Metri quadrati" id="Metri_quadrati" name="Metri_quadrati" value="{{ old('Metri_quadrati') }}">
 
                     <label for="Indirizzo"><strong>Indirizzo</strong></label>
-                    <input type="text" class="form-control mb-2" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" placeholder="Indirizzo" id="Indirizzo" name="Indirizzo" value="{{ old('Indirizzo') }}">
+                    {{-- <input type="text" class="form-control mb-2" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" placeholder="Indirizzo" id="Indirizzo" name="Indirizzo" value="{{ old('Indirizzo') }}"> --}}
+                    <input class="form-control me-2 searchbar border-radius" id="autocomplete" name="Indirizzo" type="search" placeholder="Indirizzo" aria-label="Search" name="Indirizzo" value="{{ old('Indirizzo') }}">
+
 
                     <label for="citta"><strong>Città</strong></label>
-                    <input type="text" class="form-control mb-2" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" placeholder="Città" id="citta" name="citta" value="{{ old('Indirizzo') }}">
+                    <input type="text" class="form-control mb-2" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" placeholder="Città" id="citta" name="citta" value="{{ old('citta') }}">
 
 
                     <label for="Prezzo"><strong>Prezzo</strong></label>
@@ -70,4 +72,20 @@
         </div>
     </div>
 </div>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDltqF-8vne8sd6KUee2_G8eWD24UIBYWI&loading=async&libraries=places&callback=initMap"></script>
+<script>
+function initMap() {
+    var input = document.getElementById('autocomplete');
+    var autocomplete = new google.maps.places.Autocomplete(input);
+
+    autocomplete.addListener('place_changed', function() {
+        var place = autocomplete.getPlace();
+        if (!place.geometry) {
+            console.log("Nessun luogo trovato per l'input: '" + place.name + "'");
+            return;
+        }
+        console.log('Luogo selezionato:', place);
+    });
+}
+</script>
 @endsection

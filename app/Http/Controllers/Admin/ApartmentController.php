@@ -47,12 +47,13 @@ class ApartmentController extends Controller
      * Store a newly created resource in storage.
      */
 
-     public function store(Request $request)
+    public function store(Request $request)
 {
     // Validazione dell'indirizzo
     $request->validate([
         'Nome' => 'required|string',
         'Indirizzo' => 'required|string',
+        'citta' => 'required|string',
         'Stanze' => 'required|integer',
         'Letti' => 'required|integer',
         'Bagni' => 'required|integer',
@@ -88,6 +89,7 @@ class ApartmentController extends Controller
                 'Metri_quadrati' => $request->input('Metri_quadrati'),
                 'Prezzo' => $request->input('Prezzo'),
                 'Indirizzo' => $indirizzo,
+                'citta' => $request->input('citta'),
                 'Latitudine' => $latitudine,
                 'Longitudine' => $longitudine,
                 'Img' => $request->input('Img'),
