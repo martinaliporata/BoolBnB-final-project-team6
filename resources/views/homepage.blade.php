@@ -57,8 +57,6 @@
                     </ul>
                 </div>
 
-                <!-- Bottone per inviare la ricerca -->
-                <input type="submit" value="Cerca">
 
             <!-- Campi aggiuntivi per stanze, letti, prezzo e numero di persone -->
             <div class="row mt-3">
