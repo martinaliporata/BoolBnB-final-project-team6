@@ -12,6 +12,7 @@ use App\Models\User;
 use App\Models\View;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Auth;
 
 class ApartmentController extends Controller
 {
@@ -94,6 +95,7 @@ class ApartmentController extends Controller
                 'Longitudine' => $longitudine,
                 'Img' => $request->input('Img'),
                 'Visibilità' => $request->input('Visibilità'),
+                'user_id' => Auth::user()->id
             ]);
 
             // Reindirizza alla pagina di dettaglio dell'appartamento con un messaggio di successo
