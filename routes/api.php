@@ -22,7 +22,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::resource('/api/apartments', ApartmentController::class);
+Route::resource('/apartments', ApartmentController::class);
 
 Route::get('/apartments/search', [ApartmentController::class, 'search']);
 
