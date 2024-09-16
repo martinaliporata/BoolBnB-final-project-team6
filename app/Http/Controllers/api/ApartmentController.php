@@ -28,8 +28,7 @@ class ApartmentController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
-    {
+    public function store(Request $request){
         // Validazione dell'indirizzo
         $request->validate([
             'Indirizzo' => 'required|string',
@@ -81,11 +80,11 @@ class ApartmentController extends Controller
             return response()->json(['message' => 'Errore nella richiesta all\'API di TomTom.'], 500);
         }
     }
+
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
-    {
+    public function show(string $id){
 
         $apartment = Apartment::with( "views", "sponsorships", "services","messages" )->findOrFail($id);
 
@@ -95,12 +94,10 @@ class ApartmentController extends Controller
         ]);
     }
 
-
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
-    {
+    public function update(Request $request, string $id){
         $apartment = Apartment::findOrFail($id);
         if ($apartment) {
             $apartment->update($request->all());
@@ -110,8 +107,7 @@ class ApartmentController extends Controller
         }
     }
 
-    public function search(Request $request)
-    {
+    public function search(Request $request){
         // Prendere i parametri di ricerca dalla richiesta
         $stanze = $request->input('stanze');
         $letti = $request->input('letti');
@@ -164,9 +160,7 @@ class ApartmentController extends Controller
         return response()->json($results);
     }
 
-
-    public function updateSponsorship(Request $request, $apartmentId)
-    {
+    public function updateSponsorship(Request $request, $apartmentId){
         // Validazione della richiesta
         $request->validate([
             'sponsorship_id' => 'required|exists:sponsorships,id', // sponsorship_id deve esistere
@@ -236,7 +230,7 @@ class ApartmentController extends Controller
      * Remove the specified resource from storage.
      */
     public function destroy(string $id)
-    {
+{
         $apartment = Apartment::find($id);
         if ($apartment) {
             $apartment->delete();
