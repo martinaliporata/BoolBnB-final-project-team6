@@ -22,9 +22,11 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+Route::get('/apartments/search', [ApartmentController::class, 'search']);
+
 Route::resource('/apartments', ApartmentController::class);
 
-Route::get('/apartments/search', [ApartmentController::class, 'search']);
+
 
 Route::post('/apartments/{apartmentId}/update-sponsorship', [ApartmentController::class, 'updateSponsorship']);
 

@@ -113,12 +113,13 @@ class ApartmentController extends Controller
     public function search(Request $request)
     {
         // Prendere i parametri di ricerca dalla richiesta
-        $stanze = $request->input('stanze');
-        $letti = $request->input('letti');
-        $bagni = $request->input('bagni');
-        $metriQuadrati = $request->input('metri_quadrati');
-        $indirizzo = $request->input('indirizzo');
-        $services = $request->input('services'); // array di servizi
+        $stanze = $request->input('Stanze');
+        $letti = $request->input('Letti');
+        $bagni = $request->input('Bagni');
+        $prezzo = $request->input('Prezzo');
+        $metriQuadrati = $request->input('Metri_quadrati');
+        $indirizzo = $request->input('Indirizzo');
+        $services = $request->input('Services'); // array di servizi
 
         // Costruire la query dinamicamente in base ai parametri di ricerca forniti
         $query = Apartment::query();
@@ -133,6 +134,10 @@ class ApartmentController extends Controller
 
         if ($bagni) {
             $query->where('Bagni', $bagni);
+        }
+
+        if ($prezzo) {
+            $query->where('Prezzo', '<=',  $prezzo);
         }
 
         if ($metriQuadrati) {
