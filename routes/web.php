@@ -4,7 +4,6 @@ use App\Http\Controllers\Admin\ApartmentController;
 use App\Http\Controllers\admin\ApartmentSponsorshipController;
 use App\Http\Controllers\Admin\AdminController as AdminController;
 use App\Http\Controllers\admin\ViewController;
-use App\Http\Controllers\api\ApartmentController as ApiApartmentController;
 use App\Http\Controllers\HomeController as GuestHomeController;
 use App\Models\Apartment;
 use GuzzleHttp\Middleware;
@@ -62,4 +61,4 @@ Route::get('/apartment/{id}/views', [ViewController::class, 'getViewData']);
 Route::get('/search', [ApartmentController::class, 'search'])->name('search');
 
 
-Route::resource('/api/apartments', ApiApartmentController::class);
+
