@@ -118,8 +118,6 @@ class ApartmentController extends Controller
         $bagni = $request->input('bagni');
         $metriQuadrati = $request->input('metri_quadrati');
         $indirizzo = $request->input('indirizzo');
-        $latitudine = $request->input('latitudine');
-        $longitudine = $request->input('longitudine');
         $services = $request->input('services'); // array di servizi
 
         // Costruire la query dinamicamente in base ai parametri di ricerca forniti
@@ -143,11 +141,6 @@ class ApartmentController extends Controller
 
         if ($indirizzo) {
             $query->where('Indirizzo', 'LIKE', "%{$indirizzo}%");
-        }
-
-        if ($latitudine && $longitudine) {
-            $query->where('Latitudine', $latitudine)
-                  ->where('Longitudine', $longitudine);
         }
 
         // Filtrare per servizi se forniti
