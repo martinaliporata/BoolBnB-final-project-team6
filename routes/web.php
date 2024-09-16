@@ -2,7 +2,7 @@
 
 use App\Http\Controllers\Admin\ApartmentController;
 use App\Http\Controllers\admin\ApartmentSponsorshipController;
-use App\Http\Controllers\Admin\HomeController as AdminHomeController;
+use App\Http\Controllers\Admin\AdminController as AdminController;
 use App\Http\Controllers\admin\ViewController;
 use App\Http\Controllers\api\ApartmentController as ApiApartmentController;
 use App\Http\Controllers\HomeController as GuestHomeController;
@@ -41,7 +41,7 @@ Route::middleware('auth')->name('admin.')->prefix('admin')->group(
         Route::get('/apartments/edit', function () {
             return view('admin.apartments.edit');
         })->name('apartments-edit');
-        Route::get('/secret-home', [AdminHomeController::class, 'index'])->name('home');
+        Route::get('/secret-home', [AdminController::class, 'index'])->name('home');
     }
 );
 Route::put('/apartments/{apartment}', [ApartmentController::class, 'update'])->name('apartments.update');

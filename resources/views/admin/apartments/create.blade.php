@@ -47,8 +47,6 @@
                     <label for="Prezzo"><strong>Prezzo</strong></label>
                     <input min="10" type="number" class="form-control mb-2" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" placeholder="Prezzo" id="Prezzo" name="Prezzo" value="{{ old('Prezzo') }}">
 
-
-
                     <label for="Img"><strong>Img</strong></label>
                     <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" placeholder="Img" id="Img" name="Img" value="{{ old('Img') }}">
 
@@ -61,6 +59,9 @@
                         </label>
                         @endforeach
                     </div>
+                    <!-- Campo nascosto per l'user_id -->
+                    <label for="user_id"></label>
+                    <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
                 </div>
                 <div class="col-12 d-flex justify-content-center mb-3">
                     <div class="input">
