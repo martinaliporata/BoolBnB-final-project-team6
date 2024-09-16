@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\ApartmentController;
 use App\Http\Controllers\admin\ApartmentSponsorshipController;
 use App\Http\Controllers\Admin\AdminController as AdminController;
 use App\Http\Controllers\admin\ViewController;
+use App\Http\Controllers\api\ApartmentController as ApiApartmentController;
 use App\Http\Controllers\HomeController as GuestHomeController;
 use App\Models\Apartment;
 use GuzzleHttp\Middleware;
@@ -29,16 +30,11 @@ Route::get('/', function(){
 
 
 Route::get('/home', [GuestHomeController::class, 'index'], [])->name('home');
-
-
-
 Route::middleware('auth')->name('admin.')->prefix('admin')->group(
     function () {
         Route::get('apartments/delete', [ApartmentController::class, 'deletedIndex'])->name('apartments.deleteindex');
         Route::patch('apartments/{apartment}/restore', [ApartmentController::class, 'restore'])->name('apartments.restore');
         Route::delete('apartments/{apartment}/delete', [ApartmentController::class, 'delete'])->name('apartments.permanent_delete');
-
-
         Route::get('/apartments/create', function () {
             return view('admin.apartments.create');
         })->name('apartments-create');
@@ -48,9 +44,7 @@ Route::middleware('auth')->name('admin.')->prefix('admin')->group(
         Route::get('/secret-home', [AdminController::class, 'index'])->name('home');
     }
 );
-
 Route::put('/apartments/{apartment}', [ApartmentController::class, 'update'])->name('apartments.update');
-
 
 Route::resource('/apartments', ApartmentController::class);
 
@@ -66,3 +60,6 @@ Route::post('/apartments/sponsorships', [ApartmentSponsorshipController::class, 
 Route::get('/apartment/{id}/views', [ViewController::class, 'getViewData']);
 
 Route::get('/search', [ApartmentController::class, 'search'])->name('search');
+
+
+Route::resource('/api/apartments', ApiApartmentController::class);
