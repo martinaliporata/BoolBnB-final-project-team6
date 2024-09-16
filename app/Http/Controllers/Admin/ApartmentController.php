@@ -211,6 +211,7 @@ class ApartmentController extends Controller
         $letti = $request->input('Letti');
         $persone = $request->input('Persone');
         $price = $request->input('Prezzo');
+        $indirizzo = $request->input('indirizzo');
         $services = $request->input('services'); // array di servizi
 
         // Costruire la query dinamicamente in base ai parametri di ricerca forniti
@@ -232,6 +233,10 @@ class ApartmentController extends Controller
             $query->where('Prezzo', '<=', $price);
         }
 
+        if (!empty($indirizzo)) {
+            // Utilizza il filtro sull'indirizzo (potrebbe essere necessario migliorare la query)
+            $query->where('Indirizzo', 'LIKE', '%' . $indirizzo . '%');
+        }
 
         // Filtrare per servizi se forniti
         if ($services && is_array($services)) {
@@ -246,5 +251,6 @@ class ApartmentController extends Controller
 
         // Restituire la vista con i risultati
         return view('admin.apartments.results', compact('apartments'));
+
     }
 }

@@ -14,7 +14,7 @@
                 <nav class="navbar navbar-custom bg-body-tertiary bg-primary border-radius" data-bs-theme="dark">
                     <div class="container-fluid">
                         <div class="d-flex w-100">
-                            <input class="form-control me-2 searchbar border-radius" id="autocomplete" name="citta" type="search" placeholder="Inserisci un indirizzo o città" aria-label="Search">
+                            <input class="form-control me-2 searchbar border-radius" id="autocomplete" name="indirizzo" type="search" placeholder="Inserisci un indirizzo" aria-label="Search">
                         </div>
                     </div>
                 </nav>
