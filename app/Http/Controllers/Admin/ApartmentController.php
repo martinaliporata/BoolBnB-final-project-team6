@@ -60,7 +60,6 @@ class ApartmentController extends Controller
             'Metri_quadrati' => 'required|integer|min:10',
             'Prezzo' => 'required|integer|min:20',
             'Indirizzo' => 'required|string|max:255',
-            'citta' => 'required|string|min:1',
             'Img' => 'required|string|max:255',
             'services' => 'array|exists:services,id',
         ]);
@@ -93,7 +92,6 @@ class ApartmentController extends Controller
                     'Metri_quadrati' => $request->input('Metri_quadrati'),
                     'Prezzo' => $request->input('Prezzo'),
                     'Indirizzo' => $indirizzo,
-                    'citta' => $request->input('citta'),
                     'Latitudine' => $latitudine,
                     'Longitudine' => $longitudine,
                     'Img' => $request->input('Img'),
@@ -213,7 +211,6 @@ class ApartmentController extends Controller
         $letti = $request->input('Letti');
         $persone = $request->input('Persone');
         $price = $request->input('Prezzo');
-        $citta = $request->input('citta');
         $services = $request->input('services'); // array di servizi
 
         // Costruire la query dinamicamente in base ai parametri di ricerca forniti
@@ -233,10 +230,6 @@ class ApartmentController extends Controller
 
         if ($price) {
             $query->where('Prezzo', '<=', $price);
-        }
-
-        if ($citta) {
-            $query->whereRaw('LOWER(citta) LIKE ?', [strtolower($citta) . '%']);
         }
 
 

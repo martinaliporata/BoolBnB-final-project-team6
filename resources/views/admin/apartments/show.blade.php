@@ -17,9 +17,7 @@
                         <li>Bagni: {{ $apartment->Bagni }}</li>
                         <li>Metri quadrati: {{ $apartment->Metri_quadrati }} mq</li>
                         <li>Indirizzo: {{ $apartment->Indirizzo }}</li>
-                        <li>Città: {{ $apartment->citta }}</li>
                         <li>
-
                             @forelse ($apartment->services as $service)
                             <span class="badge text bg-primary">{{ $service->Nome}}</span>
                             @empty

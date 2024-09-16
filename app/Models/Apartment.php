@@ -20,7 +20,6 @@ class Apartment extends Model
         "Metri_quadrati",
         "Prezzo",
         "Indirizzo",
-        "citta",
         "Latitudine",
         "Longitudine",
         "Img",

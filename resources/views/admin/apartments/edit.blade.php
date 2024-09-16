@@ -49,11 +49,6 @@
                     <input class="form-control me-2 searchbar border-radius" id="autocomplete" name="Indirizzo" type="search" placeholder="Inserisci un indirizzo" aria-label="Search" name="Indirizzo" value="{{ old('Indirizzo', $apartment->Indirizzo) }}">
 
 
-                    <label for="citta"><strong>Città</strong></label>
-                    {{-- <input type="text" class="form-control mb-2" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" placeholder="Città" id="citta" name="citta" value="{{ old('Indirizzo', $apartment->citta) }}"> --}}
-                    <input class="form-control me-2 searchbar border-radius" id="autocomplete" name="citta" type="search" placeholder="Inserisci una città" aria-label="Search">
-
-
                     <label for="Prezzo"><strong>Prezzo</strong></label>
                     <input min="10" type="number" class="form-control mb-2" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" placeholder="Prezzo" id="Prezzo" name="Prezzo" value="{{ old('Prezzo', $apartment->Prezzo) }}">
 
