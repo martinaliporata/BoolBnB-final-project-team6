@@ -203,54 +203,126 @@ class ApartmentController extends Controller
         return redirect()->route('apartments.index');
     }
 
+    // public function search(Request $request)
+    // {
+
+    //     // Prendere i parametri di ricerca dalla richiesta
+    //     $stanze = $request->input('Stanze');
+    //     $letti = $request->input('Letti');
+    //     $persone = $request->input('Persone');
+    //     $price = $request->input('Prezzo');
+    //     $indirizzo = $request->input('indirizzo');
+    //     $services = $request->input('services'); // array di servizi
+
+    //     // Costruire la query dinamicamente in base ai parametri di ricerca forniti
+    //     $query = Apartment::query();
+
+    //     if ($stanze) {
+    //         $query->where('Stanze', '>=', $stanze);
+    //     }
+
+    //     if ($letti) {
+    //         $query->where('Letti', '>=', $letti);
+    //     }
+
+    //     if ($persone) {
+    //         $query->where('num_people', '>=', $persone);
+    //     }
+
+    //     if ($price) {
+    //         $query->where('Prezzo', '<=', $price);
+    //     }
+
+    //     if (!empty($indirizzo)) {
+    //         // Utilizza il filtro sull'indirizzo (potrebbe essere necessario migliorare la query)
+    //         $query->where('Indirizzo', 'LIKE', '%' . $indirizzo . '%');
+    //     }
+
+    //     // Filtrare per servizi se forniti
+    //     if ($services && is_array($services)) {
+    //         $query->whereHas('services', function ($q) use ($services) {
+    //             $q->whereIn('id', $services);
+    //         });
+    //     }
+
+    //     // Ottenere i risultati della ricerca
+    //     $apartments = $query->with(['services', 'sponsorships'])->get();
+
+
+    //     // Restituire la vista con i risultati
+    //     return view('admin.apartments.results', compact('apartments'));
+
+    // }
+
     public function search(Request $request)
-    {
+{
+    // Validazione dei parametri di ricerca
+    $request->validate([
+        'indirizzo' => 'required|string',
+        'radius' => 'nullable|integer|min:1|max:20',  // Il raggio può essere omesso e deve essere tra 1 e 20 km
+        'Stanze' => 'nullable|integer',
+        'Letti' => 'nullable|integer',
+        'Bagni' => 'nullable|integer',
+        'Prezzo' => 'nullable|numeric',
+        'services' => 'nullable|array',
+    ]);
 
-        // Prendere i parametri di ricerca dalla richiesta
-        $stanze = $request->input('Stanze');
-        $letti = $request->input('Letti');
-        $persone = $request->input('Persone');
-        $price = $request->input('Prezzo');
-        $indirizzo = $request->input('indirizzo');
-        $services = $request->input('services'); // array di servizi
+    // Ottieni l'indirizzo e usa TomTom per trovare latitudine e longitudine
+    $indirizzo = $request->input('indirizzo');
+    $radius = $request->input('radius', 20);  // Usa 20 km come valore predefinito
 
-        // Costruire la query dinamicamente in base ai parametri di ricerca forniti
-        $query = Apartment::query();
+    // Effettua una richiesta all'API di TomTom per ottenere latitudine e longitudine
+    $response = Http::withOptions(['verify' => false])
+        ->get('https://api.tomtom.com/search/2/geocode/'.urlencode($indirizzo).'.json', [
+            'key' => env('TOMTOM_API_KEY'),
+            'limit' => 1
+        ]);
 
-        if ($stanze) {
-            $query->where('Stanze', '>=', $stanze);
-        }
+        if ($response->successful()) {
+            $data = $response->json();
 
-        if ($letti) {
-            $query->where('Letti', '>=', $letti);
-        }
+            if (!empty($data['results'])) {
+                $latitudine = $data['results'][0]['position']['lat'];
+                $longitudine = $data['results'][0]['position']['lon'];
 
-        if ($persone) {
-            $query->where('num_people', '>=', $persone);
-        }
+                // Trova gli appartamenti nel raggio specificato
+                $apartments = Apartment::whereRaw(
+                    "ST_Distance_Sphere(POINT(Longitudine, Latitudine), POINT(?, ?)) <= ?",
+                    [$longitudine, $latitudine, $radius * 1000]  // Converti km in metri
+                )->get();
 
-        if ($price) {
-            $query->where('Prezzo', '<=', $price);
-        }
+                return view('admin.apartments.results', compact('apartments'));
+            } else {
+                return response()->json(['message' => 'Impossibile trovare la latitudine e longitudine per questo indirizzo.'], 400);
+            }
+        } else {
+            return response()->json(['message' => 'Errore nella richiesta all\'API di TomTom.'], 500);
+        };
 
-        if (!empty($indirizzo)) {
-            // Utilizza il filtro sull'indirizzo (potrebbe essere necessario migliorare la query)
-            $query->where('Indirizzo', 'LIKE', '%' . $indirizzo . '%');
-        }
-
-        // Filtrare per servizi se forniti
-        if ($services && is_array($services)) {
-            $query->whereHas('services', function ($q) use ($services) {
-                $q->whereIn('id', $services);
-            });
-        }
-
-        // Ottenere i risultati della ricerca
-        $apartments = $query->with(['services', 'sponsorships'])->get();
-
-
-        // Restituire la vista con i risultati
-        return view('admin.apartments.results', compact('apartments'));
-
+    // Aggiungi filtri opzionali
+    if ($request->has('Stanze')) {
+        $query->where('Stanze', $request->input('Stanze'));
     }
+    if ($request->has('Letti')) {
+        $query->where('Letti', $request->input('Letti'));
+    }
+    if ($request->has('Bagni')) {
+        $query->where('Bagni', $request->input('Bagni'));
+    }
+    if ($request->has('Prezzo')) {
+        $query->where('Prezzo', '<=', $request->input('Prezzo'));
+    }
+    if ($request->has('services')) {
+        $services = $request->input('services');
+        // Assumendo che tu abbia una relazione con un modello Service
+        $query->whereHas('services', function ($q) use ($services) {
+            $q->whereIn('id', $services);
+        });
+    }
+
+    $apartments = $query->get();
+
+    return response()->json($apartments);
+}
+
 }

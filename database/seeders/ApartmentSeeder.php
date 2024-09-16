@@ -146,8 +146,6 @@ class ApartmentSeeder extends Seeder
                 'Img' => "https://www.grazia.it/content/uploads/2017/10/cover-piante-appartamento-mobile-800x600.jpg",
                 'Visibilità' => true,
             ]
-
-
         ];
 
         $users= User::all()->pluck('id');

@@ -10,8 +10,8 @@
         <div class="row">
             @foreach($apartments as $apartment)
             <article class="col-4 text-center">
-                <div class="card shadow" style="w-100">
-                    <img class="card-img-top" src="{{ $apartment->Img }}" alt="">
+                <div class="card shadow">
+                    <img class="w-100 h-100 object-fit-cover" src="{{ $apartment->Img }}" alt="">
                     <div class="card-body">
                         <h5 class="card-title">
                             {{ $apartment->Nome }}
