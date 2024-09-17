@@ -31,7 +31,7 @@
         <p>Alloggi Unici</p> 
     </div> 
     <div class="col-md-4"> 
-        <img class="w-25" src="https://via.placeholder.com/100.png?text=Prenotazione+Facile" alt="Prenotazione Facile"> 
+        <img class="w-25" src="{{ Vite::asset('resources/images/Prenota-ora.jpg') }}" alt="Prenotazione Facile"> 
         <p>Prenotazione Facile</p> 
     </div> 
 </div> 
