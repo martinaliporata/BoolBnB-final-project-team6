@@ -5,7 +5,10 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header">{{ __('I miei appartamenti') }}</div>
+                    <div class="card-header d-flex justify-content-between">
+                        <strong>{{ __('I miei appartamenti') }}</strong>
+                        <a href="{{ route('apartments.create') }}" class="my-1 btn btn-success btn-sm">Aggiungi appartamento</a>
+                    </div>
 
                     <div class="card-body">
                         @if (session('status'))
@@ -38,7 +41,6 @@
                                                 @csrf
                                                 <button type="submit" class="my-1 btn btn-danger btn-sm">Elimina</button>
                                             </form>
-                                            <a href="{{ route('apartments.create', $apartment) }}" class="my-1 btn btn-success btn-sm">Aggiungi appartamento</a>
                                         </div>
                                     </div>
                                 </article>
