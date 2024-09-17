@@ -27,8 +27,10 @@ Route::get('/', function(){
     return view('homepage');
 })->name('Index');
 
+Route::get('/myapp', [GuestHomeController::class, 'myapp'])->name('myapp');
 
-Route::get('/home', [GuestHomeController::class, 'index'], [])->name('home');
+
+Route::get('/home', [GuestHomeController::class, 'index'])->name('home');
 Route::middleware('auth')->name('admin.')->prefix('admin')->group(
     function () {
         Route::get('apartments/delete', [ApartmentController::class, 'deletedIndex'])->name('apartments.deleteindex');
