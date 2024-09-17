@@ -112,8 +112,8 @@ class ApartmentController extends Controller
     {
         // Validazione dei parametri di ricerca
         $request->validate([
-            'indirizzo' => 'required|string',
-            'radius' => 'nullable|integer|min:1|max:20',  // Il raggio può essere omesso e deve essere tra 1 e 20 km
+            'indirizzo' => 'nullable|string',  // L'indirizzo è ora opzionale
+            'radius' => 'nullable|integer|min:1|max:20',  // Il raggio è opzionale e deve essere tra 1 e 20 km
             'Stanze' => 'nullable|integer',
             'Letti' => 'nullable|integer',
             'Bagni' => 'nullable|integer',
@@ -121,65 +121,69 @@ class ApartmentController extends Controller
             'services' => 'nullable|array',
         ]);
 
-        // Ottieni l'indirizzo e usa TomTom per trovare latitudine e longitudine
-        $indirizzo = $request->input('indirizzo');
-        $radius = $request->input('radius', 20);  // Usa 20 km come valore predefinito
+        // Creare la query base
+        $query = Apartment::query();
 
-        // Effettua una richiesta all'API di TomTom per ottenere latitudine e longitudine
-        $response = Http::withOptions(['verify' => false])
-            ->get('https://api.tomtom.com/search/2/geocode/' . urlencode($indirizzo) . '.json', [
-                'key' => env('TOMTOM_API_KEY'),
-                'limit' => 1
-            ]);
-
-        if ($response->successful()) {
-            $data = $response->json();
-
-            // Verifica se i dati sono disponibili
-            if (!empty($data['results']) && isset($data['results'][0]['position']['lat'], $data['results'][0]['position']['lon'])) {
-                $latitudine = $data['results'][0]['position']['lat'];
-                $longitudine = $data['results'][0]['position']['lon'];
-
-                // Crea una query per trovare gli appartamenti nel raggio specificato
-                $query = Apartment::query();
-
-                // Aggiungi filtri opzionali
-                if ($request->filled('Stanze')) {
-                    $query->where('Stanze', $request->input('Stanze'));
-                }
-                if ($request->filled('Letti')) {
-                    $query->where('Letti', $request->input('Letti'));
-                }
-                if ($request->filled('Bagni')) {
-                    $query->where('Bagni', $request->input('Bagni'));
-                }
-                if ($request->filled('Prezzo')) {
-                    $query->where('Prezzo', '<=', $request->input('Prezzo'));
-                }
-                if ($request->filled('services')) {
-                    $services = $request->input('services');
-                    // Assumendo che tu abbia una relazione con un modello Service
-                    $query->whereHas('services', function ($q) use ($services) {
-                        $q->whereIn('id', $services);
-                    });
-                }
-
-                // Trova gli appartamenti nel raggio specificato
-                $apartments = $query->whereRaw(
-                    "ST_Distance_Sphere(POINT(Longitudine, Latitudine), POINT(?, ?)) <= ?",
-                    [$longitudine, $latitudine, $radius * 1000]  // Converti km in metri
-                )->get();
-
-                return response()->json($apartments);
-            } else {
-                return response()->json(['message' => 'Impossibile trovare la latitudine e longitudine per questo indirizzo.'], 400);
-            }
-        } else {
-            // Log dell'errore per debugging
-            Log::error('Errore API TomTom: ' . $response->body());
-            return response()->json(['message' => 'Errore nella richiesta all\'API di TomTom.'], 500);
+        // Aggiungi filtri opzionali se i campi sono presenti
+        if ($request->filled('Stanze')) {
+            $query->where('Stanze', $request->input('Stanze'));
         }
+        if ($request->filled('Letti')) {
+            $query->where('Letti', $request->input('Letti'));
+        }
+        if ($request->filled('Bagni')) {
+            $query->where('Bagni', $request->input('Bagni'));
+        }
+        if ($request->filled('Prezzo')) {
+            $query->where('Prezzo', '<=', $request->input('Prezzo'));
+        }
+        if ($request->filled('services')) {
+            $services = $request->input('services');
+            // Assumendo che tu abbia una relazione con un modello Service
+            $query->whereHas('services', function ($q) use ($services) {
+                $q->whereIn('id', $services);
+            });
+        }
+
+        // Se l'indirizzo è fornito, procedi con la richiesta all'API TomTom
+        if ($request->filled('indirizzo')) {
+            $indirizzo = $request->input('indirizzo');
+            $radius = $request->input('radius', 20);  // Usa 20 km come valore predefinito
+
+            // Effettua una richiesta all'API di TomTom per ottenere latitudine e longitudine
+            $response = Http::withOptions(['verify' => false])
+                ->get('https://api.tomtom.com/search/2/geocode/' . urlencode($indirizzo) . '.json', [
+                    'key' => env('TOMTOM_API_KEY'),
+                    'limit' => 1
+                ]);
+
+            if ($response->successful()) {
+                $data = $response->json();
+
+                // Verifica se ci sono risultati validi
+                if (!empty($data['results']) && isset($data['results'][0]['position']['lat'], $data['results'][0]['position']['lon'])) {
+                    $latitudine = $data['results'][0]['position']['lat'];
+                    $longitudine = $data['results'][0]['position']['lon'];
+
+                    // Filtra gli appartamenti nel raggio specificato dalla latitudine/longitudine
+                    $query->whereRaw(
+                        "ST_Distance_Sphere(POINT(Longitudine, Latitudine), POINT(?, ?)) <= ?",
+                        [$longitudine, $latitudine, $radius * 1000]  // Converti km in metri
+                    );
+                } else {
+                    return response()->json(['message' => 'Impossibile trovare la latitudine e longitudine per questo indirizzo.'], 400);
+                }
+            } else {
+                return response()->json(['message' => 'Errore nella richiesta all\'API di TomTom.'], 500);
+            }
+        }
+
+        // Esegui la query e ottieni i risultati
+        $apartments = $query->get();
+
+        return response()->json($apartments);
     }
+
 
 
     public function updateSponsorship(Request $request, $apartmentId){
