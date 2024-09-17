@@ -24,6 +24,20 @@
     position: relative;
 }
 
+.home-background-2 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    height: 30rem;
+    background-image: url(https://www.visitscotland.com/binaries/content/gallery/visitscotland/cms-images/2022/12/01/exclusiveuse.jpg);
+    background-color: rgba(0, 0, 0, 0.7); /* Colore nero con opacità al 70% */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    position: relative;
+}
+
 
 
 /* Per il contenitore che isola la search bar */

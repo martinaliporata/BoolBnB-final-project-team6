@@ -30,4 +30,12 @@ class HomeController extends Controller
 
         return view('home', compact('apartments'));
     }
+
+    public function myapp()
+    {
+         // Filtra gli appartamenti creati dall'utente autenticato
+        $apartments = Apartment::where('user_id', Auth::id())->get();
+
+        return view('UserAppartments', compact('apartments'));
+    }
 }
