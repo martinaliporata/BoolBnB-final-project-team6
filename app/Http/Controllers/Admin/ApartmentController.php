@@ -273,61 +273,56 @@ class ApartmentController extends Controller
 
     // Effettua una richiesta all'API di TomTom per ottenere latitudine e longitudine
     $response = Http::withOptions(['verify' => false])
-        ->get('https://api.tomtom.com/search/2/geocode/' . urlencode($indirizzo) . '.json', [
+        ->get('https://api.tomtom.com/search/2/geocode/'.urlencode($indirizzo).'.json', [
             'key' => env('TOMTOM_API_KEY'),
             'limit' => 1
         ]);
 
-    // Controlla se la richiesta all'API di TomTom è stata completata con successo
-    if ($response->successful()) {
-        $data = $response->json();
+        if ($response->successful()) {
+            $data = $response->json();
 
-        if (!empty($data['results'])) {
-            $latitudine = $data['results'][0]['position']['lat'];
-            $longitudine = $data['results'][0]['position']['lon'];
+            if (!empty($data['results'])) {
+                $latitudine = $data['results'][0]['position']['lat'];
+                $longitudine = $data['results'][0]['position']['lon'];
 
-            // Costruisci query per cercare gli appartamenti
-            $query = Apartment::whereRaw(
-                "ST_Distance_Sphere(POINT(Longitudine, Latitudine), POINT(?, ?)) <= ?",
-                [$longitudine, $latitudine, $radius * 1000]  // Converti km in metri
-            );
+                // Trova gli appartamenti nel raggio specificato
+                $apartments = Apartment::whereRaw(
+                    "ST_Distance_Sphere(POINT(Longitudine, Latitudine), POINT(?, ?)) <= ?",
+                    [$longitudine, $latitudine, $radius * 1000]  // Converti km in metri
+                )->get();
 
-            // Aggiungi filtri opzionali
-            if ($request->has('Stanze')) {
-                $query->where('Stanze', $request->input('Stanze'));
+                return view('admin.apartments.results', compact('apartments'));
+            } else {
+                return response()->json(['message' => 'Impossibile trovare la latitudine e longitudine per questo indirizzo.'], 400);
             }
-            if ($request->has('Letti')) {
-                $query->where('Letti', $request->input('Letti'));
-            }
-            if ($request->has('Bagni')) {
-                $query->where('Bagni', $request->input('Bagni'));
-            }
-            if ($request->has('Prezzo')) {
-                $query->where('Prezzo', '<=', $request->input('Prezzo'));
-            }
-            if ($request->has('services')) {
-                $services = $request->input('services');
-                // Assumendo che tu abbia una relazione con un modello Service
-                $query->whereHas('services', function ($q) use ($services) {
-                    $q->whereIn('id', $services);
-                });
-            }
-
-            // Esegui la query per ottenere gli appartamenti
-            $apartments = $query->get();
-
-            // Restituisci i risultati in formato JSON
-            return response()->json([
-                'success' => true,
-                'apartments' => $apartments,
-            ], 200);
         } else {
-            return response()->json(['success' => false, 'message' => 'Impossibile trovare la latitudine e longitudine per questo indirizzo.'], 400);
-        }
-    } else {
-        return response()->json(['success' => false, 'message' => 'Errore nella richiesta all\'API di TomTom.'], 500);
-    }
-}
+            return response()->json(['message' => 'Errore nella richiesta all\'API di TomTom.'], 500);
+        };
 
+    // Aggiungi filtri opzionali
+    if ($request->has('Stanze')) {
+        $query->where('Stanze', $request->input('Stanze'));
+    }
+    if ($request->has('Letti')) {
+        $query->where('Letti', $request->input('Letti'));
+    }
+    if ($request->has('Bagni')) {
+        $query->where('Bagni', $request->input('Bagni'));
+    }
+    if ($request->has('Prezzo')) {
+        $query->where('Prezzo', '<=', $request->input('Prezzo'));
+    }
+    if ($request->has('services')) {
+        $services = $request->input('services');
+        // Assumendo che tu abbia una relazione con un modello Service
+        $query->whereHas('services', function ($q) use ($services) {
+            $q->whereIn('id', $services);
+        });
+    }
+
+    $apartments = $query->get();
+
+    return response()->json($apartments);
+}
 
 }
