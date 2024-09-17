@@ -12,11 +12,6 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <!-- Left Side Of Navbar -->
             <ul class="navbar-nav me-auto">
-                <li>
-                    <a class="nav-link" href="{{ route('apartments.index') }}" aria-current="page">
-                        Lista appartamenti
-                    </a>
-                </li>
                 @auth
                 <li>
                     <a class="nav-link" href="{{ route('myapp') }}" aria-current="page">
