@@ -17,9 +17,10 @@
                         Lista appartamenti
                     </a>
                 </li>
+                @auth
                 <li>
-                    <a class="nav-link" href="{{ route('apartments.create') }}" aria-current="page">
-                        Aggiungi appartamento
+                    <a class="nav-link" href="{{ route('myapp') }}" aria-current="page">
+                        I miei appartamenti
                     </a>
                 </li>
                 <li>
@@ -28,6 +29,7 @@
                         <i class="fa-solid fa-trash-can"></i>
                     </a>
                 </li>
+                @endauth
             </ul>
 
             <!-- Right Side Of Navbar -->
