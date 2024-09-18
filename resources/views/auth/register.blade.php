@@ -101,6 +101,11 @@
                             </div>
                         </div>
                     </form>
+                    <div class="mt-3">
+                        <a class="btn btn-link" href="{{ route('login') }}">
+                            {{ __('Hai già un account? Accedi') }}
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>

@@ -19,6 +19,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('vue-apartments', function () {
+    return redirect()->to(config('app.url') . 'apartments');
+});
+
+
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
@@ -36,7 +41,6 @@ Route::post('/apartment-sponsorship', [ApartmentSponsorshipController::class, 's
 Route::post('/apartments/{apartmentId}/view', [ViewController::class, 'storeView']);
 
 Route::post('/messages', [MessageController::class, 'store']);
-
 
 
 
