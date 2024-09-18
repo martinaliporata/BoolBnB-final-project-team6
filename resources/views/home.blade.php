@@ -5,7 +5,22 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header">{{ __('Dashboard') }}</div>
+                    <div class="card-header d-flex justify-content-between">
+                        <div class="d-flex">
+                            <img src="https://hips.hearstapps.com/hmg-prod/images/ville-di-lusso-piu-belle-del-mondo-oggetto-editoriale-800x600-1528889075.jpg" alt="" class="w-25 me-2">
+                            <div class="mx-1">
+                                <h3>
+                                    {{ Auth::user()->name }} {{ Auth::user()->surname }}    
+                                </h3>
+                                <h5>{{ Auth::user()->birth_date }}</h5>
+                                <h5>{{ Auth::user()->email }}</h5>
+                            </div>    
+                        </div>
+                        <div>
+                            <a href="{{ route('user.messages') }}" class="btn btn-info btn-sm m-1">Visualizza Messaggi Ricevuti</a>
+                            <a href="{{ route('apartments.create') }}" class="my-1 btn btn-success btn-sm">Aggiungi appartamento</a>
+                        </div>
+                    </div>
 
                     <div class="card-body">
                         @if (session('status'))
@@ -14,8 +29,7 @@
                             </div>
                         @endif
 
-                        {{ Auth::user()->name }} {{ Auth::user()->surname }}
-                        <div class="row">
+                        <div class="d-flex">
                             <div class="col-12">
                                 <h1>
                                     Pagina utente
@@ -40,8 +54,8 @@
                                                 <br> Metri quadrati: {{ $apartment->Metri_quadrati }} mq
                                                 <br> Indirizzo: {{ $apartment->Indirizzo }}
                                             </p>
-                                            <a href="{{ route('apartments.show', $apartment) }}" class="btn btn-primary">Mostra dettagli</a>
-                                            <a href="{{ route('apartments.edit', $apartment) }}" class="btn btn-warning">Modifica</a>
+                                            <a href="{{ route('apartments.show', $apartment) }}" class="btn btn-primary btn-sm my-1">Mostra dettagli</a>
+                                            <a href="{{ route('apartments.edit', $apartment) }}" class="btn btn-warning btn-sm my-1">Modifica</a>
                                             <form action="{{ route('apartments.destroy', $apartment) }}" method="POST" class="d-inline-block delete-form mx-2" data_apartment_id="{{ $apartment->id }}" data_apartment_name="{{ $apartment->Nome }}">
                                                 @method('DELETE')
                                                 @csrf
