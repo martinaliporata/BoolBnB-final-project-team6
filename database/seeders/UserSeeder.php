@@ -15,7 +15,7 @@ class UserSeeder extends Seeder
     {
         User::create([
             'name' => 'Admin',
-            'surname' => 'Admin',
+            'surname' => '',
             'birth_date' => '1980-01-01', // Sostituisci con la data di nascita desiderata
             'email' => 'admin@gmail.com',
             'email_verified_at' => now(),

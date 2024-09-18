@@ -170,7 +170,7 @@ class ApartmentController extends Controller
 
         $apartment->delete();
 
-        return redirect()->route('apartments.index');
+        return redirect()->route('myapp')->with('message_trash', 'Appartamento spostato nel cestino.');
     }
 
     /**
@@ -188,10 +188,12 @@ class ApartmentController extends Controller
 
     public function restore(string $id)
     {
-        $apartments = Apartment::onlyTrashed()->findOrFail($id);
-        $apartments->restore();
+        $apartment = Apartment::onlyTrashed()->findOrFail($id);
+        $apartment->restore();
 
-        return redirect()->route('apartments.index');
+        // Reindirizza alla lista degli appartamenti in Vue (sostituisci con l'URL corretto)
+        return redirect()->away('/admin/apartments/delete')
+            ->with('message_restore', 'Appartamento ripristinato con successo.');
     }
 
     // Empty the trash
@@ -200,7 +202,8 @@ class ApartmentController extends Controller
         $apartments = Apartment::onlyTrashed()->findOrFail($id);
         $apartments->services()->detach();
         $apartments->forceDelete();
-        return redirect()->route('apartments.index');
+        return redirect()->away('/admin/apartments/delete')
+            ->with('message_delete', 'Appartamento eliminato definitivamente.');
     }
 
     // public function search(Request $request)
@@ -255,28 +258,28 @@ class ApartmentController extends Controller
     // }
 
     public function search(Request $request)
-{
-    // Validazione dei parametri di ricerca
-    $request->validate([
-        'indirizzo' => 'required|string',
-        'radius' => 'nullable|integer|min:1|max:20',  // Il raggio può essere omesso e deve essere tra 1 e 20 km
-        'Stanze' => 'nullable|integer',
-        'Letti' => 'nullable|integer',
-        'Bagni' => 'nullable|integer',
-        'Prezzo' => 'nullable|numeric',
-        'services' => 'nullable|array',
-    ]);
-
-    // Ottieni l'indirizzo e usa TomTom per trovare latitudine e longitudine
-    $indirizzo = $request->input('indirizzo');
-    $radius = $request->input('radius', 20);  // Usa 20 km come valore predefinito
-
-    // Effettua una richiesta all'API di TomTom per ottenere latitudine e longitudine
-    $response = Http::withOptions(['verify' => false])
-        ->get('https://api.tomtom.com/search/2/geocode/'.urlencode($indirizzo).'.json', [
-            'key' => env('TOMTOM_API_KEY'),
-            'limit' => 1
+    {
+        // Validazione dei parametri di ricerca
+        $request->validate([
+            'indirizzo' => 'required|string',
+            'radius' => 'nullable|integer|min:1|max:20',  // Il raggio può essere omesso e deve essere tra 1 e 20 km
+            'Stanze' => 'nullable|integer',
+            'Letti' => 'nullable|integer',
+            'Bagni' => 'nullable|integer',
+            'Prezzo' => 'nullable|numeric',
+            'services' => 'nullable|array',
         ]);
+
+        // Ottieni l'indirizzo e usa TomTom per trovare latitudine e longitudine
+        $indirizzo = $request->input('indirizzo');
+        $radius = $request->input('radius', 20);  // Usa 20 km come valore predefinito
+
+        // Effettua una richiesta all'API di TomTom per ottenere latitudine e longitudine
+        $response = Http::withOptions(['verify' => false])
+            ->get('https://api.tomtom.com/search/2/geocode/' . urlencode($indirizzo) . '.json', [
+                'key' => env('TOMTOM_API_KEY'),
+                'limit' => 1
+            ]);
 
         if ($response->successful()) {
             $data = $response->json();
@@ -299,30 +302,29 @@ class ApartmentController extends Controller
             return response()->json(['message' => 'Errore nella richiesta all\'API di TomTom.'], 500);
         };
 
-    // Aggiungi filtri opzionali
-    if ($request->has('Stanze')) {
-        $query->where('Stanze', $request->input('Stanze'));
-    }
-    if ($request->has('Letti')) {
-        $query->where('Letti', $request->input('Letti'));
-    }
-    if ($request->has('Bagni')) {
-        $query->where('Bagni', $request->input('Bagni'));
-    }
-    if ($request->has('Prezzo')) {
-        $query->where('Prezzo', '<=', $request->input('Prezzo'));
-    }
-    if ($request->has('services')) {
-        $services = $request->input('services');
-        // Assumendo che tu abbia una relazione con un modello Service
-        $query->whereHas('services', function ($q) use ($services) {
-            $q->whereIn('id', $services);
-        });
-    }
+        // Aggiungi filtri opzionali
+        if ($request->has('Stanze')) {
+            $query->where('Stanze', $request->input('Stanze'));
+        }
+        if ($request->has('Letti')) {
+            $query->where('Letti', $request->input('Letti'));
+        }
+        if ($request->has('Bagni')) {
+            $query->where('Bagni', $request->input('Bagni'));
+        }
+        if ($request->has('Prezzo')) {
+            $query->where('Prezzo', '<=', $request->input('Prezzo'));
+        }
+        if ($request->has('services')) {
+            $services = $request->input('services');
+            // Assumendo che tu abbia una relazione con un modello Service
+            $query->whereHas('services', function ($q) use ($services) {
+                $q->whereIn('id', $services);
+            });
+        }
 
-    $apartments = $query->get();
+        $apartments = $query->get();
 
-    return response()->json($apartments);
-}
-
+        return response()->json($apartments);
+    }
 }

@@ -27,7 +27,7 @@
                         </li>
                     </ul>
                     <div class="card-footer">
-                        <a href="{{ route('apartments.index') }}" class="btn btn-primary">Torna alla lista appartamenti</a>
+                        <a href="{{ url('api/vue-apartments') }}" class="btn btn-primary">Torna alla lista appartamenti</a>
 
                     </div>
                 </div>

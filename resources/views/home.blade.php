@@ -3,6 +3,11 @@
 @section('content')
     <div class="container">
         <div class="row justify-content-center">
+            @if (session('message_trash'))
+                <div class="alert alert-success">
+                    {{ session('message_trash') }}
+                </div>
+            @endif
             <div class="col-md-8">
                 <div class="card">
                     <div class="card-header d-flex justify-content-between">
@@ -13,7 +18,7 @@
                                     {{ Auth::user()->name }} {{ Auth::user()->surname }}    
                                 </h3>
                                 <h5>{{ Auth::user()->birth_date }}</h5>
-                                <h5>{{ Auth::user()->email }}</h5>
+                                <a href="mailto:{{ Auth::user()->email }}">{{ Auth::user()->email }}</a>
                             </div>    
                         </div>
                         <div>
