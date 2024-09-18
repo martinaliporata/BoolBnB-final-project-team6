@@ -47,7 +47,8 @@ Route::middleware('auth')->name('admin.')->prefix('admin')->group(
 );
 Route::put('/apartments/{apartment}', [ApartmentController::class, 'update'])->name('apartments.update');
 
-Route::resource('/apartments', ApartmentController::class);
+Route::resource('/apartments', ApartmentController::class)->except(['index']);
+
 
 // Rotta per mostrare il form di creazione di una sponsorship
 Route::get('/apartments/sponsorships/create', [ApartmentSponsorshipController::class, 'create'])
@@ -61,6 +62,5 @@ Route::post('/apartments/sponsorships', [ApartmentSponsorshipController::class, 
 Route::get('/apartment/{id}/views', [ViewController::class, 'getViewData']);
 
 Route::get('/search', [ApartmentController::class, 'search'])->name('search');
-
 
 

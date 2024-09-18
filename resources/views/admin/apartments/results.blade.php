@@ -25,12 +25,6 @@
                             <br> Indirizzo: {{ $apartment->Indirizzo }}
                         </p>
                         <a href="{{ route('apartments.show', $apartment) }}" class="btn btn-primary">Mostra dettagli</a>
-                        <a href="{{ route('apartments.edit', $apartment) }}" class="btn btn-warning">Modifica</a>
-                        <form action="{{ route('apartments.destroy', $apartment) }}" method="POST" class="d-inline-block delete-form mx-2" data_apartment_id="{{ $apartment->id }}" data_apartment_name="{{ $apartment->Nome }}">
-                            @method('DELETE')
-                            @csrf
-                            <button type="submit" class="btn btn-danger btn-sm">Elimina</button>
-                        </form>
                     </div>
                 </div>
             </article>
