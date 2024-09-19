@@ -2,7 +2,6 @@
 
 use App\Http\Controllers\api\ApartmentController;
 use App\Http\Controllers\api\ApartmentSponsorshipController;
-use App\Http\Controllers\api\ConsumerController;
 use App\Http\Controllers\Api\MessageController;
 use App\Http\Controllers\api\ViewController;
 use Illuminate\Http\Request;
@@ -29,9 +28,9 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 
-
-Route::resource('/apartments', ApartmentController::class);
 Route::get('/apartments/search', [ApartmentController::class, 'search']);
+Route::resource('/apartments', ApartmentController::class);
+
 
 
 
