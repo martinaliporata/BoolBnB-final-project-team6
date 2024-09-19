@@ -14,6 +14,7 @@ use App\Models\View;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class ApartmentController extends Controller
 {
@@ -25,7 +26,6 @@ class ApartmentController extends Controller
         $apartments = Apartment::all();
         return view('admin.apartments.index', compact('apartments'));
     }
-
 
     public function __construct()
     {
@@ -61,9 +61,16 @@ class ApartmentController extends Controller
             'Metri_quadrati' => 'required|integer|min:10',
             'Prezzo' => 'required|integer|min:20',
             'Indirizzo' => 'required|string|max:255',
-            'Img' => 'required|string|max:255',
+            'Img' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'services' => 'array|exists:services,id',
         ]);
+
+        if ($request->hasFile('Img')) {
+            $file = $request->file('Img');
+            $filename = time() . '.' . $file->getClientOriginalExtension();
+            $file->storeAs('public/images_apartment', $filename);
+            $imgPath = $filename;
+        }
 
         // Ottieni l'indirizzo dal form
         $indirizzo = $request->input('Indirizzo');
@@ -95,7 +102,7 @@ class ApartmentController extends Controller
                     'Indirizzo' => $indirizzo,
                     'Latitudine' => $latitudine,
                     'Longitudine' => $longitudine,
-                    'Img' => $request->input('Img'),
+                    'Img' => $imgPath,
                     'Visibilità' => $request->input('Visibilità'),
                 ]);
 
@@ -149,9 +156,34 @@ class ApartmentController extends Controller
     public function update(UpdateApartmentRequest $request, Apartment $apartment)
     {
         // $data = $request->except('_token');
-        $data = $request->validated();
-        $apartment->update($data);
+        $data = $request->validated([
+            'Nome' => 'required|string|max:25',
+            'Stanze' => 'required|integer|min:1',
+            'Letti' => 'required|integer|min:1',
+            'Bagni' => 'required|integer|min:1',
+            'Metri_quadrati' => 'required|integer|min:10',
+            'Prezzo' => 'required|integer|min:20',
+            'Indirizzo' => 'required|string|max:255',
+            'Img' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'services' => 'array|exists:services,id',
+        ]);
 
+        // Associazione immagini
+        if ($request->hasFile('Img')) {
+            // Rimuovi la vecchia immagine se esiste
+            if ($apartment->Img) {
+                Storage::delete('public/images_apartment' . $apartment->Img);
+            }
+
+            // Carica la nuova immagine
+            $file = $request->file('Img');
+            $filename = time() . '.' . $file->getClientOriginalExtension();
+            $file->storeAs('public/images_apartment', $filename);
+            $imgPath = $filename;
+
+            // Aggiorna il percorso dell'immagine nel database
+            $apartment->Img = $filename;
+        }
         // Associazione dei servizi
         if ($request->has('services')) {
             $apartment->services()->sync($request->services);
@@ -159,6 +191,18 @@ class ApartmentController extends Controller
             // Se nessun servizio è selezionato, deseleziona tutti i servizi
             $apartment->services()->sync([]);
         }
+
+        $apartment->update([
+            'user_id' => Auth::user()->id,
+            'Nome' => $request->input('Nome'),
+            'Stanze' => $request->input('Stanze'),
+            'Letti' => $request->input('Letti'),
+            'Bagni' => $request->input('Bagni'),
+            'Metri_quadrati' => $request->input('Metri_quadrati'),
+            'Prezzo' => $request->input('Prezzo'),
+            'Img' => $imgPath,
+            'Visibilità' => $request->input('Visibilità'),
+        ]);
 
         return redirect()->route('apartments.show', $apartment)->with('update_apartment_message', $apartment->nome . "È stato aggiornato con successo!!");
     }

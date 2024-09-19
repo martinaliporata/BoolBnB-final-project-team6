@@ -31,7 +31,7 @@ class UpdateApartmentRequest extends FormRequest
             'Prezzo'=>'required|numeric|min:10',
             'Latitudine' => 'numeric',
             'Longitudine' => 'numeric',
-            'Img' => 'required|URL'
+            'Img' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048'
         ];
     }
 }

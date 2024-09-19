@@ -20,7 +20,7 @@
                             </h2>
                         </div>
                         <div class="card-body">
-                            <img class="w-50 mb-2 mx-5" src="{{ $apartment->Img }}" alt="">
+                            <img class="w-50 mb-2 mx-5" src="{{ filter_var($apartment->Img, FILTER_VALIDATE_URL) ? $apartment->Img : asset('storage/images_apartment/' . $apartment->Img) }}" alt="{{ $apartment->Img }}">
                             <h5 class="card-text text-center">
                                 {{ $apartment->Indirizzo }}
                             </h5>

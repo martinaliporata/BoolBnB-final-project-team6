@@ -19,7 +19,7 @@
             </div>
         @endif
         <div class="col-12">
-            <form action="{{ route('apartments.update', $apartment) }}" method="POST" id="edit_form">
+            <form action="{{ route('apartments.update', $apartment) }}" method="POST" id="edit_form" enctype="multipart/form-data">
                 @method('PUT')
                 @csrf
                 <div class="input-group-m container mb-5 w-50">
@@ -49,13 +49,14 @@
                     <input class="form-control me-2 searchbar border-radius" id="autocomplete" name="Indirizzo" type="search" placeholder="Inserisci un indirizzo" aria-label="Search" name="Indirizzo" value="{{ old('Indirizzo', $apartment->Indirizzo) }}">
 
 
-                    <label for="Prezzo"><strong>Prezzo</strong></label>
-                    <input min="10" type="number" class="form-control mb-2" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" placeholder="Prezzo" id="Prezzo" name="Prezzo" value="{{ old('Prezzo', $apartment->Prezzo) }}">
+                    <label class="mt-2" for="Prezzo"><strong>Prezzo</strong></label>
+                    <input min="10" type="number" class="form-control mb-2" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" placeholder="Prezzo" id="Prezzo" name="Prezzo" value="{{ $apartment->Prezzo, old('Prezzo') }}">
 
+                    <label for="Img"><strong>Immagine</strong></label>
+                    <br>
+                    <input type="file" name="Img" id="Img">
 
-                    <label for="Img"><strong>Img</strong></label>
-                    <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" placeholder="Img" id="Img" name="Img" value="{{ old('Img', $apartment->Img) }}">
-
+                    <br><br>
 
                     <label for="service_id"><strong>Servizi</strong></label>
                     <div class="btn-group flex-wrap" role="group" aria-label="Basic checkbox toggle button group">
