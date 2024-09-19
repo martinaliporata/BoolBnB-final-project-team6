@@ -44,7 +44,7 @@
                                 <h3 class="mb-1">{{ Auth::user()->name }} {{ Auth::user()->surname }}</h3>
                                 <h5 class="mb-2">{{ Auth::user()->birth_date }}</h5>
                                 <a href="mailto:{{ Auth::user()->email }}" class="d-block mb-2">{{ Auth::user()->email }}</a>
-                                <a href="{{ route('messages.index') }}" class="btn btn-info btn-sm me-2">Visualizza Messaggi Ricevuti</a>
+                                <a href="{{ route('admin.messages.index') }}" class="btn btn-info btn-sm me-2">Visualizza Messaggi Ricevuti</a>
                                 <a href="{{ route('apartments.create') }}" class="btn btn-success btn-sm">Aggiungi appartamento</a>
                             </div>
                         </div>

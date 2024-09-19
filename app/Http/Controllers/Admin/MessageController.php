@@ -38,16 +38,12 @@ class MessageController extends Controller
     // Trova il messaggio tramite l'id
     $message = Message::findOrFail($id);
 
-    // Controlla se l'appartamento associato al messaggio appartiene all'utente autenticato
-    if ($message->apartment->user_id != Auth::id()) {
-        abort(403, 'Accesso negato');
-    }
 
     // Elimina il messaggio
     $message->delete();
 
     // Reindirizza l'utente alla pagina dei messaggi con un messaggio di successo
-    return redirect()->route('messages.index')->with('success', 'Messaggio eliminato con successo');
+    return redirect()->route('admin.messages.index')->with('success', 'Messaggio eliminato con successo');
 }
 
 

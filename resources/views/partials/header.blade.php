@@ -25,7 +25,7 @@
                     </a>
                 </li>
                 <li>
-                    <a class="nav-link active mx-2" href="{{ route('messages.index') }}"
+                    <a class="nav-link active mx-2" href="{{ route('admin.messages.index') }}"
                         aria-current="page">
                         <i class="fa-solid fa-envelope w-50"></i>
                     </a>
