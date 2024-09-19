@@ -27,7 +27,7 @@ Route::get('/', function(){
 })->name('Index');
 
 Route::get('/myapp', [GuestHomeController::class, 'myapp'])->name('myapp');
-Route::put('/updateProfile', [GuestHomeController::class, 'updateProfile'])->name('profile.update');
+Route::put('/update', [GuestHomeController::class, 'update'])->name('profile.update');
 
 
 Route::get('/home', [GuestHomeController::class, 'index'])->name('home');

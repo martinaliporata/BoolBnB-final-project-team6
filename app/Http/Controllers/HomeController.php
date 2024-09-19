@@ -5,6 +5,7 @@ use App\Models\Apartment;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Storage;
 
 class HomeController extends Controller
@@ -40,34 +41,38 @@ class HomeController extends Controller
         return view('UserAppartments', compact('apartments'));
     }
 
-        public function updateProfile(Request $request)
-    {
-        $user = Auth::user();
+       // ProfileController.php
 
-        // Validazione del file immagine
-        $request->validate([
-            'profile_photo' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
-        ]);
+        public function update(Request $request)
+        {
+            $request->validate([
+                'profile_photo' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            ]);
 
-        // Se è stata caricata una nuova immagine
-        if ($request->hasFile('profile_photo')) {
-            // Rimuovi la vecchia immagine se esiste
-            if ($user->profile_photo) {
-                Storage::delete('public/profile_photos/' . $user->profile_photo);
+            $user = Auth::user();
+
+            try {
+                if ($request->hasFile('profile_photo')) {
+                    // Rimuovi la vecchia foto se esiste
+                    if ($user->profile_photo) {
+                        Storage::delete('public/profile_photos/' . $user->profile_photo);
+                    }
+
+                    // Carica la nuova foto
+                    $file = $request->file('profile_photo');
+                    $filename = time() . '.' . $file->getClientOriginalExtension();
+                    $file->storeAs('public/profile_photos', $filename);
+
+                    // Aggiorna il percorso della foto nel database
+                    $user->profile_photo = $filename;
+                    $user->save();
+                }
+            } catch (\Exception $e) {
+                Log::error('Error updating profile photo: ' . $e->getMessage());
+                return redirect()->back()->with('error', 'Si è verificato un errore durante l\'aggiornamento della foto del profilo.');
             }
 
-            // Salva la nuova immagine
-            $fileName = time() . '.' . $request->profile_photo->extension();
-            $request->profile_photo->storeAs('public/profile_photos', $fileName);
-
-            // Aggiorna l'utente con il nuovo nome dell'immagine
-            $user->profile_photo = $fileName;
+            return redirect()->back()->with('status', 'Foto del profilo aggiornata con successo!');
         }
-
-
-        $user->save();
-
-        return redirect()->back()->with('success', 'Profilo aggiornato con successo');
-    }
 
 }
