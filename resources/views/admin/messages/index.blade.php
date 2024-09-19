@@ -18,15 +18,19 @@
                                         <th>Email Mittente</th>
                                         <th>Testo Messaggio</th>
                                         <th>Data Ricezione</th>
+                                        <th>Azioni</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @foreach ($messages as $message)
-                                        <tr>
+                                        <tr class="{{ $message->is_read ? '' : 'table-warning' }}">
                                             <td>{{ $message->apartment->Nome }}</td>
                                             <td>{{ $message->Mail }}</td>
-                                            <td>{{ $message->Testo }}</td>
+                                            <td>{{ Str::limit($message->Testo, 50) }}</td>
                                             <td>{{ $message->created_at->format('d/m/Y H:i') }}</td>
+                                            <td>
+                                                <a href="{{ route('messages.show', $message->id) }}" class="btn btn-primary">Leggi</a>
+                                            </td>
                                         </tr>
                                     @endforeach
                                 </tbody>
