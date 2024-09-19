@@ -61,7 +61,7 @@
     box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2); /* Ombra della barra di ricerca */
 }
 
-/* Impostazioni per la barra di ricerca */
+/* foto profilo */
 .searchbar {
     width: 100%; /* Occupa il 100% della larghezza */
     border-radius: 2rem;
@@ -88,4 +88,32 @@
 
 .my-text-cap {
     text-transform: capitalize;
+}
+
+/* Stile per la lightbox */
+.lightbox {
+    display: none; /* Nascondi di default */
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+}
+
+.lightbox img {
+    max-width: 90%;
+    max-height: 80%;
+}
+
+.lightbox .close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 2rem;
+    color: white;
+    cursor: pointer;
 }
