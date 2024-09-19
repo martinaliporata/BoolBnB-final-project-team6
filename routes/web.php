@@ -6,8 +6,6 @@ use App\Http\Controllers\Admin\AdminController as AdminController;
 use App\Http\Controllers\admin\ViewController;
 use App\Http\Controllers\Admin\MessageController;
 use App\Http\Controllers\HomeController as GuestHomeController;
-use App\Models\Apartment;
-use GuzzleHttp\Middleware;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
