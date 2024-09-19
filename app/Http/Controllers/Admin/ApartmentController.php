@@ -26,6 +26,7 @@ class ApartmentController extends Controller
         return view('admin.apartments.index', compact('apartments'));
     }
 
+
     public function __construct()
     {
         // Applica il middleware auth a tutte le azioni del controller

@@ -24,16 +24,18 @@
                         I miei appartamenti
                     </a>
                 </li>
-                <li class="nav-item position-relative">
-                    <a class="nav-link active" href="{{ route('admin.messages.index') }}" aria-current="page">
-                        <i class="fa-solid fa-envelope w-50"></i>
+                <li class="nav-item">
+                    <a class="nav-link active mx-2 position-relative" href="{{ route('admin.messages.index') }}">
+                        <i class="fa-solid fa-envelope"></i>
                         @if(isset($unreadMessagesCount) && $unreadMessagesCount > 0)
                             <span class="position-absolute top-2 start-100 translate-middle badge rounded-pill bg-danger" style="font-size: 0.6rem;">
                                 {{ $unreadMessagesCount }}
+                                <span class="visually-hidden">unread messages</span>
                             </span>
                         @endif
                     </a>
                 </li>
+
 
 
                 <li>
