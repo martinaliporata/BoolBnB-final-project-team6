@@ -22,10 +22,6 @@ class MessageController extends Controller
         // Trova il messaggio tramite l'id
         $message = Message::findOrFail($id);
 
-        // Controlla se il messaggio appartiene all'utente autenticato (opzionale)
-        if ($message->user_id != Auth::id()) {
-            abort(403, 'Accesso negato');
-        }
 
         // Segna il messaggio come letto se non è già stato letto
         if (!$message->is_read) {
