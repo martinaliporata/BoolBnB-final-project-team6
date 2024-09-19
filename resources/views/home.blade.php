@@ -15,14 +15,14 @@
                             <img src="https://hips.hearstapps.com/hmg-prod/images/ville-di-lusso-piu-belle-del-mondo-oggetto-editoriale-800x600-1528889075.jpg" alt="" class="w-25 me-2">
                             <div class="mx-1">
                                 <h3>
-                                    {{ Auth::user()->name }} {{ Auth::user()->surname }}    
+                                    {{ Auth::user()->name }} {{ Auth::user()->surname }}
                                 </h3>
                                 <h5>{{ Auth::user()->birth_date }}</h5>
                                 <a href="mailto:{{ Auth::user()->email }}">{{ Auth::user()->email }}</a>
-                            </div>    
+                            </div>
                         </div>
                         <div>
-                            <a href="{{ route('user.messages') }}" class="btn btn-info btn-sm m-1">Visualizza Messaggi Ricevuti</a>
+                            <a href="{{ route('messages.index') }}" class="btn btn-info btn-sm m-1">Visualizza Messaggi Ricevuti</a>
                             <a href="{{ route('apartments.create') }}" class="my-1 btn btn-success btn-sm">Aggiungi appartamento</a>
                         </div>
                     </div>

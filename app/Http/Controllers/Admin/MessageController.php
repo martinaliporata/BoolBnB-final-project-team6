@@ -11,13 +11,44 @@ class MessageController extends Controller
 {
     public function index()
     {
-        // Recupera tutti gli appartamenti dell'utente autenticato
-        $userApartments = Auth::user()->apartments()->pluck('id');
+        // Recupera tutti i messaggi dell'utente autenticato
+        $messages = Message::where('apartment_id', Auth::id())->get();
 
-        // Recupera i messaggi associati agli appartamenti dell'utente
-        $messages = Message::whereIn('apartment_id', $userApartments)->get();
-
-        // Passa i messaggi alla vista
         return view('admin.messages.index', compact('messages'));
     }
+
+    public function show($id)
+    {
+        // Trova il messaggio tramite l'id
+        $message = Message::findOrFail($id);
+
+
+        // Segna il messaggio come letto se non è già stato letto
+        if (!$message->is_read) {
+            $message->is_read = true;
+            $message->save();
+        }
+
+        // Restituisci la vista con i dettagli del messaggio
+        return view('admin.messages.show', compact('message'));
+    }
+
+    public function destroy($id)
+{
+    // Trova il messaggio tramite l'id
+    $message = Message::findOrFail($id);
+
+    // Controlla se l'appartamento associato al messaggio appartiene all'utente autenticato
+    if ($message->apartment->user_id != Auth::id()) {
+        abort(403, 'Accesso negato');
+    }
+
+    // Elimina il messaggio
+    $message->delete();
+
+    // Reindirizza l'utente alla pagina dei messaggi con un messaggio di successo
+    return redirect()->route('messages.index')->with('success', 'Messaggio eliminato con successo');
+}
+
+
 }

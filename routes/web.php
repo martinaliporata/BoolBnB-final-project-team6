@@ -62,6 +62,9 @@ Route::get('/apartment/{id}/views', [ViewController::class, 'getViewData']);
 
 Route::get('/search', [ApartmentController::class, 'search'])->name('search');
 
-Route::get('/user/messages', [MessageController::class, 'index'])->name('user.messages');
+Route::get('/messages', [MessageController::class, 'index'])->name('messages.index');
+Route::get('/messages/{id}', [MessageController::class, 'show'])->name('messages.show');
+Route::delete('/messages/{id}', [App\Http\Controllers\admin\MessageController::class, 'destroy'])->name('messages.destroy');
+
 
 
