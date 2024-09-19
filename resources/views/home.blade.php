@@ -44,7 +44,21 @@
                                 <h3 class="mb-1">{{ Auth::user()->name }} {{ Auth::user()->surname }}</h3>
                                 <h5 class="mb-2">{{ Auth::user()->birth_date }}</h5>
                                 <a href="mailto:{{ Auth::user()->email }}" class="d-block mb-2">{{ Auth::user()->email }}</a>
-                                <a href="{{ route('admin.messages.index') }}" class="btn btn-info btn-sm me-2">Visualizza Messaggi Ricevuti</a>
+                                <a href="{{ route('admin.messages.index') }}" class="btn btn-info btn-sm me-2">
+                                    Visualizza Messaggi Ricevuti
+                                    @if($unreadMessagesCount > 0)
+                                        <span class="badge bg-danger">{{ $unreadMessagesCount }}</span>
+                                    @endif
+                                </a>
+                                {{-- <a href="{{ route('admin.messages.index') }}" class="btn btn-info btn-sm me-2 position-relative">
+                                    Visualizza Messaggi Ricevuti
+                                    @if($unreadMessagesCount > 0)
+                                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" style="font-size: 0.75rem;">
+                                            {{ $unreadMessagesCount }}
+                                            <span class="visually-hidden">unread messages</span>
+                                        </span>
+                                    @endif
+                                </a> --}}
                                 <a href="{{ route('apartments.create') }}" class="btn btn-success btn-sm">Aggiungi appartamento</a>
                             </div>
                         </div>
@@ -92,7 +106,7 @@
         </div>
     </div>
 
-    {{-- Lightbox --}}
+
     <div id="lightbox" class="lightbox">
         <span class="close" id="lightbox-close">&times;</span>
         <img id="lightbox-image" src="" alt="Enlarged Profile Photo">

@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Models\Apartment;
-
+use App\Models\Message;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
@@ -25,12 +25,22 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
+    // HomeController.php
+
+
+
     public function index()
     {
-         // Filtra gli appartamenti creati dall'utente autenticato
+        // Recupera gli appartamenti associati all'utente autenticato
         $apartments = Apartment::where('user_id', Auth::id())->get();
 
-        return view('home', compact('apartments'));
+        // Conta i messaggi non letti degli appartamenti dell'utente
+        $unreadMessagesCount = Message::whereHas('apartment', function ($query) {
+            $query->where('user_id', Auth::id());
+        })->where('is_read', false)->count();
+
+        // Passa i dati alla vista
+        return view('home', compact('apartments', 'unreadMessagesCount'));
     }
 
     public function myapp()

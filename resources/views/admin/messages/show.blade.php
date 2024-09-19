@@ -14,7 +14,7 @@
                         <p>{{ $message->Testo }}</p>
                         <p><strong>Data Ricezione:</strong> {{ $message->created_at->format('d/m/Y H:i') }}</p>
 
-                        <a href="{{ route('messages.index') }}" class="btn btn-secondary">Torna ai Messaggi</a>
+                        <a href="{{ route('admin.messages.index') }}" class="btn btn-secondary">Torna ai Messaggi</a>
                     </div>
                 </div>
             </div>

@@ -3,16 +3,21 @@
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Apartment;
 use App\Models\Message;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 
 class MessageController extends Controller
 {
+
     public function index()
     {
-        // Recupera tutti i messaggi dell'utente autenticato
-        $messages = Message::where('apartment_id', Auth::id())->get();
+        // Recupera gli appartamenti dell'utente autenticato
+        $apartments = Apartment::where('user_id', Auth::id())->pluck('id');
+
+        // Recupera tutti i messaggi associati agli appartamenti dell'utente
+        $messages = Message::whereIn('apartment_id', $apartments)->get();
 
         return view('admin.messages.index', compact('messages'));
     }
