@@ -30,7 +30,7 @@ class MessageController extends Controller
         }
 
         // Restituisci la vista con i dettagli del messaggio
-        return view('messages.show', compact('message'));
+        return view('admin.messages.show', compact('message'));
     }
 
     public function destroy($id)
@@ -47,7 +47,7 @@ class MessageController extends Controller
     $message->delete();
 
     // Reindirizza l'utente alla pagina dei messaggi con un messaggio di successo
-    return redirect()->route('admin.messages.index')->with('success', 'Messaggio eliminato con successo');
+    return redirect()->route('messages.index')->with('success', 'Messaggio eliminato con successo');
 }
 
 
