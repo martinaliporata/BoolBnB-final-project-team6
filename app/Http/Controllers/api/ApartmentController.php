@@ -7,7 +7,9 @@ use App\Models\Apartment;
 use App\Models\Sponsorship;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Log;
 
 class ApartmentController extends Controller
 {
@@ -189,11 +191,13 @@ class ApartmentController extends Controller
             return response()->json(['message' => 'Apartment not found'], 404);
         }
     }
+
     public function search(Request $request)
     {
         // Validazione dei parametri di ricerca
-        $request->validate([
-            'indirizzo' => 'required|string',
+        $validated = $request->validate([
+            'Latitudine' => 'required|numeric',
+            'Longitudine' => 'required|numeric',
             'radius' => 'nullable|integer|min:1|max:20',  // Il raggio può essere omesso e deve essere tra 1 e 20 km
             'Stanze' => 'nullable|integer',
             'Letti' => 'nullable|integer',
@@ -202,77 +206,73 @@ class ApartmentController extends Controller
             'services' => 'nullable|array',
         ]);
 
-        // Ottieni l'indirizzo e usa TomTom per trovare latitudine e longitudine
-        $indirizzo = $request->input('indirizzo');
-        $radius = $request->input('radius', 20);  // Usa 20 km come valore predefinito
+        // Abilita log delle query
+        DB::enableQueryLog();
 
-        // Effettua una richiesta all'API di TomTom per ottenere latitudine e longitudine
-        $response = Http::withOptions(['verify' => false])
-            ->get('https://api.tomtom.com/search/2/geocode/'.urlencode($indirizzo).'.json', [
-                'key' => env('TOMTOM_API_KEY'),
+        // Ottieni latitudine e longitudine
+        $latitudine = $validated['Latitudine'];
+        $longitudine = $validated['Longitudine'];
 
-            ]);
+        Log::info('Coordinate ottenute', [
+            'Latitudine' => $latitudine,
+            'Longitudine' => $longitudine
+        ]);
 
-        if ($response->successful()) {
-            $data = $response->json();
+        $radius = $validated['radius'] ?? 20; // km
+        $raggioInMetri = $radius * 1000; // Converti in metri
+        Log::info('Raggio di ricerca', ['radius' => $radius, 'raggioInMetri' => $raggioInMetri]);
 
-            if (!empty($data['results'])) {
-                $latitudine = $data['results'][0]['position']['lat'];
-                $longitudine = $data['results'][0]['position']['lon'];
+        $query = Apartment::query();
 
-                // Verifica che latitudine e longitudine siano valide
-                if (!isset($latitudine, $longitudine)) {
-                    return response()->json(['message' => 'Latitudine o longitudine non valide.'], 400);
-                }
+        // Calcolo della distanza utilizzando ST_Distance_Sphere
+        $query->selectRaw(
+            "*, ST_Distance_Sphere(POINT(Longitudine, Latitudine), POINT(?, ?)) AS distance",
+            [$longitudine, $latitudine]
+        )
+        ->whereRaw(
+            "ST_Distance_Sphere(POINT(Longitudine, Latitudine), POINT(?, ?)) <= ?",
+            [$longitudine, $latitudine, $raggioInMetri]
+        );
 
-                // Crea una query per trovare gli appartamenti nel raggio specificato
-                $query = Apartment::query();
+        // // Applica filtri aggiuntivi se presenti
+        // if (isset($validated['Stanze'])) {
+        //     $query->where('Stanze', $validated['Stanze']);
+        // }
+        // if (isset($validated['Letti'])) {
+        //     $query->where('Letti', $validated['Letti']);
+        // }
+        // if (isset($validated['Bagni'])) {
+        //     $query->where('Bagni', $validated['Bagni']);
+        // }
+        // if (isset($validated['Prezzo'])) {
+        //     $query->where('Prezzo', '<=', $validated['Prezzo']);
+        // }
+        // if (isset($validated['services'])) {
+        //     $services = $validated['services'];
+        //     $query->whereHas('services', function ($q) use ($services) {
+        //         $q->whereIn('id', $services);
+        //     });
+        // }
 
-                // Aggiungi filtri opzionali
-                if ($request->has('Stanze')) {
-                    $query->where('Stanze', $request->input('Stanze'));
-                }
-                if ($request->has('Letti')) {
-                    $query->where('Letti', $request->input('Letti'));
-                }
-                if ($request->has('Bagni')) {
-                    $query->where('Bagni', $request->input('Bagni'));
-                }
-                if ($request->has('Prezzo')) {
-                    $query->where('Prezzo', '<=', $request->input('Prezzo'));
-                }
-                if ($request->has('services')) {
-                    $services = $request->input('services');
-                    $query->whereHas('services', function ($q) use ($services) {
-                        $q->whereIn('id', $services);
-                    });
-                }
+        // Log dei filtri applicati
+        Log::info('Filtri applicati', $validated);
 
-                // Utilizza la formula Haversine per trovare gli appartamenti nel raggio specificato
-                $haversine = "(6371 * acos(cos(radians($latitudine))
-                               * cos(radians(Latitudine))
-                               * cos(radians(Longitudine) - radians($longitudine))
-                               + sin(radians($latitudine))
-                               * sin(radians(Latitudine))))";
+        // Esegui la query e ottieni i risultati, ordinando per distanza
+        $apartments = $query->orderBy('distance')->get();
 
-                // Filtra gli appartamenti in base al raggio (in km)
-                $apartments = $query->havingRaw("$haversine <= ?", [$radius])
-                                    ->get();
+        Log::info('Query Eseguita', DB::getQueryLog());
+        Log::info('Risultati trovati', ['count' => $apartments->count()]);
 
-                return response()->json($apartments);
-            } else {
-                return response()->json(['message' => 'Impossibile trovare la latitudine e longitudine per questo indirizzo.'], 400);
-            }
-        } else {
-            return response()->json(['message' => 'Errore nella richiesta all\'API di TomTom.'], 500);
-        }
+        return response()->json($apartments);
     }
-
-
-
-
-
 }
+
+
+
+
+
+
+
 
 
 

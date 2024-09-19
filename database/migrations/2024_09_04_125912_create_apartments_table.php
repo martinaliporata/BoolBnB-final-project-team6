@@ -20,8 +20,8 @@ return new class extends Migration
             $table->smallInteger("Metri_quadrati");
             $table->mediumInteger("Prezzo");
             $table->text("Indirizzo");
-            $table->decimal("Latitudine", 10,6);
-            $table->decimal("Longitudine", 10,6);
+            $table->double("Latitudine");
+            $table->double("Longitudine");
             $table->text("Img");
             $table->boolean("Visibilità")->nullable();
             $table->timestamps();
