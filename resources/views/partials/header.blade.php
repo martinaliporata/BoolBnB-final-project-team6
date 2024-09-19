@@ -25,6 +25,12 @@
                     </a>
                 </li>
                 <li>
+                    <a class="nav-link active mx-2" href="{{ route('messages.index') }}"
+                        aria-current="page">
+                        <i class="fa-solid fa-envelope w-50"></i>
+                    </a>
+                </li>
+                <li>
                     <a class="nav-link active mx-2" href="{{ route('admin.apartments.deleteindex') }}"
                         aria-current="page">
                         <i class="fa-solid fa-trash-can"></i>
