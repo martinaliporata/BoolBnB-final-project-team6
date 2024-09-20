@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
     <div class="container">
         <img class="p-2" src="{{ Vite::asset('resources/images/favicon.svg') }}" alt="logo_BoolBnB" width="40px">
-        <a class="navbar-brand" href="{{ url('/') }}">
+        <a class="navbar-brand" href="{{ url('api/vue-apartments') }}">
             {{ config('app.name', 'Laravel') }}
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
@@ -12,11 +12,6 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <!-- Left Side Of Navbar -->
             <ul class="navbar-nav me-auto">
-                <li>
-                    <a class="nav-link" href="{{ url('api/vue-apartments') }}" aria-current="page">
-                        Lista appartamenti
-                    </a>
-                </li>
 
                 @auth
                 <li>
