@@ -29,7 +29,7 @@ class StoreApartmentRequest extends FormRequest
             'Indirizzo' => 'required|max:255|min:3',
             'Latitudine' => 'required|numeric',
             'Longitudine' => 'required|numeric',
-            'Img' => 'required|URL'
+            'Img' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048'
         ];
     }
 }

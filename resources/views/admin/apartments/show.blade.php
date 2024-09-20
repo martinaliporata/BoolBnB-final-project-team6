@@ -4,7 +4,7 @@
         <div class="row justify-content-center">
             <article class="col-12 p-3 text-center">
                 <div class="card p-3" style="w-100">
-                    <img class="card-img-top w-100" src="{{ $apartment->Img }}" alt="">
+                    <img class="card-img-top w-100" src="{{ filter_var($apartment->Img, FILTER_VALIDATE_URL) ? $apartment->Img : asset('storage/images_apartment/' . $apartment->Img) }}" alt="{{ $apartment->Img }}">
                     <div class="card-body">
                         <h5 class="card-title">
                             <p class="card-text">Nome: {{$apartment->Nome}}</p>

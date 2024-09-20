@@ -11,7 +11,7 @@
             @foreach($apartments as $apartment)
             <article class="col-4 text-center">
                 <div class="card shadow">
-                    <img class="w-100 h-100 object-fit-cover" src="{{ $apartment->Img }}" alt="">
+                    <img class="w-100 h-100 object-fit-cover" src="{{ filter_var($apartment->Img, FILTER_VALIDATE_URL) ? $apartment->Img : asset('storage/images_apartment/' . $apartment->Img) }}" alt="{{ $apartment->Img }}">
                     <div class="card-body">
                         <h5 class="card-title">
                             {{ $apartment->Nome }}
