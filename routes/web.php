@@ -30,7 +30,7 @@ Route::get('/myapp', [GuestHomeController::class, 'myapp'])->name('myapp');
 Route::put('/update', [GuestHomeController::class, 'update'])->name('profile.update');
 
 
-Route::get('/home', [GuestHomeController::class, 'index'])->name('home');
+Route::get('/profile', [GuestHomeController::class, 'index'])->name('profile');
 Route::middleware('auth')->name('admin.')->prefix('admin')->group(
     function () {
         Route::get('apartments/delete', [ApartmentController::class, 'deletedIndex'])->name('apartments.deleteindex');
