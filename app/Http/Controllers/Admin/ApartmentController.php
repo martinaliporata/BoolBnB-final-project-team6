@@ -65,11 +65,12 @@ class ApartmentController extends Controller
             'services' => 'array|exists:services,id',
         ]);
 
+        $imgPath = null;
         if ($request->hasFile('Img')) {
             $file = $request->file('Img');
             $filename = time() . '.' . $file->getClientOriginalExtension();
             $file->storeAs('public/images_apartment', $filename);
-            $imgPath = $filename;
+            $imgPath = 'images_apartment/' . $filename; // Salva il percorso relativo
         }
 
         // Ottieni l'indirizzo dal form
@@ -155,35 +156,26 @@ class ApartmentController extends Controller
      */
     public function update(UpdateApartmentRequest $request, Apartment $apartment)
     {
-        // $data = $request->except('_token');
-        $data = $request->validated([
-            'Nome' => 'required|string|max:25',
-            'Stanze' => 'required|integer|min:1',
-            'Letti' => 'required|integer|min:1',
-            'Bagni' => 'required|integer|min:1',
-            'Metri_quadrati' => 'required|integer|min:10',
-            'Prezzo' => 'required|integer|min:20',
-            'Indirizzo' => 'required|string|max:255',
-            'Img' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            'services' => 'array|exists:services,id',
-        ]);
+        // Ottenere i dati validati
+        $data = $request->validated();
 
-        // Associazione immagini
+        // Gestione dell'immagine
         if ($request->hasFile('Img')) {
             // Rimuovi la vecchia immagine se esiste
             if ($apartment->Img) {
-                Storage::delete('public/images_apartment' . $apartment->Img);
+                Storage::delete('public/images_apartment/' . $apartment->Img);
             }
 
             // Carica la nuova immagine
             $file = $request->file('Img');
             $filename = time() . '.' . $file->getClientOriginalExtension();
             $file->storeAs('public/images_apartment', $filename);
-            $imgPath = $filename;
-
-            // Aggiorna il percorso dell'immagine nel database
-            $apartment->Img = $filename;
+            $data['Img'] = $filename; // Aggiorna il percorso dell'immagine nei dati
         }
+
+        // Aggiorna l'appartamento con i nuovi dati
+        $apartment->update($data);
+
         // Associazione dei servizi
         if ($request->has('services')) {
             $apartment->services()->sync($request->services);
@@ -192,19 +184,9 @@ class ApartmentController extends Controller
             $apartment->services()->sync([]);
         }
 
-        $apartment->update([
-            'user_id' => Auth::user()->id,
-            'Nome' => $request->input('Nome'),
-            'Stanze' => $request->input('Stanze'),
-            'Letti' => $request->input('Letti'),
-            'Bagni' => $request->input('Bagni'),
-            'Metri_quadrati' => $request->input('Metri_quadrati'),
-            'Prezzo' => $request->input('Prezzo'),
-            'Img' => $imgPath,
-            'Visibilità' => $request->input('Visibilità'),
-        ]);
-
-        return redirect()->route('apartments.show', $apartment)->with('update_apartment_message', $apartment->nome . "È stato aggiornato con successo!!");
+        // Reindirizza alla pagina di dettaglio dell'appartamento con un messaggio di successo
+        return redirect()->route('apartments.show', $apartment)
+            ->with('update_apartment_message', $apartment->Nome . " è stato aggiornato con successo!");
     }
 
     /**

@@ -84,15 +84,19 @@ class ApartmentController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id){
+    public function show(string $id)
+    {
+        $apartment = Apartment::with("views", "sponsorships", "services", "messages")->findOrFail($id);
 
-        $apartment = Apartment::with( "views", "sponsorships", "services","messages" )->findOrFail($id);
+        // Aggiungi l'URL completo per l'immagine
+        $apartment->Img = $apartment->Img ? url('http://127.0.0.1:8000/storage/images_apartment/' . $apartment->Img) : null;
 
         return response()->json([
             'success' => true,
             'results' => $apartment
         ]);
     }
+
 
     /**
      * Update the specified resource in storage.
@@ -235,36 +239,41 @@ class ApartmentController extends Controller
         );
 
         // Applica filtri aggiuntivi se presenti
-        if (isset($validated['Stanze'])) {
+        if ($validated['Stanze'] ?? false) {
             $query->where('Stanze', '>=', $validated['Stanze']);
         }
-        if (isset($validated['Letti'])) {
+        if ($validated['Letti'] ?? false) {
             $query->where('Letti', '>=', $validated['Letti']);
         }
-        if (isset($validated['Bagni'])) {
+        if ($validated['Bagni'] ?? false) {
             $query->where('Bagni', '>=', $validated['Bagni']);
         }
-        if (isset($validated['Prezzo'])) {
+        if ($validated['Prezzo'] ?? false) {
             $query->where('Prezzo', '<=', $validated['Prezzo']);
         }
-        if (isset($validated['services'])) {
+        if ($validated['services'] ?? false) {
             $services = $validated['services'];
             $query->whereHas('services', function ($q) use ($services) {
                 $q->whereIn('id', $services);
             });
         }
 
-        // Log dei filtri applicati
-        Log::info('Filtri applicati', $validated);
-
         // Esegui la query con i servizi caricati, ordinando per distanza
         $apartments = $query->with('services')->orderBy('distance')->get();
 
+        // Aggiungi l'URL completo dell'immagine agli appartamenti
+        $apartments->each(function ($apartment) {
+            $apartment->Img = $apartment->Img ? asset('http://127.0.0.1:8000/storage/images_apartment/' . $apartment->Img) : null;
+        });
+
+        // Log dei risultati
         Log::info('Query Eseguita', DB::getQueryLog());
         Log::info('Risultati trovati', ['count' => $apartments->count()]);
 
+        // Restituisci il risultato in formato JSON
         return response()->json($apartments);
     }
+
 
 }
 
