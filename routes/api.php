@@ -19,7 +19,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('vue-apartments', function () {
-    return redirect()->to(config('app.url') . 'apartments');
+    return redirect()->to(config('app.url') . '/');
 });
 
 

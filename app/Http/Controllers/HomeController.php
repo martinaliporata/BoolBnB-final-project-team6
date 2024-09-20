@@ -40,7 +40,7 @@ class HomeController extends Controller
         })->where('is_read', false)->count();
 
         // Passa i dati alla vista
-        return view('home', compact('apartments', 'unreadMessagesCount'));
+        return view('profile', compact('apartments', 'unreadMessagesCount'));
     }
 
     public function myapp()
