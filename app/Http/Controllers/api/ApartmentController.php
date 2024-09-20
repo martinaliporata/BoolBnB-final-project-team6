@@ -234,25 +234,25 @@ class ApartmentController extends Controller
             [$longitudine, $latitudine, $raggioInMetri]
         );
 
-        // // Applica filtri aggiuntivi se presenti
-        // if (isset($validated['Stanze'])) {
-        //     $query->where('Stanze', $validated['Stanze']);
-        // }
-        // if (isset($validated['Letti'])) {
-        //     $query->where('Letti', $validated['Letti']);
-        // }
-        // if (isset($validated['Bagni'])) {
-        //     $query->where('Bagni', $validated['Bagni']);
-        // }
-        // if (isset($validated['Prezzo'])) {
-        //     $query->where('Prezzo', '<=', $validated['Prezzo']);
-        // }
-        // if (isset($validated['services'])) {
-        //     $services = $validated['services'];
-        //     $query->whereHas('services', function ($q) use ($services) {
-        //         $q->whereIn('id', $services);
-        //     });
-        // }
+        // Applica filtri aggiuntivi se presenti
+        if (isset($validated['Stanze'])) {
+            $query->where('Stanze', '>=', $validated['Stanze']);
+        }
+        if (isset($validated['Letti'])) {
+            $query->where('Letti', '>=', $validated['Letti']);
+        }
+        if (isset($validated['Bagni'])) {
+            $query->where('Bagni', '>=', $validated['Bagni']);
+        }
+        if (isset($validated['Prezzo'])) {
+            $query->where('Prezzo', '<=', $validated['Prezzo']);
+        }
+        if (isset($validated['services'])) {
+            $services = $validated['services'];
+            $query->whereHas('services', function ($q) use ($services) {
+                $q->whereIn('id', $services);
+            });
+        }
 
         // Log dei filtri applicati
         Log::info('Filtri applicati', $validated);
