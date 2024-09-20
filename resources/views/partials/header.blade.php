@@ -53,7 +53,7 @@
                             {{ Auth::user()->name }} {{ Auth::user()->surname }}
                         </a>
                         <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="/profile">
+                            <a class="dropdown-item" href="/home">
                                 Pagina utente
                             </a>
                             <a class="dropdown-item" href="{{ route('logout') }}"
