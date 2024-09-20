@@ -40,8 +40,6 @@ class ServiceSeeder extends Seeder
                 'Reception 24 ore su 24'
         ];
 
-
-
         foreach ($servicesData as $service) {
             $newService = New Service();
             $newService -> nome = $service;
