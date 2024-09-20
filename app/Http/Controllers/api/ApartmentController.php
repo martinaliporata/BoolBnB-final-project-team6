@@ -257,14 +257,15 @@ class ApartmentController extends Controller
         // Log dei filtri applicati
         Log::info('Filtri applicati', $validated);
 
-        // Esegui la query e ottieni i risultati, ordinando per distanza
-        $apartments = $query->orderBy('distance')->get();
+        // Esegui la query con i servizi caricati, ordinando per distanza
+        $apartments = $query->with('services')->orderBy('distance')->get();
 
         Log::info('Query Eseguita', DB::getQueryLog());
         Log::info('Risultati trovati', ['count' => $apartments->count()]);
 
         return response()->json($apartments);
     }
+
 }
 
 
