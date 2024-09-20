@@ -1,8 +1,8 @@
 <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
     <div class="container">
-        <img class="p-2" src="{{ Vite::asset('resources/images/favicon.svg') }}" alt="logo_BoolBnB" width="40px">
+
         <a class="navbar-brand" href="{{ url('api/vue-apartments') }}">
-            {{ config('app.name', 'Laravel') }}
+            <img class="p-2 logo-bnb" src="{{ Vite::asset('resources/images/logo.png') }}" alt="logo_BoolBnB" width="40px">
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
