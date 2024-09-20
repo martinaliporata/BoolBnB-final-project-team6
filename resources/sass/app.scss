@@ -149,3 +149,81 @@
     background-color: #9C191B;
     color: white;
 }
+.custom-btn{
+    background-color: #AC1C1E;
+}
+.color-title-card{
+    color:#9C191B ;
+}
+#profile-photo-container {
+    position: relative;
+    width: 150px; /* dimensione del contenitore */
+    height: 150px;
+    border-radius: 50%;
+    background-color: #F6CACC;
+    overflow: hidden;
+    border: 5px solid #AC1C1E; /* bordo dell'immagine */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#profile-photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%; /* rende l'immagine rotonda */
+}
+
+#change-photo-btn {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 2rem;
+    color: rgba(0, 0, 0,0.2);
+    display: none;
+    cursor: pointer;
+}
+
+#profile-photo-container:hover #change-photo-btn {
+    display: block;
+    background-color: rgba(255, 255, 255, 0.7);
+    border-radius: 50%;
+    padding: 10px;
+}
+
+#profile-photo-container:hover #profile-photo {
+    opacity: 0.7;
+}
+
+#photo-form {
+    margin-top: 10px;
+}
+
+.header-table{
+   th{
+    background-color:#E66063  !important;
+    color: white;
+   }
+}
+.body-table{
+    td{
+        background-color:#F6CACC ;
+        align-items: center;
+        justify-content: center;
+        color: #9C191B;
+    }
+}
+.header-card-table{
+    background-color: #BD1F21;
+    color: #F6CACC;
+}
+.tbody-color{
+    color: #9C191B;
+    align-items: center;
+    justify-content: center;
+}
+.message-body{
+    color: #9C191B;
+}

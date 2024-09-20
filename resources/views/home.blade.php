@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container">
+    <div class="general_background">
         <div class="row justify-content-center">
             @if (session('message_trash'))
                 <div class="alert alert-success">
@@ -9,15 +9,18 @@
                 </div>
             @endif
             <div class="col-md-8">
-                <div class="card">
-                    <div class="card-header">
+                <div class="card  mt-5 color-background-card">
+                    <div class="card-header color-header-card">
                         <div class="d-flex align-items-center">
                             {{-- Sezione Foto Profilo e Bottoni --}}
                             <div class="d-flex flex-column col-4 align-items-center me-4">
                                 @if(Auth::user()->profile_photo)
-                                    <img src="{{ asset('storage/profile_photos/' . Auth::user()->profile_photo) }}" alt="Profile Photo" class="w-25 border-5 rounded mb-2" id="profile-photo">
-                                    <button type="button" class="btn btn-warning btn-sm" id="change-photo-btn">Cambia foto</button>
-                                    <div class="form" id="photo-form" style="display: none; margin-top: 10px;">
+                                    <div id="profile-photo-container">
+                                        <img src="{{ asset('storage/profile_photos/' . Auth::user()->profile_photo) }}" alt="Profile Photo" id="profile-photo">
+                                        <i class="fa-regular fa-pen-to-square" id="change-photo-btn"></i>
+                                    </div>
+                                    <button type="button" class="btn btn-warning btn-sm mt-2" id="change-photo-btn">Cambia foto</button>
+                                    <div class="form" id="photo-form" style="display: none;">
                                         <form action="{{ route('profile.update') }}" method="POST" enctype="multipart/form-data">
                                             @csrf
                                             @method('PUT')
@@ -44,7 +47,7 @@
                                 <h3 class="mb-1">{{ Auth::user()->name }} {{ Auth::user()->surname }}</h3>
                                 <h5 class="mb-2">{{ Auth::user()->birth_date }}</h5>
                                 <a href="mailto:{{ Auth::user()->email }}" class="d-block mb-2">{{ Auth::user()->email }}</a>
-                                <a href="{{ route('admin.messages.index') }}" class="btn btn-info btn-sm me-2">
+                                <a href="{{ route('admin.messages.index') }}" class="btn  btn-sm me-2 button-color">
                                     Visualizza Messaggi Ricevuti
                                     @if($unreadMessagesCount > 0)
                                         <span class="badge bg-danger">{{ $unreadMessagesCount }}</span>
@@ -59,7 +62,7 @@
                                         </span>
                                     @endif
                                 </a> --}}
-                                <a href="{{ route('apartments.create') }}" class="btn btn-success btn-sm">Aggiungi appartamento</a>
+                                <a href="{{ route('apartments.create') }}" class="btn button-color  btn-sm">Aggiungi appartamento</a>
                             </div>
                         </div>
                     </div>
@@ -71,29 +74,31 @@
                             </div>
                         @endif
 
-                        <h1>Appartamenti</h1>
+                        <h1 class="color-title-card">Appartamenti</h1>
 
                         <div class="row">
                             @foreach ($apartments as $apartment)
                                 <article class="col-md-4 col-sm-6 mb-4">
-                                    <div class="card shadow-sm">
+                                    <div class="card shadow-sm background-color-minicard">
                                         <img class="card-img-top" src="{{ filter_var($apartment->Img, FILTER_VALIDATE_URL) ? $apartment->Img : asset('storage/images_apartment/' . $apartment->Img) }}" alt="{{ $apartment->Nome }}">
                                         <div class="card-body">
-                                            <h5 class="card-title">{{ $apartment->Nome }}</h5>
+                                            <h4 class="card-title">{{ $apartment->Nome }}</h4>
                                             <p class="card-text">
-                                                Stanze: {{ $apartment->Stanze }}<br>
-                                                Letti: {{ $apartment->Letti }}<br>
-                                                Bagni: {{ $apartment->Bagni }}<br>
-                                                Prezzo: &euro;{{ $apartment->Prezzo }}<br>
-                                                Metri quadrati: {{ $apartment->Metri_quadrati }} mq<br>
-                                                Indirizzo: {{ $apartment->Indirizzo }}
+                                                <ul class="list-unstyled">
+                                                    <li><strong>Stanze:</strong> {{ $apartment->Stanze }}</li>
+                                                    <li><strong>Letti:</strong> {{ $apartment->Letti }}</li>
+                                                    <li><strong>Bagni:</strong> {{ $apartment->Bagni }}</li>
+                                                    <li><strong>Prezzo:</strong> &euro;{{ $apartment->Prezzo }}</li>
+                                                    <li><strong>Metri quadrati:</strong> {{ $apartment->Metri_quadrati }} mq</li>
+                                                    <li><strong>Indirizzo:</strong> {{ $apartment->Indirizzo }}</li>
+                                                </ul>
                                             </p>
-                                            <a href="{{ route('apartments.show', $apartment) }}" class="btn btn-primary btn-sm me-2">Mostra dettagli</a>
-                                            <a href="{{ route('apartments.edit', $apartment) }}" class="btn btn-warning btn-sm me-2">Modifica</a>
+                                            <a href="{{ route('apartments.show', $apartment) }}" class="btn btn-primary btn-sm me-2"><i class="fa-regular fa-eye"></i></a>
+                                            <a href="{{ route('apartments.edit', $apartment) }}" class="btn btn-warning btn-sm me-2"><i class="fa-regular fa-pen-to-square"></i></a>
                                             <form action="{{ route('apartments.destroy', $apartment) }}" method="POST" class="d-inline-block delete-form" data_apartment_id="{{ $apartment->id }}" data_apartment_name="{{ $apartment->Nome }}">
                                                 @method('DELETE')
                                                 @csrf
-                                                <button type="submit" class="btn btn-danger btn-sm">Elimina</button>
+                                                <button type="submit" class="btn btn-danger btn-sm"><i class="fa-solid fa-x"></i></button>
                                             </form>
                                         </div>
                                     </div>
