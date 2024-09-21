@@ -416,7 +416,7 @@ class ApartmentSeeder extends Seeder
                 'Indirizzo' => 'Via Vittorio Veneto, Palermo, Italia',
                 'Latitudine' => 38.115687,
                 'Longitudine' => 13.361267,
-                'Img' => 'https://www.istockphoto.com/it/foto/interni-di-lusso-e-moderni-per-la-casa-con-mobili-di-design-poltrona-tavoli-pouf-e-gm1125386088-295823553?searchscope=image%2Cfilm',
+                'Img' => 'https://th.bing.com/th/id/R.5692d30c1db7dc013a266df79f4f5499?rik=z4JGhpg1jpA25w&pid=ImgRaw&r=0',
                 'Visibilità' => true,
             ],
             [
@@ -741,7 +741,7 @@ class ApartmentSeeder extends Seeder
                 'Indirizzo' => 'Via Garibaldi, Trapani, Italia',
                 'Latitudine' => 38.01778,
                 'Longitudine' => 12.536842,
-                'Img' => 'https://www.istockphoto.com/it/foto/gli-interni-moderni-gm860973750-142504665?searchscope=image%2Cfilm',
+                'Img' => 'https://a0.muscache.com/pictures/6b918aad-3492-469c-acbd-5bd093f83aea.jpg',
                 'Visibilità' => true,
             ],
             [
@@ -780,7 +780,7 @@ class ApartmentSeeder extends Seeder
                 'Indirizzo' => 'Via Firenze, Roma, Italia',
                 'Latitudine' => 41.902783,
                 'Longitudine' => 12.496366,
-                'Img' => 'https://www.istockphoto.com/it/foto/parete-verde-verticale-allinterno-di-un-soggiorno-rendering-3d-gm1372682637-441733204?searchscope=image%2Cfilm',
+                'Img' => 'https://th.bing.com/th/id/R.4f864f8484c755e29ab9692faa746409?rik=7zVtJTjeOcZ9Ew&pid=ImgRaw&r=0',
                 'Visibilità' => true,
             ],
             [
