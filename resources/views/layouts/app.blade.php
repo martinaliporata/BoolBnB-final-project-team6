@@ -28,7 +28,7 @@
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 </head>
-<body>
+<body class="container-webapp">
     <div id="app">
         @include('partials.header')
         <main class="container-webapp">
