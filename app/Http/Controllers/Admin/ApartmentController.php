@@ -65,12 +65,13 @@ class ApartmentController extends Controller
             'services' => 'array|exists:services,id',
         ]);
 
+        
         $imgPath = null;
         if ($request->hasFile('Img')) {
             $file = $request->file('Img');
-            $filename = time() . '.' . $file->getClientOriginalExtension();
+            $filename = 'public/images_apartment' . time() . '.' . $file->getClientOriginalExtension();
             $file->storeAs('public/images_apartment', $filename);
-            $imgPath = 'images_apartment/' . $filename; // Salva il percorso relativo
+            $imgPath = $filename; // Salva il percorso relativo
         }
 
         // Ottieni l'indirizzo dal form

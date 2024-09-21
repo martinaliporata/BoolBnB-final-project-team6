@@ -416,7 +416,8 @@ class ApartmentSeeder extends Seeder
                 'Indirizzo' => 'Via Vittorio Veneto, Palermo, Italia',
                 'Latitudine' => 38.115687,
                 'Longitudine' => 13.361267,
-                'Img' => 'https://media.istockphoto.com/id/859854016/it/foto/poster-mock-up-con-divano-giallo-cactus-e-telaio-in-legno.jpg?s=612x612&w=0&k=20&c=GCFxGR8bwYh9yEaUxbWf1isqUwdWBDK7_j6G7xPHMRk=',
+
+                'Img' => 'https://th.bing.com/th/id/R.5692d30c1db7dc013a266df79f4f5499?rik=z4JGhpg1jpA25w&pid=ImgRaw&r=0',
                 'Visibilità' => true,
             ],
             [
@@ -741,7 +742,7 @@ class ApartmentSeeder extends Seeder
                 'Indirizzo' => 'Via Garibaldi, Trapani, Italia',
                 'Latitudine' => 38.01778,
                 'Longitudine' => 12.536842,
-                'Img' => 'https://media.istockphoto.com/id/1295250844/it/foto/interni-eleganti-con-design-in-legno-commode-sgabello-fiori-secchi-in-vaso-decorazione-unica.jpg?s=612x612&w=0&k=20&c=ed4q5aCX04lfHsJFItqA9sx5FgLCqOCWhzhkowYhJKo=',
+                'Img' => 'https://a0.muscache.com/pictures/6b918aad-3492-469c-acbd-5bd093f83aea.jpg',
                 'Visibilità' => true,
             ],
             [
@@ -780,7 +781,7 @@ class ApartmentSeeder extends Seeder
                 'Indirizzo' => 'Via Firenze, Roma, Italia',
                 'Latitudine' => 41.902783,
                 'Longitudine' => 12.496366,
-                'Img' => 'https://media.istockphoto.com/id/901549778/it/foto/camera-da-letto-in-bianco-e-nero.jpg?s=612x612&w=0&k=20&c=pEmwKCUO_iwthDOVuYaaLxPuXI___5zeXz8-DEy8VB4=',
+                'Img' => 'https://th.bing.com/th/id/R.4f864f8484c755e29ab9692faa746409?rik=7zVtJTjeOcZ9Ew&pid=ImgRaw&r=0',
                 'Visibilità' => true,
             ],
             [
