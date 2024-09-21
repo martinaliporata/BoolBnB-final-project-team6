@@ -124,8 +124,10 @@
 }
 .general_background{
     background-color: #F6CACC;
+    height: max-content;
     width: 100vw;
 }
+
 .container-webapp{
     width: 100vw;
     height: 100vh;
@@ -249,3 +251,8 @@ h1 {
                  3px 3px 5px rgba(156, 25, 27, 0.5); /* Rosso scuro */
 }
 
+.my-img-size {
+    width: 100%; 
+    height: 350px;
+    object-fit: cover;
+}

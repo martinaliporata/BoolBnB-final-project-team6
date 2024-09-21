@@ -1,16 +1,13 @@
 @extends('layouts.app')
 @section('content')
-    <div class="general_background">
+    <div class="general_background h-100">
         <div class="row justify-content-center">
             <!-- Manteniamo il formato card -->
-            <div class="col-7 mt-5 text-start">
-                <div class="card shadow background-color-minicard" style="width: 100%;">
+            <div class="col-7 my-5 text-start">
+                <div class="card shadow background-color-minicard w-100">
                     <!-- Immagine ridimensionata con classi per larghezza -->
                     <a href="{{ filter_var($apartment->Img, FILTER_VALIDATE_URL) ? $apartment->Img : asset('storage/images_apartment/' . $apartment->Img) }}" data-fancybox="gallery" data-caption="{{ $apartment->Nome }}">
-                        <img class="card-img-top"
-                             src="{{ filter_var($apartment->Img, FILTER_VALIDATE_URL) ? $apartment->Img : asset('storage/images_apartment/' . $apartment->Img) }}"
-                             alt="{{ $apartment->Img }}"
-                             style="width: 100%; height: auto; max-height: 350px; object-fit: cover;">
+                        <img class="card-img-top my-img-size" src="{{ filter_var($apartment->Img, FILTER_VALIDATE_URL) ? $apartment->Img : asset('storage/images_apartment/' . $apartment->Img) }}" alt="{{ $apartment->Img }}">
                     </a>
 
 
