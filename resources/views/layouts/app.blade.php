@@ -26,7 +26,7 @@
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
 
     <!-- Favicon -->
-    <link rel="shortcut icon" href="{{ Vite::asset('resources/images/favicon.svg') }}" type="image/x-icon">
+    <link rel="shortcut icon" href="{{ Vite::asset('resources/images/favicon.png') }}" type="image/x-icon">
 
     <!--CDN Chart.js-->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css">
