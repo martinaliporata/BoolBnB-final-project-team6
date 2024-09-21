@@ -416,7 +416,7 @@ class ApartmentSeeder extends Seeder
                 'Indirizzo' => 'Via Vittorio Veneto, Palermo, Italia',
                 'Latitudine' => 38.115687,
                 'Longitudine' => 13.361267,
-                'Img' => 'https://www.istockphoto.com/it/foto/interni-di-lusso-e-moderni-per-la-casa-con-mobili-di-design-poltrona-tavoli-pouf-e-gm1125386088-295823553?searchscope=image%2Cfilm',
+                'Img' => 'https://media.istockphoto.com/id/859854016/it/foto/poster-mock-up-con-divano-giallo-cactus-e-telaio-in-legno.jpg?s=612x612&w=0&k=20&c=GCFxGR8bwYh9yEaUxbWf1isqUwdWBDK7_j6G7xPHMRk=',
                 'Visibilità' => true,
             ],
             [
@@ -741,7 +741,7 @@ class ApartmentSeeder extends Seeder
                 'Indirizzo' => 'Via Garibaldi, Trapani, Italia',
                 'Latitudine' => 38.01778,
                 'Longitudine' => 12.536842,
-                'Img' => 'https://www.istockphoto.com/it/foto/gli-interni-moderni-gm860973750-142504665?searchscope=image%2Cfilm',
+                'Img' => 'https://media.istockphoto.com/id/1295250844/it/foto/interni-eleganti-con-design-in-legno-commode-sgabello-fiori-secchi-in-vaso-decorazione-unica.jpg?s=612x612&w=0&k=20&c=ed4q5aCX04lfHsJFItqA9sx5FgLCqOCWhzhkowYhJKo=',
                 'Visibilità' => true,
             ],
             [
@@ -780,7 +780,7 @@ class ApartmentSeeder extends Seeder
                 'Indirizzo' => 'Via Firenze, Roma, Italia',
                 'Latitudine' => 41.902783,
                 'Longitudine' => 12.496366,
-                'Img' => 'https://www.istockphoto.com/it/foto/parete-verde-verticale-allinterno-di-un-soggiorno-rendering-3d-gm1372682637-441733204?searchscope=image%2Cfilm',
+                'Img' => 'https://media.istockphoto.com/id/901549778/it/foto/camera-da-letto-in-bianco-e-nero.jpg?s=612x612&w=0&k=20&c=pEmwKCUO_iwthDOVuYaaLxPuXI___5zeXz8-DEy8VB4=',
                 'Visibilità' => true,
             ],
             [
