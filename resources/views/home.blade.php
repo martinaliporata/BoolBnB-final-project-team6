@@ -9,7 +9,7 @@
                 </div>
             @endif
             <div class="col-md-8">
-                <div class="card  mt-5 color-background-card">
+                <div class="card  my-5 color-background-card">
                     <div class="card-header color-header-card">
                         <div class="d-flex align-items-center">
                             {{-- Sezione Foto Profilo e Bottoni --}}
