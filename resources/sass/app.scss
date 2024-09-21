@@ -227,3 +227,21 @@
 .message-body{
     color: #9C191B;
 }
+
+.card-show-ap{
+    background-color: #F1A7A9;
+    color: #9C191B;
+}
+.color-services{
+    color:#9C191B ;
+    border-color: #9C191B;
+}
+.background-create-edit{
+    background-color: #F6CACC;
+}
+.btn-check:checked + .color-services {
+    background-color: #9C191B !important;  /* Sfondo bordeaux */
+    color: white !important;  /* Testo bianco */
+    border-color: #9C191B !important; /* Colore bordo bordeaux */
+}
+

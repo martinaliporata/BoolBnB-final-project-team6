@@ -3,9 +3,9 @@
 @yield('page-title', '')
 
 @section('content')
-    <div class="container">
+    <div class="background-create-edit">
         <div class="row justify-content-center">
-            <h1 class="mb-3 text-center">
+            <h1 class="mb-3 text-center mt-2">
                 Modifica {{ $apartment->Nome }}
             </h1>
         </div>
@@ -22,7 +22,7 @@
             <form action="{{ route('apartments.update', $apartment) }}" method="POST" id="edit_form" enctype="multipart/form-data">
                 @method('PUT')
                 @csrf
-                <div class="input-group-m container mb-5 w-50">
+                <div class="input-group-m container mb-5 w-50 message-body">
 
                     <label for="nome"><strong>Nome</strong></label>
                     <input type="text" class="form-control mb-2" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" placeholder="nome" id="nome" name="Nome" value="{{ old('Nome', $apartment->Nome) }}">
@@ -64,10 +64,10 @@
                             <input name="services[]" type="checkbox" class="btn-check"
                                 id="service-check-{{ $service->id }}" autocomplete="off" value="{{ $service->id }}"
                                 @if (in_array($service->id, old('services', $apartment->services->pluck('id')->toArray()))) checked @endif>
-                            <label class="btn btn-outline-primary m-1 btn-sm rounded mb-2"
+                                <label class="btn btn-outline-danger color-services m-1 btn-sm rounded mb-2"
                                 for="service-check-{{ $service->id }}">
-                                {{ $service->Nome }}
-                            </label>
+                                    {{ $service->Nome }}
+                                </label>
                         @endforeach
                     </div>
                 </div>
