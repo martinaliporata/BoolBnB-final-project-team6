@@ -5,9 +5,9 @@
 @section('content')
     <div class="background-create-edit">
         <div class="row justify-content-center">
-            <h1 class="mb-3 text-center mt-2">
+            <strong><h1 class="mb-3 text-center mt-2 message-body">
                 Modifica {{ $apartment->Nome }}
-            </h1>
+            </h1></strong>
         </div>
         @if ($errors->any())
             <div class="alert alert-danger">
@@ -71,7 +71,7 @@
                         @endforeach
                     </div>
                 </div>
-                <div class="col-12 d-flex justify-content-center mb-3">
+                <div class="col-12 d-flex justify-content-center pb-3">
                     <div class="input">
                         <input class="btn btn-success" type="submit" value="Modifica">
                         <input class="btn btn-secondary" type="reset" value="Reset">

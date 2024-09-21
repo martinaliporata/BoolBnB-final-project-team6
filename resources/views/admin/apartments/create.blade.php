@@ -3,7 +3,7 @@
 @section('content')
 <div class="background-create-edit">
     <div class="row justify-content-center">
-        <h1 class="mb-3 text-center mt-2">
+        <h1 class="mb-3 text-center mt-2 message-body">
             Compila il Form
         </h1>
         @if ($errors->any())
@@ -53,7 +53,7 @@
                     <div class="btn-group flex-wrap" role="group" aria-label="Basic checkbox toggle button group">
                         @foreach ($services as $service)
                         <input name="services[]" type="checkbox" class="btn-check " id="service-check-{{$service->id}}" autocomplete="off" value="{{$service->id}}">
-                        <label class="btn btn-outline-primary color-services m-1 btn-sm rounded mb-2" for="service-check-{{$service->id}}">
+                        <label class="btn btn-outline-danger color-services m-1 btn-sm rounded mb-2" for="service-check-{{$service->id}}">
                             {{$service->Nome}}
                         </label>
                         @endforeach
