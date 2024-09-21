@@ -26,7 +26,7 @@ class ApartmentSeeder extends Seeder
                 'Indirizzo' => 'Via Giovanni Boccaccio, 12, Cologno Monzese, MI, Italia',
                 'Latitudine' => 45.46368,
                 'Longitudine' => 9.18841,
-                'Img' => "https://cf.bstatic.com/xdata/images/hotel/max1280x900/282045872.jpg?k=e4d2a3117babf76d7b185c308c40988b89bab8d720bfec0c8b77aa901032580e&o=&hp=1",
+                'Img' => "https://media.istockphoto.com/id/1357529933/it/foto/immagine-generata-digitalmente-di-un-soggiorno-completamente-arredato.jpg?s=612x612&w=0&k=20&c=KFDbMAwKoWcGU55-S2u6_BLF-7o-E4H1MBKnTnEI6Qc=",
                 'Visibilità' => true,
             ],
             [
@@ -52,7 +52,7 @@ class ApartmentSeeder extends Seeder
                 'Indirizzo' => 'Via Palagio degli Spini, Firenze, FI, Italia',
                 'Latitudine' => 43.769871,
                 'Longitudine' => 11.255576,
-                'Img' => "https://st3.idealista.it/news/archivie/styles/fullwidth_xl/public/2016-08/casa-ensueno-brasil12.jpg?VersionId=jgSaLtFxa1yzA8WKrjyvyrDKtTfVAivq&itok=zYIiAsr8",
+                'Img' => "https://media.istockphoto.com/id/1365110240/it/foto/interni-in-stile-boho-arancione-con-poltrona-com%C3%B2-e-decorazione-mockup-di-illustrazione-di.jpg?s=612x612&w=0&k=20&c=e_4kJPBbxPJ7Bb8_aDzc2vurt0VToLftTqz0eBW-LSY=",
                 'Visibilità' => true,
             ],
             [
@@ -65,7 +65,7 @@ class ApartmentSeeder extends Seeder
                 'Indirizzo' => 'Via Giuseppe Garibaldi, Torino, TO, Italia',
                 'Latitudine' => 45.070339,
                 'Longitudine' => 7.686864,
-                'Img' => "https://cf.bstatic.com/xdata/images/hotel/max1280x900/586882190.jpg?k=54c3827fe253828c127f9f8acf6e72e76deb78a46f1cf440e5ea2c77e3225288&o=&hp=1",
+                'Img' => "https://media.istockphoto.com/id/1372682941/it/foto/parete-verde-verticale-allinterno-di-un-soggiorno-rendering-3d.jpg?s=612x612&w=0&k=20&c=a9yRLlsku9cVrezOR4zez6XZX5E-HwTbRboxidu3oG8=",
                 'Visibilità' => true,
             ],
             [
@@ -78,7 +78,7 @@ class ApartmentSeeder extends Seeder
                 'Indirizzo' => 'Via Appia Antica, Roma RM, Italia',
                 'Latitudine' => 41.902784,
                 'Longitudine' => 12.496366,
-                'Img' => 'https://cf.bstatic.com/xdata/images/hotel/max1024x768/489162690.jpg?k=7e671114aa511d795b7b65b81c7351ee25ed50898891c5cb1f16a8996e08ba44&o=&hp=1',
+                'Img' => 'https://media.istockphoto.com/id/1335582229/it/video/timelapse-dellanimazione-di-rendering-3d-casa-interna-moderno-spazio-abitativo-aperto-con.jpg?s=640x640&k=20&c=4s2SXACCRklcZWQDfs8BhVw0uZYKN0Y4QchRIzQG4i0=',
                 'Visibilità' => true,
             ],
             [
@@ -91,7 +91,7 @@ class ApartmentSeeder extends Seeder
                 'Indirizzo' => 'Via XX Settembre, Genova, GE, Italia',
                 'Latitudine' => 44.407062,
                 'Longitudine' => 8.93399,
-                'Img' => "https://cf.bstatic.com/xdata/images/hotel/max1280x900/562717787.jpg?k=58d2a48b7e8f0e573bc607a544bc4e9188facf22d5f6d8409980de2b8f8f621a&o=&hp=1",
+                'Img' => "https://media.istockphoto.com/id/1426549872/it/foto/ampio-soggiorno-moderno-e-lussuoso-rendering-interno-in-3d.jpg?s=612x612&w=0&k=20&c=6fScIpsGypRY2siqsK34nI5TXunmQv_ER4N1slDyWFg=",
                 'Visibilità' => true,
             ],
             [
@@ -104,7 +104,7 @@ class ApartmentSeeder extends Seeder
                 'Indirizzo' => 'Via Santa Lucia, Venezia, VE, Italia',
                 'Latitudine' => 45.434046,
                 'Longitudine' => 12.338166,
-                'Img' => "https://c8.alamy.com/compit/2wacc5b/la-rovina-dell-edificio-abbandonato-sta-crollando-la-casa-residenziale-con-piu-appartamenti-e-in-pessime-condizioni-la-poverta-nella-zona-di-confine-e-evidente-2wacc5b.jpg",
+                'Img' => "https://media.istockphoto.com/id/1490571644/it/foto/immagine-generata-digitalmente-di-un-soggiorno-con-pavimento-in-legno.jpg?s=612x612&w=0&k=20&c=UvDcPMAu95wVeV7YQHRm8ADZx6OZEcI6RX4bQwVObiA=",
                 'Visibilità' => true,
             ],
             [
@@ -117,7 +117,7 @@ class ApartmentSeeder extends Seeder
                 'Indirizzo' => 'Via Maqueda, Palermo, PA, Italia',
                 'Latitudine' => 38.115697,
                 'Longitudine' => 13.361267,
-                'Img' => "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSmZB3HScZuVqpr-tdK1EMdyyTF5fNAKTmdNQ&s",
+                'Img' => "https://media.istockphoto.com/id/1425142559/it/foto/rendering-3d-di-un-interno-di-casa-moderno.jpg?s=612x612&w=0&k=20&c=EfaerKNDFbqknEAMKX_xh3AjN4UvibWz0PfOMgywM5M=",
                 'Visibilità' => true,
             ],
             [
@@ -130,7 +130,7 @@ class ApartmentSeeder extends Seeder
                 'Indirizzo' => 'Via Giuseppe Capruzzi, Bari BA, Italia',
                 'Latitudine' => 41.125594,
                 'Longitudine' => 16.866067,
-                'Img' => "https://cf.bstatic.com/xdata/images/hotel/max1280x900/279242261.jpg?k=adc7fae710c77d0d15cb7c8451d8ac088b7e51104db0d895c0a09c63ded20ba6&o=&hp=1",
+                'Img' => "https://media.istockphoto.com/id/1366921254/it/foto/interior-design-di-soggiorno-colorato-concetto-interno-di-design-memphis-rendering-3d.jpg?s=612x612&w=0&k=20&c=V5SjExBJhuN5BDtKcfkhmu3GsIqYTSPxnI-lhendLp0=",
                 'Visibilità' => true,
             ],
             [
@@ -143,7 +143,7 @@ class ApartmentSeeder extends Seeder
                 'Indirizzo' => 'Via del Pestrino, Verona, Italia',
                 'Latitudine' => 45.438759,
                 'Longitudine' => 10.99162,
-                'Img' => "https://www.grazia.it/content/uploads/2017/10/cover-piante-appartamento-mobile-800x600.jpg",
+                'Img' => "https://media.istockphoto.com/id/1353803182/it/foto/elegante-composizione-di-interni-del-soggiorno-con-cornice-mock-up-panca-in-legno-cuscino.jpg?s=612x612&w=0&k=20&c=M_jd2tNKYhnJ8chSJE9iSoguKmGbSAGM9Xt674Vs-e8=",
                 'Visibilità' => true,
             ],
             [
@@ -156,7 +156,7 @@ class ApartmentSeeder extends Seeder
                 'Indirizzo' => 'Via della Libertà, Palermo, Italia',
                 'Latitudine' => 38.12445,
                 'Longitudine' => 13.35732,
-                'Img' => 'https://example.com/img1.jpg',
+                'Img' => 'https://media.istockphoto.com/id/1316508805/it/foto/rendering-3d-degli-interni-moderni-del-soggiorno.jpg?s=612x612&w=0&k=20&c=AlsXo9jM2_8Czy12Ep3e16K6LJLpKnJvNwOBYAfxrf0=',
                 'Visibilità' => true,
             ],
             [
@@ -169,7 +169,7 @@ class ApartmentSeeder extends Seeder
                 'Indirizzo' => 'Via del Corso, Roma, Italia',
                 'Latitudine' => 41.902783,
                 'Longitudine' => 12.496366,
-                'Img' => 'https://example.com/img2.jpg',
+                'Img' => 'https://media.istockphoto.com/id/2159352095/it/foto/interno-del-soggiorno-vecchio-stile-con-una-libreria-in-3d.jpg?s=612x612&w=0&k=20&c=se9WGmWvqF-ZrcKt2iNNR_uAijZTXTCXRR4mLDsoVtk=',
                 'Visibilità' => true,
             ],
             [
@@ -182,7 +182,7 @@ class ApartmentSeeder extends Seeder
                 'Indirizzo' => 'Via Torino, Milano, Italia',
                 'Latitudine' => 45.464211,
                 'Longitudine' => 9.191383,
-                'Img' => 'https://example.com/img3.jpg',
+                'Img' => 'https://media.istockphoto.com/id/1977204395/it/foto/immagine-digitale-di-un-bellissimo-soggiorno-di-una-grande-casa-in-stile-vittoriano.jpg?s=612x612&w=0&k=20&c=eVMyVU23ShS4QczICvvdyDEpqZNqENrHgGB32skn7JQ=',
                 'Visibilità' => true,
             ],
             [
@@ -195,7 +195,7 @@ class ApartmentSeeder extends Seeder
                 'Indirizzo' => 'Via Garibaldi, Venezia, Italia',
                 'Latitudine' => 45.437191,
                 'Longitudine' => 12.334589,
-                'Img' => 'https://example.com/img4.jpg',
+                'Img' => 'https://media.istockphoto.com/id/1423139126/it/foto/interni-minimalisti-contemporanei-neri-con-divano-e-decorazioni-mockup-dellillustrazione-di.jpg?s=612x612&w=0&k=20&c=3aEVLN00BnjwoUe8DcLat0QB3_JB-6vBN44jQG8W8L0=',
                 'Visibilità' => true,
             ],
             [
@@ -208,7 +208,7 @@ class ApartmentSeeder extends Seeder
                 'Indirizzo' => 'Via XX Settembre, Genova, Italia',
                 'Latitudine' => 44.40564,
                 'Longitudine' => 8.946256,
-                'Img' => 'https://example.com/img5.jpg',
+                'Img' => 'https://media.istockphoto.com/id/1351070483/it/foto/composizione-creativa-di-eleganti-interni-del-soggiorno-con-cornice-per-poster-mock-up-divano.jpg?s=612x612&w=0&k=20&c=LHPUehWom4s56g3ZtL7RbXhBnjLLcqNV4JHX3zXt7z4=',
                 'Visibilità' => true,
             ],
             [
@@ -221,7 +221,7 @@ class ApartmentSeeder extends Seeder
                 'Indirizzo' => 'Via Roma, Cagliari, Italia',
                 'Latitudine' => 39.223841,
                 'Longitudine' => 9.121661,
-                'Img' => 'https://example.com/img6.jpg',
+                'Img' => 'https://media.istockphoto.com/id/1217965465/it/foto/classico-interno-nero-loft-con-pannello-in-legno-divano-chesterfield-tappeto-fiori-tavolino-e.jpg?s=612x612&w=0&k=20&c=tAMV2OS5flhfM8pbVUrLiD7PbDyu8yB8E4M18O-qbkE=',
                 'Visibilità' => true,
             ],
             [
@@ -234,7 +234,7 @@ class ApartmentSeeder extends Seeder
                 'Indirizzo' => 'Via Dante, Bari, Italia',
                 'Latitudine' => 41.117143,
                 'Longitudine' => 16.871871,
-                'Img' => 'https://example.com/img7.jpg',
+                'Img' => 'https://media.istockphoto.com/id/1316453848/it/foto/interno-della-camera-nera-con-divano-in-velluto-verde-pavimento-in-legno-moquette-e.jpg?s=612x612&w=0&k=20&c=MsrOpLHy_otS_HkOcRAhf8eEnQhvbxwH5UJ_q45LfjI=',
                 'Visibilità' => true,
             ],
             [
@@ -247,7 +247,7 @@ class ApartmentSeeder extends Seeder
                 'Indirizzo' => 'Via Mazzini, Torino, Italia',
                 'Latitudine' => 45.070312,
                 'Longitudine' => 7.686856,
-                'Img' => 'https://example.com/img8.jpg',
+                'Img' => 'https://media.istockphoto.com/id/1460051694/it/foto/interior-design-di-appartamento-moderno-mockup-interno-rendering-3d.jpg?s=612x612&w=0&k=20&c=RpT7N6tFF2XeECN5p7nuBKuWT3rBiC8S5-xn6nyj7g8=',
                 'Visibilità' => true,
             ],
             [
@@ -260,7 +260,7 @@ class ApartmentSeeder extends Seeder
                 'Indirizzo' => 'Piazza San Marco, Venezia, Italia',
                 'Latitudine' => 45.434095,
                 'Longitudine' => 12.338844,
-                'Img' => 'https://example.com/img9.jpg',
+                'Img' => 'https://media.istockphoto.com/id/1402804806/it/foto/rendering-3d-illustrazione-3d-mockup-di-scena-interna-e-cornice-angolo-cottura-a-forma-di-l.jpg?s=612x612&w=0&k=20&c=qsfpVNvv6IiiRkaaxDTKsxrzZaak0Y-1jxkSJrz-PsQ=',
                 'Visibilità' => true,
             ],
             [
@@ -273,7 +273,7 @@ class ApartmentSeeder extends Seeder
                 'Indirizzo' => 'Via San Lorenzo, Firenze, Italia',
                 'Latitudine' => 43.76956,
                 'Longitudine' => 11.255814,
-                'Img' => 'https://example.com/img10.jpg',
+                'Img' => 'https://media.istockphoto.com/id/1425142484/it/foto/rendering-3d-di-un-lussuoso-design-della-sala-da-pranzo.jpg?s=612x612&w=0&k=20&c=tKv1d7mG2Cac3agVGyLoTb1KjGBZctggwNOfSTdmWXI=',
                 'Visibilità' => true,
             ],
             [
@@ -286,7 +286,7 @@ class ApartmentSeeder extends Seeder
                 'Indirizzo' => 'Via Vittorio Emanuele, Palermo, Italia',
                 'Latitudine' => 38.115687,
                 'Longitudine' => 13.361267,
-                'Img' => 'https://example.com/img11.jpg',
+                'Img' => 'https://media.istockphoto.com/id/1384261771/it/foto/elegante-design-degli-interni-del-soggiorno-con-cornice-del-poster-mockup-moderna-poltrona.jpg?s=612x612&w=0&k=20&c=tbbK9DxhDBgkZr4K_hvnx7gJnZGrEXoTLJMLrWU6o8c=',
                 'Visibilità' => true,
             ],
             [
@@ -299,7 +299,7 @@ class ApartmentSeeder extends Seeder
                 'Indirizzo' => 'Via Dante, Bari, Italia',
                 'Latitudine' => 41.117143,
                 'Longitudine' => 16.871871,
-                'Img' => 'https://example.com/img12.jpg',
+                'Img' => 'https://media.istockphoto.com/id/1391264584/it/foto/parete-verde-chiaro-vuota-nel-soggiorno-moderno-mock-up-interni-in-stile-scandinavo-boho.jpg?s=612x612&w=0&k=20&c=2b-9blRbcI1asEYhUChIuRHIpWMVfVf0Wp1EQ4kpPx0=',
                 'Visibilità' => true,
             ],
             [
@@ -312,7 +312,7 @@ class ApartmentSeeder extends Seeder
                 'Indirizzo' => 'Via Toledo, Napoli, Italia',
                 'Latitudine' => 40.8517746,
                 'Longitudine' => 14.2681244,
-                'Img' => 'https://example.com/img13.jpg',
+                'Img' => 'https://media.istockphoto.com/id/1423577767/it/foto/interni-moderni-del-soggiorno-con-divano-beige-porta-ad-arco-alla-sala-da-pranzo-rendering-3d.jpg?s=612x612&w=0&k=20&c=MmnAka07RO_6oeL7-Gmx5dSs1Jx0NxT1bchMIXAD_8A=',
                 'Visibilità' => true,
             ],
             [
@@ -325,7 +325,7 @@ class ApartmentSeeder extends Seeder
                 'Indirizzo' => 'Corso Umberto, Messina, Italia',
                 'Latitudine' => 38.19381,
                 'Longitudine' => 15.554,
-                'Img' => 'https://example.com/img14.jpg',
+                'Img' => 'https://media.istockphoto.com/id/1413964766/it/foto/rendering-3d-illustrazione-3d-scena-interna-e-mockup-camera-da-letto-di-rendering-del-designer.jpg?s=612x612&w=0&k=20&c=zo93fXaNuCUQXagYAy1BW2hfZAUxulYJeW3Po3a3P1g=',
                 'Visibilità' => true,
             ],
             [
@@ -338,7 +338,7 @@ class ApartmentSeeder extends Seeder
                 'Indirizzo' => 'Via Garibaldi, Bologna, Italia',
                 'Latitudine' => 44.494887,
                 'Longitudine' => 11.342616,
-                'Img' => 'https://example.com/img15.jpg',
+                'Img' => 'https://media.istockphoto.com/id/1446453158/it/foto/wabi-sabi-interior-design-su-sfondo-parete-arco-concetto-di-mockup-da-parete-rendering-3d.jpg?s=612x612&w=0&k=20&c=fQk2YAbbw7KeT2UbMuKZGfYEdM6auUYy2s86lSK5jqQ=',
                 'Visibilità' => true,
             ],
             [
@@ -351,7 +351,7 @@ class ApartmentSeeder extends Seeder
                 'Indirizzo' => 'Via delle Rose, Lucca, Italia',
                 'Latitudine' => 43.842393,
                 'Longitudine' => 10.502695,
-                'Img' => 'https://example.com/img16.jpg',
+                'Img' => 'https://media.istockphoto.com/id/1284941011/it/foto/vista-interna-di-un-lussuoso-soggiorno-al-mare.jpg?s=612x612&w=0&k=20&c=a9iEJXD58EhvM0rIUnxP6JHKvwUaPI_g19BXVTcDfeY=',
                 'Visibilità' => true,
             ],
             [
@@ -364,7 +364,7 @@ class ApartmentSeeder extends Seeder
                 'Indirizzo' => 'Via Marina, Reggio Calabria, Italia',
                 'Latitudine' => 38.114554,
                 'Longitudine' => 15.650099,
-                'Img' => 'https://example.com/img17.jpg',
+                'Img' => 'https://media.istockphoto.com/id/1408488732/it/foto/soggiorno-in-stile-industriale-con-tavolo-da-pranzo-e-camino.jpg?s=612x612&w=0&k=20&c=D81KZZKdZgy1VraCYLkrFCn2bVhlUxRccThnrHFRMlg=',
                 'Visibilità' => true,
             ],
             [
@@ -377,7 +377,7 @@ class ApartmentSeeder extends Seeder
                 'Indirizzo' => 'Via Trieste, Trieste, Italia',
                 'Latitudine' => 45.649526,
                 'Longitudine' => 13.776818,
-                'Img' => 'https://example.com/img18.jpg',
+                'Img' => 'https://media.istockphoto.com/id/1386951875/it/foto/zona-dininig-in-un-lussuoso-appartamento-in-rendering-3d.jpg?s=612x612&w=0&k=20&c=L95vXDTNmvO8MkOuz9e-KbF0LiKP5_jby7X7hy5unEE=',
                 'Visibilità' => true,
             ],
             [
@@ -390,7 +390,7 @@ class ApartmentSeeder extends Seeder
                 'Indirizzo' => 'Via Fiume, Firenze, Italia',
                 'Latitudine' => 43.76956,
                 'Longitudine' => 11.255814,
-                'Img' => 'https://example.com/img19.jpg',
+                'Img' => 'https://media.istockphoto.com/id/1284706889/it/foto/una-stanza-con-un-albero-di-natale-decorato-con-giocattoli-regali-e-luci.jpg?s=612x612&w=0&k=20&c=ORCF2hrxfNet_wY_nntcV4psdqlWIEy_hdNVV-uwhrI=',
                 'Visibilità' => true,
             ],
             [
@@ -403,7 +403,7 @@ class ApartmentSeeder extends Seeder
                 'Indirizzo' => 'Via del Corso, Roma, Italia',
                 'Latitudine' => 41.902783,
                 'Longitudine' => 12.496366,
-                'Img' => 'https://example.com/img20.jpg',
+                'Img' => 'https://media.istockphoto.com/id/1405613825/it/foto/design-dinterni-del-soggiorno-vintage-creativo-e-moderno-con-divano-giallo-e-parete-a-lamelle.jpg?s=612x612&w=0&k=20&c=GQxWoUX5EFmywZfigS76SfAO9dVXBGtf-Tf4JOLvmRw=',
                 'Visibilità' => true,
             ],
             [
@@ -416,7 +416,7 @@ class ApartmentSeeder extends Seeder
                 'Indirizzo' => 'Via Vittorio Veneto, Palermo, Italia',
                 'Latitudine' => 38.115687,
                 'Longitudine' => 13.361267,
-                'Img' => 'https://example.com/img21.jpg',
+                'Img' => 'https://www.istockphoto.com/it/foto/interni-di-lusso-e-moderni-per-la-casa-con-mobili-di-design-poltrona-tavoli-pouf-e-gm1125386088-295823553?searchscope=image%2Cfilm',
                 'Visibilità' => true,
             ],
             [
@@ -429,7 +429,7 @@ class ApartmentSeeder extends Seeder
                 'Indirizzo' => 'Via Dante, Catania, Italia',
                 'Latitudine' => 37.507877,
                 'Longitudine' => 15.08303,
-                'Img' => 'https://example.com/img22.jpg',
+                'Img' => 'https://media.istockphoto.com/id/1445482634/it/foto/lelegante-composizione-degli-interni-del-soggiorno-con-divano-beige-con-cuscino-plaid-tavolino.jpg?s=612x612&w=0&k=20&c=CPsZ08tfwK29tfxDUDVAlgtNzS20UbhKk_OU0v8zEew=',
                 'Visibilità' => true,
             ],
             [
@@ -442,7 +442,7 @@ class ApartmentSeeder extends Seeder
                 'Indirizzo' => 'Via San Carlo, Torino, Italia',
                 'Latitudine' => 45.070312,
                 'Longitudine' => 7.686856,
-                'Img' => 'https://example.com/img23.jpg',
+                'Img' => 'https://media.istockphoto.com/id/1366922971/it/foto/interni-domestici-con-accogliente-poltrona-e-credenza-mockup-del-soggiorno-rendering-3d.jpg?s=612x612&w=0&k=20&c=Vb6ThPx9udJ3NGVA9NzNQ1gKpjVRzQ00L8Od6DpE5P8=',
                 'Visibilità' => true,
             ],
             [
@@ -455,7 +455,7 @@ class ApartmentSeeder extends Seeder
                 'Indirizzo' => 'Via Roma, Firenze, Italia',
                 'Latitudine' => 43.76956,
                 'Longitudine' => 11.255814,
-                'Img' => 'https://example.com/img24.jpg',
+                'Img' => 'https://media.istockphoto.com/id/1210123439/it/foto/classico-interno-grigio-con-poltrone-divano-tavolino-lampade-fiori-e-modanature-a-parete.jpg?s=612x612&w=0&k=20&c=EVaen69T6BsLLKkKJSpGv0eRjssyT41zy6GrVIIgZAM=',
                 'Visibilità' => true,
             ],
             [
@@ -468,7 +468,7 @@ class ApartmentSeeder extends Seeder
                 'Indirizzo' => 'Via Dante, Palermo, Italia',
                 'Latitudine' => 38.115687,
                 'Longitudine' => 13.361267,
-                'Img' => 'https://example.com/img25.jpg',
+                'Img' => 'https://media.istockphoto.com/id/1447133210/it/foto/design-moderno-degli-interni-di-un-accogliente-appartamento-soggiorno-con-poltrone-bianche.jpg?s=612x612&w=0&k=20&c=1G1odTAX-FuOi_vcbR3PHo-HeBf0FiYn7HrzAFumMTU=',
                 'Visibilità' => true,
             ],
             [
@@ -481,7 +481,7 @@ class ApartmentSeeder extends Seeder
                 'Indirizzo' => 'Via San Marco, Pisa, Italia',
                 'Latitudine' => 43.722838,
                 'Longitudine' => 10.396629,
-                'Img' => 'https://example.com/img26.jpg',
+                'Img' => 'https://media.istockphoto.com/id/1366922971/it/foto/interni-domestici-con-accogliente-poltrona-e-credenza-mockup-del-soggiorno-rendering-3d.jpg?s=612x612&w=0&k=20&c=Vb6ThPx9udJ3NGVA9NzNQ1gKpjVRzQ00L8Od6DpE5P8=',
                 'Visibilità' => true,
             ],
             [
@@ -494,7 +494,7 @@ class ApartmentSeeder extends Seeder
                 'Indirizzo' => 'Via Carducci, Milano, Italia',
                 'Latitudine' => 45.464211,
                 'Longitudine' => 9.191383,
-                'Img' => 'https://example.com/img27.jpg',
+                'Img' => 'https://media.istockphoto.com/id/1334900941/it/foto/interni-moderni-di-un-ampio-soggiorno-in-3d.jpg?s=612x612&w=0&k=20&c=rHXH2oua1EZYRgZiJFZBHPlkU02gHm3tBuzB9aO_E84=',
                 'Visibilità' => true,
             ],
             [
@@ -507,7 +507,7 @@ class ApartmentSeeder extends Seeder
                 'Indirizzo' => 'Via Marina, Cagliari, Italia',
                 'Latitudine' => 39.223841,
                 'Longitudine' => 9.121661,
-                'Img' => 'https://example.com/img28.jpg',
+                'Img' => 'https://media.istockphoto.com/id/1217965544/it/foto/moderno-minimalismo-pesca-interni-con-divano-divano-piante-di-palma-e-tavolini-modello-di.jpg?s=612x612&w=0&k=20&c=BSzprf1wV7YpaK8M6y9DtgD0ptg3dcxlrHFC2GFQpvM=',
                 'Visibilità' => true,
             ],
             [
@@ -520,7 +520,7 @@ class ApartmentSeeder extends Seeder
                 'Indirizzo' => 'Via Vittorio Emanuele, Siracusa, Italia',
                 'Latitudine' => 37.075474,
                 'Longitudine' => 15.286586,
-                'Img' => 'https://example.com/img29.jpg',
+                'Img' => 'https://media.istockphoto.com/id/1487766955/it/foto/il-luminoso-design-degli-interni-del-soggiorno-con-finestre-e-pareti-beige-%C3%A8-arredato-con.jpg?s=612x612&w=0&k=20&c=vWnwZSIj9biqgvIJlrFcBt5vvdDSbPdfoccmrgvSpA8=',
                 'Visibilità' => true,
             ],
             [
@@ -533,7 +533,7 @@ class ApartmentSeeder extends Seeder
                 'Indirizzo' => 'Via Roma, Perugia, Italia',
                 'Latitudine' => 43.1107,
                 'Longitudine' => 12.39083,
-                'Img' => 'https://example.com/img30.jpg',
+                'Img' => 'https://media.istockphoto.com/id/1227624921/it/foto/sedie-in-legno-e-tavolo-su-sfondo-carta-da-parati-grigio-design-degli-interni-della-sala-da.jpg?s=612x612&w=0&k=20&c=Wno6mzVuRLWP-csoNmcfF6gARtf3PPjukP_jkueyI5E=',
                 'Visibilità' => true,
             ],
             [
@@ -546,7 +546,7 @@ class ApartmentSeeder extends Seeder
                 'Indirizzo' => 'Via Libertà, Messina, Italia',
                 'Latitudine' => 38.19381,
                 'Longitudine' => 15.554,
-                'Img' => 'https://example.com/img31.jpg',
+                'Img' => 'https://media.istockphoto.com/id/1363806786/it/foto/composizione-moderna-di-elegante-design-degli-interni-del-soggiorno-con-cornice-del-poster.jpg?s=612x612&w=0&k=20&c=4pNCQT9xSG3DqeOqzjddVut_ozoMsF3EPp6AYK6qDME=',
                 'Visibilità' => true,
             ],
             [
@@ -559,7 +559,7 @@ class ApartmentSeeder extends Seeder
                 'Indirizzo' => 'Via Roma, Genova, Italia',
                 'Latitudine' => 44.40564,
                 'Longitudine' => 8.946256,
-                'Img' => 'https://example.com/img32.jpg',
+                'Img' => 'https://media.istockphoto.com/id/1267663850/it/foto/interni-neri-con-divano-piante-e-tavolino-modello-di-illustrazione-di-rendering-3d.jpg?s=612x612&w=0&k=20&c=e6o2BHAN2ip66osJm0AVE9gkVGw8mYf8_0aP1a36sNc=',
                 'Visibilità' => true,
             ],
             [
@@ -572,7 +572,7 @@ class ApartmentSeeder extends Seeder
                 'Indirizzo' => 'Via Mazzini, Trieste, Italia',
                 'Latitudine' => 45.649526,
                 'Longitudine' => 13.776818,
-                'Img' => 'https://example.com/img33.jpg',
+                'Img' => 'https://media.istockphoto.com/id/1334880478/it/video/interior-empty-modern-loft-office-open-space-riprese-da-ufficio-moderne-moderno-concetto.jpg?s=640x640&k=20&c=boyN_50WcYA4-12qtPw42aIlhsIvlKqcJpSGmyLfSHU=',
                 'Visibilità' => true,
             ],
             [
@@ -585,7 +585,7 @@ class ApartmentSeeder extends Seeder
                 'Indirizzo' => 'Via Vittorio Veneto, Firenze, Italia',
                 'Latitudine' => 43.76956,
                 'Longitudine' => 11.255814,
-                'Img' => 'https://example.com/img34.jpg',
+                'Img' => 'https://media.istockphoto.com/id/1446452504/it/foto/interior-design-minimalista-sullo-sfondo-della-parete-dellarco-concetto-di-mockup-da-parete.jpg?s=612x612&w=0&k=20&c=vgmPDruMEdocaMTZjkTS9PIi7YFVA3AE2Xejs8bNlJM=',
                 'Visibilità' => true,
             ],
             [
@@ -598,7 +598,7 @@ class ApartmentSeeder extends Seeder
                 'Indirizzo' => 'Via Marina, Livorno, Italia',
                 'Latitudine' => 43.548473,
                 'Longitudine' => 10.310567,
-                'Img' => 'https://example.com/img35.jpg',
+                'Img' => 'https://media.istockphoto.com/id/1446452504/it/foto/interior-design-minimalista-sullo-sfondo-della-parete-dellarco-concetto-di-mockup-da-parete.jpg?s=612x612&w=0&k=20&c=vgmPDruMEdocaMTZjkTS9PIi7YFVA3AE2Xejs8bNlJM=',
                 'Visibilità' => true,
             ],
             [
@@ -611,7 +611,7 @@ class ApartmentSeeder extends Seeder
                 'Indirizzo' => 'Via San Giorgio, Amalfi, Italia',
                 'Latitudine' => 40.634574,
                 'Longitudine' => 14.60205,
-                'Img' => 'https://example.com/img36.jpg',
+                'Img' => 'https://media.istockphoto.com/id/1335635511/it/video/timelapse-dellanimazione-di-rendering-3d-casa-interna-moderno-spazio-abitativo-aperto-con.jpg?s=640x640&k=20&c=8MNSNUXGziBmTeXuWCgAuLFR_GgUuI7wIoRf_xOmuLc=',
                 'Visibilità' => true,
             ],
             [
@@ -624,7 +624,7 @@ class ApartmentSeeder extends Seeder
                 'Indirizzo' => 'Via Garibaldi, Bari, Italia',
                 'Latitudine' => 41.117143,
                 'Longitudine' => 16.871871,
-                'Img' => 'https://example.com/img37.jpg',
+                'Img' => 'https://media.istockphoto.com/id/691429408/it/foto/interior-design-minimalista-soggiorno-verde-rendering-3d.jpg?s=612x612&w=0&k=20&c=GPJ0iHVH2Qh4X14xiMXBx42hwSUH2huEUYu98AL-YQU=',
                 'Visibilità' => true,
             ],
             [
@@ -637,7 +637,7 @@ class ApartmentSeeder extends Seeder
                 'Indirizzo' => 'Via San Paolo, Verona, Italia',
                 'Latitudine' => 45.438759,
                 'Longitudine' => 10.99162,
-                'Img' => 'https://example.com/img38.jpg',
+                'Img' => 'https://media.istockphoto.com/id/1469812453/it/foto/interior-design-di-appartamento-moderno-soggiorno-con-divano-nero-sopra-il-muro-di-piastrelle.jpg?s=612x612&w=0&k=20&c=PmbqjUQwRozvlWY4VRGAF32l50d_GueQoWKgqkvDkZE=',
                 'Visibilità' => true,
             ],
             [
@@ -650,7 +650,7 @@ class ApartmentSeeder extends Seeder
                 'Indirizzo' => 'Via Dante, Torino, Italia',
                 'Latitudine' => 45.070312,
                 'Longitudine' => 7.686856,
-                'Img' => 'https://example.com/img39.jpg',
+                'Img' => 'https://media.istockphoto.com/id/1470717532/it/foto/interno-di-casa-moderna.jpg?s=612x612&w=0&k=20&c=1R1iVGFaVlW1Iu4C0fxAEza6kSNIVLK2O9Cwy7fzJ-E=',
                 'Visibilità' => true,
             ],
             [
@@ -663,7 +663,7 @@ class ApartmentSeeder extends Seeder
                 'Indirizzo' => 'Via dei Cipressi, Siena, Italia',
                 'Latitudine' => 43.318809,
                 'Longitudine' => 11.330757,
-                'Img' => 'https://example.com/img40.jpg',
+                'Img' => 'https://media.istockphoto.com/id/1384260565/it/foto/composizione-elegante-di-interni-moderni-del-soggiorno-mock-up-cornice-poster-divano-moderno.jpg?s=612x612&w=0&k=20&c=OXK_UxaIveRp6c3_iGN4rQhSMunicWyMtv4s45hY4jU=',
                 'Visibilità' => true,
             ],
             [
@@ -676,7 +676,7 @@ class ApartmentSeeder extends Seeder
                 'Indirizzo' => 'Via San Francesco, Trento, Italia',
                 'Latitudine' => 46.074779,
                 'Longitudine' => 11.121748,
-                'Img' => 'https://example.com/img41.jpg',
+                'Img' => 'https://media.istockphoto.com/id/1285242397/it/foto/immagine-generata-digitalmente-di-un-appartamento-loft-in-stile-industriale.jpg?s=612x612&w=0&k=20&c=k6XqJq0xyQLnBO6ausjU3EIn8JwSYW_Chp6iSewnwSQ=',
                 'Visibilità' => true,
             ],
             [
@@ -689,7 +689,7 @@ class ApartmentSeeder extends Seeder
                 'Indirizzo' => 'Via Libertà, Lecce, Italia',
                 'Latitudine' => 40.351515,
                 'Longitudine' => 18.174366,
-                'Img' => 'https://example.com/img42.jpg',
+                'Img' => 'https://media.istockphoto.com/id/1288806002/it/foto/soggiorno-completamente-arredato-di-un-appartamento.jpg?s=612x612&w=0&k=20&c=8LaBoH7yvp44Yxp_1-vkFp9mLrm1w6xA4SlJOuWVpdg=',
                 'Visibilità' => true,
             ],
             [
@@ -702,7 +702,7 @@ class ApartmentSeeder extends Seeder
                 'Indirizzo' => 'Via Firenze, Bologna, Italia',
                 'Latitudine' => 44.494887,
                 'Longitudine' => 11.342616,
-                'Img' => 'https://example.com/img43.jpg',
+                'Img' => 'https://media.istockphoto.com/id/892550490/it/foto/moderno-design-degli-interni-loft.jpg?s=612x612&w=0&k=20&c=ID3q8Z3jit7e-xE9FxWMRa27uOho5xdGT4raIKY0g2w=',
                 'Visibilità' => true,
             ],
             [
@@ -715,7 +715,7 @@ class ApartmentSeeder extends Seeder
                 'Indirizzo' => 'Via Garibaldi, Pisa, Italia',
                 'Latitudine' => 43.722838,
                 'Longitudine' => 10.396629,
-                'Img' => 'https://example.com/img44.jpg',
+                'Img' => 'https://media.istockphoto.com/id/1442716898/it/foto/design-moderno-degli-interni-di-un-accogliente-appartamento-soggiorno-con-divano-beige.jpg?s=612x612&w=0&k=20&c=9QkJ00_QiTkbPbVoYUu_dUhqIwy382pIltqmFJnJ3vM=',
                 'Visibilità' => true,
             ],
             [
@@ -728,7 +728,7 @@ class ApartmentSeeder extends Seeder
                 'Indirizzo' => 'Via Roma, Sassari, Italia',
                 'Latitudine' => 40.727504,
                 'Longitudine' => 8.558167,
-                'Img' => 'https://example.com/img45.jpg',
+                'Img' => 'https://media.istockphoto.com/id/678464714/it/foto/piatto-con-decori-gialli.jpg?s=612x612&w=0&k=20&c=y1VCxqpgVyM8qYyFnh_UM4mnJgm5xdpmyzohuUVYo1o=',
                 'Visibilità' => true,
             ],
             [
@@ -741,7 +741,7 @@ class ApartmentSeeder extends Seeder
                 'Indirizzo' => 'Via Garibaldi, Trapani, Italia',
                 'Latitudine' => 38.01778,
                 'Longitudine' => 12.536842,
-                'Img' => 'https://example.com/img46.jpg',
+                'Img' => 'https://www.istockphoto.com/it/foto/gli-interni-moderni-gm860973750-142504665?searchscope=image%2Cfilm',
                 'Visibilità' => true,
             ],
             [
@@ -754,7 +754,7 @@ class ApartmentSeeder extends Seeder
                 'Indirizzo' => 'Via delle Palme, Catania, Italia',
                 'Latitudine' => 37.507877,
                 'Longitudine' => 15.08303,
-                'Img' => 'https://example.com/img47.jpg',
+                'Img' => 'https://media.istockphoto.com/id/1125385998/it/foto/interni-di-lusso-e-moderni-per-la-casa-con-mobili-di-design-poltrona-tavoli-pouf-e-accessi-un.jpg?s=612x612&w=0&k=20&c=tXOFf0kg1uZIXJrcur-T1h0p4Hc6YOblGlmvS3FJh1g=',
                 'Visibilità' => true,
             ],
             [
@@ -767,7 +767,7 @@ class ApartmentSeeder extends Seeder
                 'Indirizzo' => 'Via Dante, Napoli, Italia',
                 'Latitudine' => 40.8517746,
                 'Longitudine' => 14.2681244,
-                'Img' => 'https://example.com/img48.jpg',
+                'Img' => 'https://media.istockphoto.com/id/1130536041/it/foto/interni-eleganti-e-vintage-con-mobili-classici-in-legno-divano-grigio-tavolino-retr%C3%B2-lampada-e.jpg?s=612x612&w=0&k=20&c=3sL70Fp7VlDJitH_aKyjVJup1arSIY7Prygpq1jhM5Y=',
                 'Visibilità' => true,
             ],
             [
@@ -780,7 +780,7 @@ class ApartmentSeeder extends Seeder
                 'Indirizzo' => 'Via Firenze, Roma, Italia',
                 'Latitudine' => 41.902783,
                 'Longitudine' => 12.496366,
-                'Img' => 'https://example.com/img49.jpg',
+                'Img' => 'https://www.istockphoto.com/it/foto/parete-verde-verticale-allinterno-di-un-soggiorno-rendering-3d-gm1372682637-441733204?searchscope=image%2Cfilm',
                 'Visibilità' => true,
             ],
             [
@@ -793,7 +793,7 @@ class ApartmentSeeder extends Seeder
                 'Indirizzo' => 'Via San Michele, Siena, Italia',
                 'Latitudine' => 43.318809,
                 'Longitudine' => 11.330757,
-                'Img' => 'https://example.com/img50.jpg',
+                'Img' => 'https://media.istockphoto.com/id/1357529184/it/foto/rendering-3d-di-un-interno-contemporaneo-del-soggiorno.jpg?s=612x612&w=0&k=20&c=SXPwpZwnTbq3CbczmmUtgisjXyvMOdcWu6KOLhuXzVk=',
                 'Visibilità' => true,
             ]
         ];
