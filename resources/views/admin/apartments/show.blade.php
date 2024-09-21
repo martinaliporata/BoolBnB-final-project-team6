@@ -6,7 +6,14 @@
             <div class="col-7 mt-5 text-start">
                 <div class="card shadow background-color-minicard" style="width: 100%;">
                     <!-- Immagine ridimensionata con classi per larghezza -->
-                    <img class="card-img-top" src="{{ filter_var($apartment->Img, FILTER_VALIDATE_URL) ? $apartment->Img : asset('storage/images_apartment/' . $apartment->Img) }}" alt="{{ $apartment->Img }}" style="width: 100%; height: auto; max-height: 200px; object-fit: cover;">
+                    <a href="{{ filter_var($apartment->Img, FILTER_VALIDATE_URL) ? $apartment->Img : asset('storage/images_apartment/' . $apartment->Img) }}" data-fancybox="gallery" data-caption="{{ $apartment->Nome }}">
+                        <img class="card-img-top"
+                             src="{{ filter_var($apartment->Img, FILTER_VALIDATE_URL) ? $apartment->Img : asset('storage/images_apartment/' . $apartment->Img) }}"
+                             alt="{{ $apartment->Img }}"
+                             style="width: 100%; height: auto; max-height: 350px; object-fit: cover;">
+                    </a>
+
+
                     <div class="card-show-ap p-3">
                         <!-- Titolo dell'appartamento -->
                         <h4 class="card-title">{{ $apartment->Nome }}</h4>
