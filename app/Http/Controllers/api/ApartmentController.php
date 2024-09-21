@@ -38,7 +38,7 @@ class ApartmentController extends Controller
             'Letti' => 'required|integer',
             'Bagni' => 'required|integer',
             'Metri_quadrati' => 'required|integer',
-            'Img' => 'required|string',
+            'Img' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'Visibilità' => 'required|boolean',
         ]);
 
@@ -89,7 +89,7 @@ class ApartmentController extends Controller
         $apartment = Apartment::with("views", "sponsorships", "services", "messages")->findOrFail($id);
 
         // Aggiungi l'URL completo per l'immagine
-        $apartment->Img = $apartment->Img ? url('http://127.0.0.1:8000/storage/images_apartment/' . $apartment->Img) : null;
+        $apartment->Img = filter_var($apartment->Img, FILTER_VALIDATE_URL ) ? $apartment->Img : asset('http://127.0.0.1:8000/storage/images_apartment/' . $apartment->Img);
 
         return response()->json([
             'success' => true,
@@ -105,6 +105,7 @@ class ApartmentController extends Controller
         $apartment = Apartment::findOrFail($id);
         if ($apartment) {
             $apartment->update($request->all());
+            $apartment->Img = $apartment->Img;
             return response()->json($apartment);
         } else {
             return response()->json(['message' => 'Apartment not found'], 404);
@@ -263,7 +264,7 @@ class ApartmentController extends Controller
 
         // Aggiungi l'URL completo dell'immagine agli appartamenti
         $apartments->each(function ($apartment) {
-            $apartment->Img = $apartment->Img ? asset('http://127.0.0.1:8000/storage/images_apartment/' . $apartment->Img) : null;
+            $apartment->Img = filter_var($apartment->Img, FILTER_VALIDATE_URL ) ? $apartment->Img : asset('http://127.0.0.1:8000/storage/images_apartment/' . $apartment->Img);
         });
 
         // Log dei risultati
