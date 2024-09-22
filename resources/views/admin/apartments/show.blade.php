@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-    <div class="general_background h-100">
+    <div class="general_background">
         <div class="row justify-content-center">
             <!-- Manteniamo il formato card -->
             <div class="col-7 my-5 text-start">
