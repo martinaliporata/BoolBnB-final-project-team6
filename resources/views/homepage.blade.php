@@ -20,18 +20,18 @@
     </div>
 </div>
 
-<div class="row mt-5 text-center">
+<div class="footer row pt-5 text-center">
     <h2 class="mb-4">Perché scegliere BoolBnb?</h2>
     <div class="col-md-4">
         <img class="w-25" src="{{ Vite::asset('resources/images/customer-service.png') }}" alt="Assistenza 24/7">
         <p>Assistenza 24/7</p>
     </div>
     <div class="col-md-4">
-        <img class="w-25" src="https://www.architettiamo.it/wordpress/wp-content/uploads/2016/01/isp1.jpg" alt="Alloggi Unici">
+        <img class="w-25" src="{{Vite::asset('resources/images/housepng.png')}}" alt="Alloggi Unici">
         <p>Alloggi Unici</p>
     </div>
     <div class="col-md-4">
-        <img class="w-25" src="{{ Vite::asset('resources/images/Prenota-ora.jpg') }}" alt="Prenotazione Facile">
+        <img class="w-25" src="{{Vite::asset('resources/images/sheet_8861435.jpg')}}" alt="Prenotazione Facile">
         <p>Prenotazione Facile</p>
     </div>
 </div>
