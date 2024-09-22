@@ -31,7 +31,7 @@
         <p>Alloggi Unici</p>
     </div>
     <div class="col-md-4">
-        <img class="w-25" src="{{Vite::asset('resources/images/sheet_8861435.jpg')}}" alt="Prenotazione Facile">
+        <img class="w-25" src="{{Vite::asset('resources/images/sheet_8861435.png')}}" alt="Prenotazione Facile">
         <p>Prenotazione Facile</p>
     </div>
 </div>
